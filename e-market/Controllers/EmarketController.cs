@@ -29,6 +29,28 @@ namespace e_market.Controllers
 
         public IActionResult Register()
         {
+            var kisi = new RegisterModel();
+            kisi.Ad = "gktg";
+            kisi.Soyad = "trkn";
+            kisi.Email = "gktg@mail.com";
+            kisi.Sifre = "awd.12345";
+
+            _cc.Register.Add(kisi);
+            _cc.SaveChanges();
+
+            var hassas = new KisiHassasBilgiler();
+           
+            hassas.Adres = "adres";
+            hassas.ID = kisi.ID;
+            _cc.KisiHassasBilgiler.Add(hassas);
+            _cc.SaveChanges();
+
+
+            kisi.KisiHassasBilgiler.Adres = "yeni adres";
+            _cc.Update(kisi);
+            _cc.SaveChanges();
+
+
             return View();
         }
         public IActionResult Login()
@@ -89,7 +111,7 @@ namespace e_market.Controllers
 
                 var kisibilgileri = KisiBilgileriGetir(kisiKontrol.ID);
 
-                HttpContext.Session.SetString("KisiID", kisibilgileri.TabloID.ToString());
+                HttpContext.Session.SetString("KisiID", kisibilgileri.ID.ToString());
                 HttpContext.Session.SetString("Ad", kisibilgileri.Ad + " " + kisibilgileri.Soyad);
                 HttpContext.Session.SetString("Email", kisibilgileri.Email);
                 return true;
@@ -156,7 +178,7 @@ namespace e_market.Controllers
 
             var kisiBilgileriModel = new KisiBilgileriModel()
             {
-                TabloID = register.ID,
+                ID = register.ID,
                 Ad = register.Ad,
                 Soyad = register.Soyad,
                 Email = register.Email,
@@ -169,7 +191,7 @@ namespace e_market.Controllers
         [Route("/emarket/KisiBilgileriGuncelle/")]
         public RegisterModel KisiBilgileriGuncelle(KisiBilgileriModel model) 
         {
-            var kisiBilgileri = _cc.Register.Where(x => x.ID == model.TabloID).FirstOrDefault();
+            var kisiBilgileri = _cc.Register.Where(x => x.ID == model.ID).FirstOrDefault();
 
             kisiBilgileri.Ad = model.Ad;
             kisiBilgileri.Soyad = model.Soyad;
@@ -181,6 +203,8 @@ namespace e_market.Controllers
 
             return kisiBilgileri;
         }
+
+     
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

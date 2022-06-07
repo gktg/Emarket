@@ -6,7 +6,7 @@ namespace e_market.Models
 {
     public class KisiBilgileriModel
     {
-        public int TabloID { get; set; }
+        public int ID { get; set; }
 
         public string Ad { get; set; }
 

@@ -11,10 +11,9 @@ namespace e_market.Models
         public int ID { get; set; }
         public string Adres { get; set; }
         public int Favori { get; set; }
-        public int RegisterID { get; set; }
         
         //relational properties
-        public RegisterModel Register { get; set; }
+        public virtual RegisterModel Register { get; set; }
     }
 
     

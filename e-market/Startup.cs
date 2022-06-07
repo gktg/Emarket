@@ -31,7 +31,8 @@ namespace e_market
 
             services.AddDbContext<ConnectionString>(options => options.UseSqlServer(Configuration.GetConnectionString("Myconnection")));
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddSession(x => {
+            services.AddSession(x =>
+            {
                 x.IdleTimeout = TimeSpan.FromMinutes(20);
 
 
@@ -46,7 +47,9 @@ namespace e_market
         {
             if (env.IsDevelopment())
             {
+                context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
+                context.Database.Migrate();
             }
             if (env.IsDevelopment())
             {

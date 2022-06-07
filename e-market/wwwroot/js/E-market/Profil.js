@@ -22,7 +22,7 @@ function KisiBilgileriGetir() {
         data: null,
         async: false,
         success: function (result) {
-            if (result.tabloID == KisiID) {
+            if (result.id == KisiID) {
 
                 KisiModel = result;
                 KisiBilgileriniSayfayaBas()

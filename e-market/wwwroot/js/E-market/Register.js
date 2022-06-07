@@ -61,7 +61,11 @@ function Register() {
                 $(".form-control").each(function (i, x) {
                     $(x).val("")
                 });
-                window.location.href = "/emarket/Login";
+                setTimeout(function () {
+
+                    window.location.href = "/emarket/Login";
+
+                }, 3000);
             }
             else {
                 alertim.toast(siteLang.Hata, alertim.types.warning)
