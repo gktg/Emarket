@@ -16,7 +16,11 @@ function Login() {
         success: function (result) {
             if (result == true) {
                 alertim.toast(siteLang.Giris, alertim.types.success);
-                window.location.href = "Dashboard";
+                setTimeout(function () {
+
+                    window.location.href = "Dashboard";
+
+                }, 3000);
             }
             else {
                 alertim.toast(siteLang.Giris2, alertim.types.warning);

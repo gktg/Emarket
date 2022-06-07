@@ -13,11 +13,15 @@ using System.IO;
 using System.Data;
 using System.Net.Mail;
 using Microsoft.AspNetCore.Identity;
+using Bogus.DataSets;
+using Bogus;
 
 namespace e_market.Controllers
 {
     public class EmarketController : Controller
     {
+        Kategori kategori;
+
         public readonly ConnectionString _cc;
         private readonly ILogger<EmarketController> _logger;
 
@@ -29,26 +33,48 @@ namespace e_market.Controllers
 
         public IActionResult Register()
         {
-            var kisi = new RegisterModel();
-            kisi.Ad = "gktg";
-            kisi.Soyad = "trkn";
-            kisi.Email = "gktg@mail.com";
-            kisi.Sifre = "awd.12345";
+            //var kisi = new Register();
+            //kisi.Ad = "gktg";
+            //kisi.Soyad = "trkn";
+            //kisi.Email = "gktg@mail.com";
+            //kisi.Sifre = "awd.12345";
 
-            _cc.Register.Add(kisi);
-            _cc.SaveChanges();
+            //_cc.Register.Add(kisi);
+            //_cc.SaveChanges();
 
-            var hassas = new KisiHassasBilgiler();
-           
-            hassas.Adres = "adres";
-            hassas.ID = kisi.ID;
-            _cc.KisiHassasBilgiler.Add(hassas);
-            _cc.SaveChanges();
+            //var hassas = new KisiHassasBilgiler();
+
+            //hassas.Adres = "adres";
+            //hassas.ID = kisi.ID;
+            //hassas.TelefonNumarası = "05324864832";
+            //_cc.KisiHassasBilgiler.Add(hassas);
+            //_cc.SaveChanges();
 
 
-            kisi.KisiHassasBilgiler.Adres = "yeni adres";
-            _cc.Update(kisi);
-            _cc.SaveChanges();
+            //kisi.KisiHassasBilgiler.Adres = "yeni adres";
+            //_cc.Update(kisi);
+            //_cc.SaveChanges();
+
+            var a = new Commerce("tr").Categories(10);
+            for (int i = 5; i < 10; i++)
+            {
+                Kategori kategorim = new Kategori();
+                kategorim.KategoriAdi = a[i];
+                kategorim.KategoriAciklama = new Lorem("tr").Sentence(10);
+
+
+                for (int j = 5; j < 20; j++)
+                {
+                    Urun u = new Urun();
+                    u.UrunAdi = new Commerce("tr").ProductName();
+                    u.Stok = j * i;
+                    u.UrunFiyati = new Commerce("tr").Price(1, 11000, 2, "TL");
+                    u.UrunMedya = new Images("tr").PicsumUrl();
+                    kategorim.Urun.Add(u);
+                }
+                _cc.Kategori.Add(kategorim);
+                _cc.SaveChanges();
+            }
 
 
             return View();
@@ -74,13 +100,13 @@ namespace e_market.Controllers
             return View();
         }
 
-        
+
         [Route("/emarket/RegisterVm/")]
-        public bool RegisterVm(RegisterModel model)
+        public bool RegisterVm(Register model)
         {
             try
             {
-                var registerModel = new RegisterModel
+                var registerModel = new Register
                 {
                     Ad = model.Ad,
                     Soyad = model.Soyad,
@@ -100,7 +126,7 @@ namespace e_market.Controllers
             }
 
         }
-        
+
         [Route("/emarket/LoginKontrol/")]
         public bool LoginKontrol(LoginVM model)
         {
@@ -111,9 +137,9 @@ namespace e_market.Controllers
 
                 var kisibilgileri = KisiBilgileriGetir(kisiKontrol.ID);
 
-                HttpContext.Session.SetString("KisiID", kisibilgileri.ID.ToString());
-                HttpContext.Session.SetString("Ad", kisibilgileri.Ad + " " + kisibilgileri.Soyad);
-                HttpContext.Session.SetString("Email", kisibilgileri.Email);
+                HttpContext.Session.SetString("KisiID", kisibilgileri.RegisterProfil.ID.ToString());
+                HttpContext.Session.SetString("Ad", kisibilgileri.RegisterProfil.Ad + " " + kisibilgileri.RegisterProfil.Soyad);
+                HttpContext.Session.SetString("Email", kisibilgileri.RegisterProfil.Email);
                 return true;
             }
             else
@@ -172,24 +198,23 @@ namespace e_market.Controllers
         }
 
         [Route("/emarket/KisiBilgileriGetir/{ID}")]
-        public KisiBilgileriModel KisiBilgileriGetir(int ID) 
+        public KisiProfilVM KisiBilgileriGetir(int ID)
         {
-            RegisterModel register = _cc.Register.Where(x => x.ID == ID).FirstOrDefault();
+            Register register = _cc.Register.Where(x => x.ID == ID).FirstOrDefault();
 
-            var kisiBilgileriModel = new KisiBilgileriModel()
+            var model = new KisiProfilVM
             {
-                ID = register.ID,
-                Ad = register.Ad,
-                Soyad = register.Soyad,
-                Email = register.Email,
+                RegisterProfil = register,
+
             };
 
-            return kisiBilgileriModel;
+            return model;
 
         }
 
         [Route("/emarket/KisiBilgileriGuncelle/")]
-        public RegisterModel KisiBilgileriGuncelle(KisiBilgileriModel model) 
+        //kisiprofilVM düzenle
+        public Register KisiBilgileriGuncelle(Register model)
         {
             var kisiBilgileri = _cc.Register.Where(x => x.ID == model.ID).FirstOrDefault();
 
@@ -204,7 +229,7 @@ namespace e_market.Controllers
             return kisiBilgileri;
         }
 
-     
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -213,6 +238,6 @@ namespace e_market.Controllers
         }
 
 
-        
+
     }
 }

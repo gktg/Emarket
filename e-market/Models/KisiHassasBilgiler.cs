@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using e_market.Models;
 
 namespace e_market.Models
 {
@@ -9,11 +8,12 @@ namespace e_market.Models
     {
 
         public int ID { get; set; }
+        public DateTime DogumTarihi { get; set; }       
+        public string TelefonNumarası { get; set; }
         public string Adres { get; set; }
-        public int Favori { get; set; }
         
         //relational properties
-        public virtual RegisterModel Register { get; set; }
+        public virtual Register Register { get; set; }
     }
 
     

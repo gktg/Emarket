@@ -22,7 +22,8 @@ function KisiBilgileriGetir() {
         data: null,
         async: false,
         success: function (result) {
-            if (result.id == KisiID) {
+            console.log(result)
+            if (result.registerProfil.id == KisiID) {
 
                 KisiModel = result;
                 KisiBilgileriniSayfayaBas()
@@ -44,9 +45,9 @@ function KisiBilgileriGetir() {
 
 function KisiBilgileriniSayfayaBas() {
 
-    $("#txtAd").val(KisiModel.ad)
-    $("#txtSoyad").val(KisiModel.soyad)
-    $("#txtEmail").val(KisiModel.email)
+    $("#txtAd").val(KisiModel.registerProfil.ad)
+    $("#txtSoyad").val(KisiModel.registerProfil.soyad)
+    $("#txtEmail").val(KisiModel.registerProfil.email)
 }
 
 function GuncelKisiBilgileriModeleBas(){

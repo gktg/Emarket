@@ -12,6 +12,7 @@ using e_market.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using System.Text.Json.Serialization;
 
 namespace e_market
 {
@@ -29,7 +30,7 @@ namespace e_market
         {
             services.AddMvc();
 
-            services.AddDbContext<ConnectionString>(options => options.UseSqlServer(Configuration.GetConnectionString("Myconnection")));
+            services.AddDbContext<ConnectionString>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("Myconnection")));
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSession(x =>
             {
@@ -39,7 +40,8 @@ namespace e_market
             });
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-
+            services.AddControllers().AddJsonOptions(x =>
+            x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using e_market.Models;
+using Bogus.DataSets;
+
 
 
 namespace e_market.Models
@@ -18,8 +20,10 @@ namespace e_market.Models
         }
 
 
-        public DbSet<RegisterModel> Register { get; set; }
+        public DbSet<Register> Register { get; set; }
         public DbSet<KisiHassasBilgiler> KisiHassasBilgiler { get; set; }
+        public DbSet<Urun> Urun { get; set; }
+        public DbSet<Kategori> Kategori { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,38 +31,28 @@ namespace e_market.Models
 
             modelBuilder.Entity<KisiHassasBilgiler>().HasOne(p => p.Register).WithOne(s => s.KisiHassasBilgiler).HasForeignKey<KisiHassasBilgiler>(x => x.ID);
 
-            modelBuilder.Entity<RegisterModel>(x => x.HasData(new RegisterModel
+            modelBuilder.Entity<Kategori>()
+                .HasMany(c => c.Urun)
+                .WithOne(e => e.Kategori).HasForeignKey(p => p.KategoriID).OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Register>(x => x.HasData(new Register
             {
-                Ad = "almila",
-                Soyad = "aksu",
-                Email = "almila@mail.com",
-                Sifre = "1",
-                ID = 1
-
-
-            }, new RegisterModel
-            {
-                Ad = "almila",
-                Soyad = "aksu",
-                Email = "almila@mail.com",
-                Sifre = "1",
-                ID = 2
-
+                Ad = "Servet Göktuğ",
+                Soyad = "Türkan",
+                Email = "goktug@mail.com",
+                Sifre = "awd.123456",
+                ID = 1,
 
             }));
 
+
             modelBuilder.Entity<KisiHassasBilgiler>(x => x.HasData(new KisiHassasBilgiler
             {
-                Adres = "adres1",
-                Favori = 1,
-                ID = 1
 
-
-            }, new KisiHassasBilgiler
-            {
-                Adres = "adres1",
-                Favori = 1,
-                ID = 2
+                ID = 1,
+                Adres = new Address("tr").FullAddress(),
+                DogumTarihi = DateTime.Now.AddYears(-20),
+                TelefonNumarası = "05388828249"
 
 
             }));
