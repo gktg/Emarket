@@ -1,0 +1,23 @@
+﻿.Lbl {
+    font-size: 0.95em !important;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.card-header {
+    border: none;
+}
+
+.card-title {
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}

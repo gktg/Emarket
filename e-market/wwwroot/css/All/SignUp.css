@@ -1,0 +1,221 @@
+﻿@media (min-width:1025px) {
+    .Welcome-Sign-Up-to-continue {
+        flex-grow: 0;
+        margin: 1.17VH 0 5.39VH;
+        font-size: 1em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #8c92a9;
+    }
+
+    .BackLeft {
+        flex-grow: 0;
+        padding: 11.7VH 16.3VW 5VH 4.3VW;
+        background-image: radial-gradient(circle at 0 0, #141b38, #232c4f);
+    }
+
+    .BackRight {
+        margin: 0 0 1px;
+        padding: 8.20VH 12VW 3VH 12VW;
+        background-color: #ffffff;
+    }
+
+    .Log-in {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1.1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ff5f00;
+    }
+
+    .ImageDivRegister {
+        position: absolute;
+        bottom: 10VH;
+    }
+
+    .Marg {
+        margin-left: -2.3VW;
+    }
+
+    .Marg1 {
+        margin-top: 2VH;
+    }
+    .signUpButton {
+        padding-top: 2VH;
+        padding-bottom: 2VH;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+    }
+}
+
+
+
+@media (min-width:768px) and (max-width: 1024px) {
+
+    .Welcome-Sign-Up-to-continue {
+        flex-grow: 0;
+        margin: 1.17VH 0 5.39VH;
+        font-size: 1em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #8c92a9;
+    }
+
+    .BackLeft {
+        flex-grow: 0;
+        padding: 11.7VH 16.3VW 5VH 4.3VW;
+        background-image: radial-gradient(circle at 0 0, #141b38, #232c4f);
+    }
+
+    .BackRight {
+        margin: 0 0 1px;
+        padding: 8.20VH 12VW 3VH 12VW;
+        background-color: #ffffff;
+    }
+    
+    .ImageDivRegister {
+        position: absolute;
+        bottom: 1VH;
+    }
+
+    .Log-in {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ff5f00;
+    }
+
+    .ImageDivRegister {
+        position: absolute;
+        bottom: 10VH;
+    }
+
+    .Marg {
+        margin-left: -0.5VW;
+    }
+
+    .Marg1 {
+        margin-top: 2VH;
+    }
+
+    .signUpButton {
+        padding-top: 2VH;
+        padding-bottom: 2VH;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+    }
+
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    
+    .Welcome-Sign-Up-to-continue {
+        flex-grow: 0;
+        margin: 1.17VH 0 5.39VH;
+        font-family: EncodeSans;
+        font-size: 0.7em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #8c92a9;
+    }
+
+    .ImageDivRegister {
+        position: absolute;
+        bottom: 1VH;
+    }
+
+    .BackLeft {
+        flex-grow: 0;
+        padding: 11.7VH 16.3VW 5VH 4.3VW;
+        background-image: radial-gradient(circle at 0 0, #141b38, #232c4f);
+    }
+
+    .BackRight {
+        margin: 0 0 1px;
+        padding: 8.20VH 12VW 3VH 12VW;
+        background-color: #ffffff;
+    }
+
+    .Log-in {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ff5f00;
+    }
+
+    .ImageDivRegister {
+        position: absolute;
+        bottom: 10VH;
+    }
+
+    .Marg {
+        margin-left: -0.5VW;
+    }
+
+    .Marg1 {
+        margin-top: 2VH;
+    }
+
+    .signUpButton {
+        padding-top: 2VH;
+        padding-bottom: 2VH;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+    }
+}

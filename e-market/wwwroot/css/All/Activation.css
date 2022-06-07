@@ -1,0 +1,19 @@
+﻿body {
+    font-family: 'Encode Sans', sans-serif !important;
+}
+
+.add-buttons-nofloat {
+    width: 100%;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif !important;
+}
+
+.Font32 {
+    font-size: 1.8em;
+}
+
+.login-box-msg, .register-box-msg {
+    font-size: 1em;
+}

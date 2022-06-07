@@ -1,0 +1,290 @@
+﻿.container-fluid {
+    font-family: 'Encode Sans', sans-serif !important;
+}
+
+@media (min-width:1025px) {
+    .BackLeft {
+        flex-grow: 0;
+        padding: 11.7VH 16.3VW 5VH 4.3VW;
+        /*background-image: radial-gradient(circle at 0 0, #141b38, #232c4f);*/
+        background-image: url("/img/Back.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+
+    .BackRight {
+        padding: 15VH 12VW 27.9VH 12VW;
+        background-color: #ffffff;
+    }
+
+    .Welcome-Log-in-to-continue {
+        flex-grow: 0;
+        margin: 1.17VH 0 5.39VH;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #8c92a9;
+    }
+
+    .Sign-Up {
+        flex-grow: 0;
+        margin-left: 1VW;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1.1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ff5f00;
+    }
+
+    .SocialLoginButton {
+        padding: 1.52VH 2.5VW 1.40VH 2.5VW;
+        margin-right: 1VW;
+        border-radius: 2px;
+        border: solid 1px #e1e4e9;
+    }
+
+    .Frame-1 {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        padding: 0;
+        object-fit: contain;
+    }
+
+    .or {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.38;
+        letter-spacing: normal;
+        text-align: center;
+        color: #8c92a9;
+    }
+
+    .ImageDivLogin {
+        position: absolute;
+        bottom: 10VH;
+    }
+
+    .loggingButton {
+        padding-top: 2VH;
+        padding-bottom: 2VH;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        margin-top: 5vh;
+    }
+}
+
+@media (min-width:768px) and (max-width: 1024px) {
+    .BackLeft {
+        flex-grow: 0;
+        padding: 11.7VH 16.3VW 5VH 4.3VW;
+        background-image: radial-gradient(circle at 0 0, #141b38, #232c4f);
+    }
+
+    .BackRight {
+        padding: 24VH 3VW 26VH 3VW;
+        background-color: #ffffff;
+    }
+
+    .Welcome-Log-in-to-continue {
+        flex-grow: 0;
+        margin: 1.17VH 0 5.39VH;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #8c92a9;
+    }
+
+    .Sign-Up {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        margin-left: 1VW;
+        font-size: 1.1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ff5f00;
+    }
+
+    .SocialLoginButton {
+        padding: 1.52VH 2.5VW 1.40VH 2.5VW;
+        margin-right: 1VW;
+        border-radius: 2px;
+        border: solid 1px #e1e4e9;
+    }
+
+    .ImageDivLogin {
+        position: absolute;
+        bottom: 1VH;
+    }
+
+    .Sign-Up {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ff5f00;
+    }
+
+    .or {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1.1em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.38;
+        letter-spacing: normal;
+        text-align: center;
+        color: #8c92a9;
+    }
+
+    .loggingButton {
+        padding-top: 2VH;
+        padding-bottom: 2VH;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        margin-top: 5vh;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .ImageDivLogin {
+        position: absolute;
+        bottom: 1VH;
+    }
+
+    .BackLeft {
+        flex-grow: 0;
+        padding: 11.7VH 16.3VW 6.8VH 4.3VW;
+        background-image: radial-gradient(circle at 0 0, #141b38, #232c4f);
+    }
+
+    .BackRight {
+        padding: 4VW 3VW 11.4VH 4VW;
+        background-color: #ffffff;
+    }
+
+    .Welcome-Log-in-to-continue {
+        flex-grow: 0;
+        margin: 1.17VH 0 5.39VH;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.8em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #8c92a9;
+    }
+
+    .ForgotPsw {
+        font-family: 'Encode Sans', sans-serif;
+        /*font-size: 0.9em;*/
+        font-size: 10px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: right;
+        /*margin-left: 4VW;*/
+        color: #ff4343;
+        white-space: unset;
+    }
+
+    .Sign-Up {
+        flex-grow: 0;
+        /* margin: 23px 180px 0 6px; */
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ff5f00;
+        margin-left: 1VW;
+    }
+
+    .or {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.7em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.38;
+        letter-spacing: normal;
+        text-align: center;
+        color: #8c92a9;
+    }
+
+    .loggingButton {
+        padding-top: 2VH;
+        padding-bottom: 2VH;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        margin-top: 5vh;
+    }
+}

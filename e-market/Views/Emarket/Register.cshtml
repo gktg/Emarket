@@ -1,0 +1,73 @@
+﻿<script src="~/js/E-market/Register.js"></script>
+
+
+<div class="register-page">
+    <div class="register-box">
+        <h3 style="display:none">Üye Olun</h3>
+
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <label style="font-size:28px"><b>E-Markete Hoş Geldiniz</b></label>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Bize Katılın</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="ad" class="form-control" placeholder="Adınız">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="soyad" placeholder="Soyadınız">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    <span class="text-danger"></span>
+
+                </div>
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="Email">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="password" class="form-control" onchange="SifreKarakterKontrol()" id="sifre" placeholder="Şifre">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <label id="sifreMesaj" style="display:none;color:red;font-size:smaller"></label>
+                <div class="input-group mt-3">
+                    <input type="password" class="form-control" id="sifreTekrar" placeholder="Şifre Tekrarı">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <label id="sifreMesaj2" style="display:none;color:red;font-size:smaller">Şifreleriniz eşleşmiyor</label>
+
+                <div class="row mt-3">
+
+                    <div class="col-6">
+                        <button type="submit" id="btnregister" class="btn btn-primary btn-block" onclick="Register()">Üye Ol</button>
+                    </div>
+                    <div class="col-6 ">
+                        <button type="submit" onclick="location.href='emarket/Login'" class="btn btn-secondary btn-block">Üyeliğim Var</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

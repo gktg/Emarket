@@ -1,0 +1,582 @@
+﻿.list-group-item-action:hover, .list-group-item-action:focus {
+    z-index: 1;
+    color: #da9760;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+
+.duyuru-col {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.duyuru-header {
+    border: none;
+}
+
+.duyuru-list {
+    background-color: #f8f9fb;
+    border: none;
+    margin-top: 1vh;
+}
+
+.right-block-col {
+    margin-bottom: 2%;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.chart-ddl-label {
+    margin-bottom: 0;
+    font-size: 1em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+}
+
+.tabbable-line {
+    margin-top: 2.1vh;
+}
+
+    .tabbable-line > ul {
+        border-bottom: 0.5px solid #8c92a9;
+    }
+
+    .tabbable-line > .nav-tabs > li {
+        margin-right: 2px;
+    }
+
+        .tabbable-line > .nav-tabs > li > a {
+            font-family: 'Encode Sans', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.14;
+            letter-spacing: normal;
+            text-align: center;
+            color: #8c92a9;
+        }
+
+        .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+            border-bottom: 4px solid #ff5f00;
+        }
+
+            .tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+                border: 0;
+                background: none !important;
+                color: #333333;
+            }
+
+        .tabbable-line > .nav-tabs > li.active {
+            position: relative;
+        }
+
+        .tabbable-line > .nav-tabs > li > a.active {
+            border: 0;
+            border-bottom: 4px solid #ff5f00;
+            color: #ff5f00;
+            background: none !important;
+        }
+
+    .tabbable-line > .tab-content {
+        margin-top: -3px;
+        border: 0;
+        border-top: 1px solid #eee;
+        padding: 15px 0;
+        background: none !important;
+    }
+/*------------------------------------------*/
+.duyr {
+    height: 112vh
+}
+
+.oret {
+    height: 112vh
+}
+
+.CloseConf {
+    width: 3vh;
+    height: 3vh;
+    flex-grow: 0;
+    margin: -1vh -0.5vw 0 0;
+    object-fit: contain;
+}
+
+.acConf {
+    width: 3vh;
+    height: 3vh;
+    flex-grow: 0;
+    margin: -1vh -0.5vw 0 0;
+    margin-left: 3vh;
+    object-fit: contain;
+}
+
+.join-button {
+    font-family: 'Encode Sans', sans-serif;
+    flex-grow: 0;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    border-radius: 2px;
+    background-color: #ff5f00;
+    color: #ffffff;
+}
+
+.join-button-icon {
+    margin-right: 0.347vw;
+    align-self: center;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    object-fit: contain;
+}
+
+.aksiyonlisttable td {
+    background-color: #f8f9fb !important;
+}
+
+.aksiyonlisttable th {
+    background-color: #f8f9fb !important;
+}
+
+.list-user-avatar {
+    border-radius: 50%;
+    max-width: 2.78vw;
+    max-height: 2.78vw;
+}
+
+.user-list-div2 {
+    height: 2.378vw;
+    width: 2.378vw;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #071d49;
+    margin: 0;
+    border: 1px solid grey;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.user-list-span {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #071d49;
+    margin: 0;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.user-list-div { /*
+    height: 4.689vh;
+    width: 2.478vw;*/
+    text-align: center;
+    /*border-radius: 50%;*/
+    display: flex;
+    align-items: center; /*
+    justify-content: center*/
+}
+
+.user-list-div2 { /**/
+    height: 2.378vw;
+    width: 2.378vw;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #071d49;
+    margin: 0;
+    border: 1px solid grey;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.gorusText {
+    font-family: 'Encode Sans', sans-serif;
+    flex-grow: 0;
+    font-size: 1em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: #18203f;
+}
+
+.tarText {
+    font-family: 'Encode Sans', sans-serif;
+    flex-grow: 0;
+    font-size: 0.8em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: #18203f;
+}
+
+.tar1Text {
+    font-family: 'Encode Sans', sans-serif;
+    flex-grow: 0;
+    font-size: 1em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: #18203f;
+}
+
+.gorusText1 {
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #ff4343;
+}
+
+.baslik {
+    font-size: 1.5em;
+    font-family: 'Encode Sans', sans-serif;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+canvas {
+    position: relative !important;
+}
+
+.silik {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1em;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    text-align: center;
+    color: #8c92a9;
+}
+
+.nrml {
+    font-size: 1.1em;
+    font-family: 'Encode Sans', sans-serif;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: center;
+    color: #18203f;
+}
+
+.dik {
+    border: solid 2px #e1e4e9;
+}
+
+.dik1 {
+    border-left: solid 2px #e1e4e9;
+}
+
+.aktifkon {
+    max-height: 90vh !important;
+    overflow: auto !important;
+}
+
+@media (min-width:768px) and (max-width: 1024px) {
+    .table.dataTable td {
+        background-color: #f8f9fb !important;
+    }
+
+    .gorusText {
+        font-family: 'Encode Sans', sans-serif;
+        flex-grow: 0;
+        font-size: 1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: #18203f;
+    }
+
+    .tarText {
+        font-family: 'Encode Sans', sans-serif;
+        flex-grow: 0;
+        font-size: 1.1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: #18203f;
+    }
+
+    .gorusText1 {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.9em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #ff4343;
+    }
+
+    .baslik {
+        font-size: 1em;
+        font-family: 'Encode Sans', sans-serif;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.45;
+        letter-spacing: normal;
+        text-align: left;
+        color: #18203f;
+    }
+
+    canvas {
+        position: relative !important;
+    }
+
+    .silik {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.65em;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: center;
+        color: #8c92a9;
+    }
+
+    .nrml {
+        font-size: 0.7em;
+        font-family: 'Encode Sans', sans-serif;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.45;
+        letter-spacing: normal;
+        text-align: left;
+        color: #18203f;
+    }
+
+    .dik {
+        border: solid 2px #e1e4e9;
+    }
+
+    .dik1 {
+        border-left: solid 2px #e1e4e9;
+    }
+}
+
+@media (min-width:414px) and (max-width: 768px) {
+    .table.dataTable td {
+        background-color: #f8f9fb !important;
+    }
+
+    .gorusText {
+        font-family: 'Encode Sans', sans-serif;
+        flex-grow: 0;
+        font-size: 1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: #18203f;
+    }
+
+    .tarText {
+        font-family: 'Encode Sans', sans-serif;
+        flex-grow: 0;
+        font-size: 1.1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: #18203f;
+    }
+
+    .gorusText1 {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.9em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #ff4343;
+    }
+
+    .baslik {
+        font-size: 1em;
+        font-family: 'Encode Sans', sans-serif;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.45;
+        letter-spacing: normal;
+        text-align: left;
+        color: #18203f;
+    }
+
+    canvas {
+        position: relative !important;
+    }
+
+    .silik {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: center;
+        color: #8c92a9;
+    }
+
+    .nrml {
+        font-size: 1.1em;
+        font-family: 'Encode Sans', sans-serif;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.45;
+        letter-spacing: normal;
+        text-align: left;
+        color: #18203f;
+    }
+
+    .dik {
+        border: solid 2px #e1e4e9;
+    }
+
+    .dik1 {
+        border-left: solid 2px #e1e4e9;
+    }
+}
+
+@media (max-width: 414px) {
+    .table.dataTable td {
+        background-color: #f8f9fb !important;
+    }
+
+    .gorusText {
+        font-family: 'Encode Sans', sans-serif;
+        flex-grow: 0;
+        font-size: 1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: #18203f;
+    }
+
+    .tarText {
+        font-family: 'Encode Sans', sans-serif;
+        flex-grow: 0;
+        font-size: 1.1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: #18203f;
+    }
+
+    .gorusText1 {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.9em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #ff4343;
+    }
+
+    .baslik {
+        font-size: 1em;
+        font-family: 'Encode Sans', sans-serif;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.45;
+        letter-spacing: normal;
+        text-align: left;
+        color: #18203f;
+    }
+
+    canvas {
+        position: relative !important;
+    }
+
+    .silik {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: center;
+        color: #8c92a9;
+    }
+
+    .nrml {
+        font-size: 1.1em;
+        font-family: 'Encode Sans', sans-serif;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.45;
+        letter-spacing: normal;
+        text-align: left;
+        color: #18203f;
+    }
+
+    .dik {
+        border: solid 2px #e1e4e9;
+    }
+
+    .dik1 {
+        border-left: solid 2px #e1e4e9;
+    }
+}

@@ -1,0 +1,80 @@
+﻿#pagedivcss {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.kurumLogo {
+    width: 10vw !important;
+}
+
+.logo-span {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #071d49;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+#kurumTemelBilgilerTable {
+    width: 100% !important;
+}
+
+#kurumLisansBilgiTable {
+    width: 100% !important;
+}
+
+#kurumKisiLisansBilgileriTable {
+    width: 100% !important;
+}
+
+#bankaBilgilerTable {
+    width: 100% !important;
+}
+
+.logo-div { /*
+    height: 4.689vh;
+    width: 2.478vw;*/
+    text-align: center;
+    /*border-radius: 50%;*/
+    display: flex;
+    align-items: center; /*
+    justify-content: center*/
+}
+
+.card-header {
+    border: none;
+}
+
+.card-title {
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+.container {
+    text-align: center;
+}
+
+.Lbl {
+    font-size: 1em;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.table td {
+    word-break: break-all;
+    white-space: normal !important;
+}

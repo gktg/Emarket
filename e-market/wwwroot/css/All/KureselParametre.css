@@ -1,0 +1,20 @@
+﻿.Lbl {
+    font-size: 1em;
+}
+
+.confirm {
+    margin-right: 8%;
+}
+
+.k-list-scroller ul {
+    background-color: white !important;
+}
+
+.k-state-hover {
+    background-color: #007bff;
+    color: white
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}

@@ -1,0 +1,123 @@
+﻿.thin-label {
+    font-weight: 500 !important;
+}
+
+.JsonBoard {
+    border: black 1px solid;
+    background-color: cornsilk;
+}
+
+    .JsonBoard > p {
+        margin-bottom: 0px !important;
+    }
+
+.content {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.content-header {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.content-left {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.8em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.85;
+    letter-spacing: normal;
+    text-align: left;
+    color: #8c92a9;
+}
+
+/*.Lbl {
+    font-size: 0.95em !important;
+}*/
+
+.radio-label {
+    font-size: 0.95em !important;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.85;
+    letter-spacing: normal;
+    text-align: left;
+    color: #071d49;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance: none !important;
+    background-color: #ffffff;
+    /* padding: 2.5vh 0.5vw!important; */
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid #ff5f00;
+    width: 2vh !important;
+    height: 2vh !important;
+}
+/*-------------------------------------*/
+.thin-label {
+    font-weight: 500 !important;
+}
+
+.JsonBoard {
+    border: black 1px solid;
+    background-color: cornsilk;
+}
+
+    .JsonBoard > p {
+        margin-bottom: 0px !important;
+    }
+
+.content {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.content-header {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.content-left {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.8em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.85;
+    letter-spacing: normal;
+    text-align: left;
+    color: #8c92a9;
+}
+
+/*.Lbl {
+    font-size: 0.95em !important;
+}*/
+
+.radio-label {
+    font-size: 0.95em !important;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.85;
+    letter-spacing: normal;
+    text-align: left;
+    color: #071d49;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance: none !important;
+    background-color: #ffffff;
+    /* padding: 2.5vh 0.5vw!important; */
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid #ff5f00;
+    width: 2vh !important;
+    height: 2vh !important;
+}
+
+.card-header {
+    border: none !important;
+}

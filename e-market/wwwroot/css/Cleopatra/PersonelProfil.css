@@ -1,0 +1,43 @@
+﻿
+.baslik{
+    text-align:center;
+}
+
+.bilgi .box {
+    border-radius: .5rem;
+    border: .1rem solid rgba(0,0,0,.2);
+    box-shadow: var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+   
+}
+
+
+
+
+.notlar .box {
+    border-radius: .5rem;
+    border:.1rem solid rgba(0,0,0,.2);
+    box-shadow:var(--box-shadow);
+    position:relative;
+    overflow: hidden;
+    text-align:center;
+    
+}
+
+.notlar  .box .chart{
+    width:50%;
+    height:17rem;
+    margin:1rem 0;
+}
+.notlar  .box .stars{
+    padding:1rem 0;
+}
+
+.notlar  .box .stars i{
+    font-size:1em;
+    color:var(--blue);
+}
+.divider {
+    border-bottom: 1px solid lightgray;
+}

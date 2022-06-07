@@ -1,0 +1,46 @@
+﻿.k-list-scroller ul {
+    background-color: white !important;
+}
+
+.k-state-hover {
+    background-color: #007bff;
+    color: white
+}
+
+.card-header {
+    border: none !important;
+}
+
+.modal-bind {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.modal-content {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+@media (min-width: 1024px) and (max-width: 1920px) {
+    #IslemModal .modal-body {
+        max-height: 80%;
+    }
+}
+
+@media (min-width:768px) and (max-width: 1023px) {
+    #IslemModal .modal-body {
+        max-height: 80%;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    #IslemModal .modal-dialog {
+        width: 80%;
+        left: 10%;
+        top: -1px;
+        max-height: 80%;
+    }
+
+    #IslemModal .modal-body {
+        max-height: calc(100vh - 143px);
+        overflow-y: auto;
+    }
+}

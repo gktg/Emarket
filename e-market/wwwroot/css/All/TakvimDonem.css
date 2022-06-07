@@ -1,0 +1,37 @@
+﻿.timefieldset {
+    display: flex;
+    justify-content: center;
+}
+
+.startdate-container {
+    margin-right: 20px
+}
+
+.timepicker {
+    width: 82px;
+}
+
+.calendar-container {
+    padding: 100px
+}
+
+.rowcontainer {
+    margin-bottom: 15px
+}
+
+.k-list-scroller {
+    background: white;
+    width: 100%;
+}
+
+.card-header {
+    border: none !important;
+}
+
+.page-body {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.Lbl {
+    font-size: 1em;
+}

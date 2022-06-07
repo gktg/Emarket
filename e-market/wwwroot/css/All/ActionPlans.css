@@ -1,0 +1,68 @@
+﻿.k-list-scroller ul {
+    background-color: white !important;
+}
+
+.k-state-hover {
+    background-color: #007bff;
+    color: white
+}
+
+.card-header {
+    border: none !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 20px !important;
+}
+
+.select2 {
+    width: 100% !important;
+}
+
+.select2-selection {
+    line-height: 30px !important;
+    height: 30px !important;
+}
+
+.cancel {
+    float: left;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.Lbl {
+    font-size: 1em;
+}
+
+.card-header {
+    border: none;
+}
+
+@media (min-width: 1024px) and (max-width: 1920px) {
+    .modal-body {
+        max-height: 80%;
+    }
+}
+
+@media (min-width:768px) and (max-width: 1023px) {
+    .modal-body {
+        max-height: 80%;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .modal-dialog {
+        width: 80%;
+        left: 10%;
+        top: -1px;
+        max-height: 80%;
+    }
+
+    .modal-body {
+        max-height: calc(100vh - 143px);
+        overflow-y: auto;
+    }
+}

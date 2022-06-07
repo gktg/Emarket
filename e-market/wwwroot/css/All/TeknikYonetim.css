@@ -1,0 +1,94 @@
+﻿.content-center {
+    margin-top: 2vh !important;
+    flex-grow: 0;
+    padding: 5vh;
+    background-color: #fff;
+}
+
+.Shape {
+    font-size: 1.2em;
+    background-color: rgb(255, 255, 255);
+    padding: 1.17% 37% 1.17% 1.11%;
+    border-radius: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(181, 187, 200);
+    border-image: initial;
+}
+
+.Lbl {
+    font-family: "Encode Sans", sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgb(81, 97, 128);
+}
+
+.add-buttons {
+    width: 10vw;
+}
+
+.grid-container {
+    font-family: 'Encode Sans', sans-serif;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    /*padding: 10px;*/
+    /*grid-gap: 10px;*/
+}
+
+    .grid-container > div {
+        width: 90%;
+        /* height: 19.461vw;*/
+        margin: 2.689vh 1vw 2.814vh 1vw;
+        padding: 1.876vh 1.736vw 1.111vh 1.876vw;
+        border-radius: 2px;
+        box-shadow: 1px 0 2px 0 rgba(195, 197, 202, 0.07);
+        background-color: #ffffff;
+        /*width: 17.986vw;*/
+        /* height: 19.461vw;*/
+        /*margin: 4.689vh 1.667vw 2.814vh 1.736vw;*/
+        /*padding: 1.876vh 1.736vw 1.111vh 1.876vw;*/
+        /*border-radius: 2px;
+        box-shadow: 1px 0 2px 0 rgba(195, 197, 202, 0.07);
+        background-color: #ffffff;*/
+    }
+
+.content {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.info-box-number {
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+.bg-gradient-info {
+    background-color: #18203f !important;
+    background: #18203f !important;
+}
+
+.bg-gradient-teal {
+    background-color: #18203f !important;
+    background: #18203f !important;
+}
+
+.bg-gradient-lime {
+    background-color: #18203f !important;
+    background: #18203f !important;
+    color: #ffffff !important;
+}
+
+.bg-gradient-purple {
+    background-color: #18203f !important;
+    background: #18203f !important;
+}

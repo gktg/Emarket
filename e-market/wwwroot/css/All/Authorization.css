@@ -1,0 +1,84 @@
+﻿.tabbable-line {
+    margin-top: 2.1vh;
+}
+
+    .tabbable-line > ul {
+        border-bottom: 0.5px solid #8c92a9;
+    }
+
+    .tabbable-line > .nav-tabs > li {
+        margin-right: 2px;
+    }
+
+        .tabbable-line > .nav-tabs > li > a {
+            font-family: 'Encode Sans', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.14;
+            letter-spacing: normal;
+            text-align: center;
+            color: #8c92a9;
+        }
+
+        .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+            border-bottom: 4px solid #ff5f00;
+        }
+
+            .tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+                border: 0;
+                background: none !important;
+                color: #333333;
+            }
+
+        .tabbable-line > .nav-tabs > li.active {
+            position: relative;
+        }
+
+        .tabbable-line > .nav-tabs > li > a.active {
+            border: 0;
+            border-bottom: 4px solid #ff5f00;
+            color: #ff5f00;
+            background: none !important;
+        }
+
+    .tabbable-line > .tab-content {
+        margin-top: -3px;
+        border: 0;
+        border-top: 1px solid #eee;
+        padding: 15px 0;
+        background: none !important;
+    }
+
+.authLbl {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+}
+
+.breadcrumb {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif !important;
+}
+
+@media (min-width: 1440px) and (max-width: 1920px) {
+}
+
+@media (min-width:1024px) and (max-width: 1439px) {
+}
+
+@media (min-width:768px) and (max-width: 1023px) {
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+}

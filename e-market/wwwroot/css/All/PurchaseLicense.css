@@ -1,0 +1,28 @@
+﻿.cancel {
+    float: left;
+    margin-left: 1%;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+/*
+    .confirm {
+        margin-right: 8%;
+    }*/
+
+.Lbl {
+    font-size: 1em;
+}
+
+.nrml {
+    font-size: 1.1em;
+    font-family: 'Encode Sans', sans-serif;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: center;
+    color: #18203f;
+}

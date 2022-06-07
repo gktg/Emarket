@@ -1,0 +1,34 @@
+﻿.rwElastic {
+    line-height: 3vh;
+}
+
+#eSearch1 {
+    width: 10vh;
+    height: 10vh;
+}
+
+#eSearch2 {
+}
+
+.frm1 {
+    margin-top: 5vh;
+}
+
+a {
+    text-align: left;
+    color: inherit;
+    font-family: 'Encode Sans', sans-serif;
+    line-height: 6vh;
+}
+
+.add-buttons {
+    margin-top: 1.1vh !important;
+    width: auto !important;
+}
+
+@media (max-width: 414px) {
+
+    .add-buttons {
+        margin-top: -5.9vh !important;
+    }
+}

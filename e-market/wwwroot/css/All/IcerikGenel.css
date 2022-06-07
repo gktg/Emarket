@@ -1,0 +1,8 @@
+﻿.k-list-scroller ul {
+    background-color: white !important;
+}
+
+.k-state-hover {
+    background-color: #007bff;
+    color: white
+}

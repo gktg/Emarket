@@ -1,0 +1,18 @@
+{
+  "emptyTable": "Tabloda herhangi bir veri mevcut deðil",
+  "info": "_TOTAL_ kayýttan _START_ - _END_ arasýndaki kayýtlar gösteriliyor",
+  "infoEmpty": "Kayýt yok",
+  "infoFiltered": "(_MAX_ kayýt içerisinden bulunan)",
+  "infoThousands": ".",
+  "lengthMenu": "Sayfada _MENU_ kayýt göster",
+  "loadingRecords": "Yükleniyor...",
+  "processing": "Ýþleniyor...",
+  "search": "Ara:",
+  "zeroRecords": "Eþleþen kayýt bulunamadý",
+  "paginate": {
+    "first": "Ýlk",
+    "last": "Son",
+    "next": "Sonraki",
+    "previous": "Önceki"
+  }
+}

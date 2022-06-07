@@ -1,0 +1,1372 @@
+﻿
+.circlebuttonroom {
+    height: 3em !important;
+    width: 3em !important;
+    border-radius: 50% !important;
+    background: #c5c9d1 !important;
+}
+
+#white-icon {
+    filter: invert(0%) sepia(999%) saturate(0%) hue-rotate( 198deg ) brightness(9000%) contrast(900%);
+}
+
+#orange-icon {
+    filter: invert(45%) sepia(92%) saturate(682%) hue-rotate(350deg) brightness(105%) contrast(98%);
+}
+
+hr {
+    margin-bottom: 0.5 !important;
+    margin-top: 0 !important;
+}
+
+body {
+    border-top: none !important;
+}
+
+.filmstrip {
+    margin-right: 250px !important;
+}
+
+.force-to-bottom {
+    position: absolute;
+    bottom: 1%;
+    width: 100%;
+    left: 4%;
+}
+
+#ssButton {
+}
+
+    #ssButton:hover {
+        background: rgba(255,255,255,.15);
+    }
+
+.section-blur {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(10px);
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#container {
+    position: relative;
+    overflow: auto;
+    scrollbar-base-color: #ffeaff !important;
+}
+
+#whiteBoard {
+    border: 1px dashed #CCCCCC !important;
+    margin: 5px;
+    border-style: dotted;
+    border-width: 1px;
+    background-color: #FFFFFF !important;
+    vertical-align: top;
+}
+
+#imageTemp {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    margin: 5px;
+}
+
+#imageTempt {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    margin: 5px;
+}
+
+.ui-widget-overlay {
+    opacity: .70;
+    filter: Alpha(Opacity=70);
+}
+
+.drawingToolbar {
+    margin: 0.2vh !important;
+    padding: 0.2vh !important;
+}
+
+#quitDrawBtn {
+    position: fixed;
+    top: 0.4vh;
+    right: 0.3vw;
+}
+
+#groupBtn {
+    position: absolute;
+    right: 1vw;
+    margin-top: -0.7vh;
+}
+
+a.katilimci-card,
+a.katilimci-card {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.pop {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+#gorusmeBitisModal {
+    top: 30%;
+}
+
+.finishButton {
+    width: 40% !important;
+}
+
+.taslak-button {
+    width: 40% !important;
+}
+
+input[type='radio'] {
+    display: none !important;
+}
+
+.card-title {
+    /*color: #ffffff;*/
+}
+
+#recStart {
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    background-color: #eaedf3 !important;
+}
+
+#recStop {
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    background-color: #eaedf3 !important;
+}
+
+.RightPanel {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.Setup-2-Block-Buttons-new-2 {
+    font-family: 'Encode Sans', sans-serif !important;
+    font-size: 1.3em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    /* padding: 1.17vh 7.71vw 1.17vh 7.74vw; */
+    border-radius: 2px;
+    border: solid 1px #e1e4e9 !important;
+    background-color: #fd7e14 !important;
+    width: 18vw !important;
+    color: #ffffff !important;
+}
+
+.katilimci-card {
+    background-color: #ffffff !important;
+    border-radius: 2px;
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif !important;
+    font-size: 1.15em;
+    font-weight: bold;
+    font-stretch: normal !important;
+    font-style: normal;
+    line-height: 1.14 !important;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fd7e14 !important;
+}
+
+#dropdownMenu2 {
+    /*color: #ffff;*/
+}
+
+.white-icon {
+    filter: invert(0%) sepia(999%) saturate(0%) hue-rotate( 198deg ) brightness(9000%) contrast(900%);
+}
+
+body {
+    font-family: 'Encode Sans', sans-serif !important;
+}
+
+.kalanSure2 {
+    color: #071d49;
+}
+
+.cizimText {
+    padding-top: 1em;
+    padding-left: 0.5em;
+}
+
+.cizimText2 {
+    padding-top: 1em;
+    padding-left: 1em;
+}
+
+#second {
+    padding-top: 1em;
+    padding-left: 1em;
+}
+/*-------------------------------------------------------------------------------*/
+.Administration {
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1.3em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    color: #071d49;
+    white-space: nowrap;
+    float: none;
+    text-align: left;
+}
+
+.RightPanel {
+    width: 23.75VW;
+    min-height: 100vh !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    background-color: #ffffff;
+    right: 0.2vw !important;
+}
+
+.LeftPanel {
+    margin-right: 23.9Vw;
+}
+
+.CardHeader {
+    background-color: #ffffff;
+    /*padding: 0 0 0 1vw*/
+    padding-top: 0.5vw;
+}
+
+.Close {
+    width: 1.66vw;
+    height: 2.81vh;
+    flex-grow: 0;
+    margin: 1vh 0.5vw 1vh 0;
+    float: right;
+    object-fit: contain;
+}
+
+.ConfLogo {
+    width: 14vw;
+    height: 12vh;
+    margin-left: 4.4vw;
+}
+
+#testDiv {
+    background-color: white;
+    height: 0px;
+    width: calc(100% - 24.1vw);
+    margin-left: 0.1vw;
+    z-index: 9999999999999999;
+    position: fixed;
+    overflow: hidden;
+    transition: 1s height ease-in-out
+}
+
+    #testDiv.start {
+        height: 100VH;
+    }
+
+#recBtnGroup {
+    padding-left: 4em;
+    padding-top: 0.5em;
+}
+
+.conf-circle {
+    width: 1.66vw;
+    height: 2.81vh;
+    margin: 2.81vh;
+    object-fit: contain;
+}
+
+.gorusText {
+    font-family: 'Encode Sans', sans-serif;
+    flex-grow: 0;
+    font-size: 1.3em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+
+.finishButton {
+    width: 5vw;
+    /*  padding: 1.172vh 4.792vw 1.172vh 4.722vw;*/
+    border-radius: 2px;
+    background-color: red;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    float: right;
+}
+
+.gorusText1 {
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #ff4343;
+}
+
+.header-user-avatar {
+    width: 4.8vh;
+    height: 4.8vh !important;
+    flex-grow: 0;
+    object-fit: cover;
+    display: inline;
+    height: 5vh;
+    border-radius: 50%;
+    margin: 2vh 0 0 0;
+}
+
+.kisiB {
+    /*float: left;*/
+    padding-top: 1vh;
+}
+
+.txtRol {
+    margin: 0 0 0 3vw;
+    font-size: 0.8em;
+    font-family: 'Encode Sans', sans-serif;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #071d49;
+}
+
+.txtName {
+    margin: -5vh 0 0 3vw;
+    font-size: 1.2em;
+    font-family: 'Encode Sans', sans-serif;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    text-align: left;
+    color: #071d49;
+}
+
+#dropdownMenu2 {
+    float: right;
+    margin-top: -4vh;
+}
+
+.dropdown-item {
+    text-decoration: none !important;
+}
+
+    .dropdown-item.active, .dropdown-item:active {
+        background-color: #fd7e14 !important;
+    }
+
+.card-body {
+    max-height: 35vh !important;
+    /*float: left !important;*/
+    overflow: auto;
+}
+
+.add-users {
+    /* padding: 1.172vh 6.111vw 1.172vh 6.042vw; */
+    background-color: #ffffff;
+    border-radius: 2px;
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif !important;
+    font-size: 1.15em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fd7e14;
+    position: absolute;
+    right: 6vw;
+    margin-top: -0.7vh;
+}
+
+.Icon-Left {
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin-right: 0.347vw;
+    object-fit: contain;
+}
+
+#documents {
+    height: 17vh;
+    width: 22.9vw;
+    max-height: 25vh !important;
+    margin: 0.84vh 0.4vw 0.4vh;
+    /*padding: 2.34vh 8.6vw 2.34vh 8.49vw;*/
+    border-radius: 2px;
+    border: dashed 2px #c5c9d1;
+}
+
+.divAks {
+    margin-top: 2vh;
+}
+
+.moderasyon {
+    height: 25vh;
+    width: 22.9vw;
+    max-height: 36vh !important;
+    margin: 0.84vh 0.4vw 0.4vh;
+    /* padding: 2.34vh 8.6vw 2.34vh 8.49vw; */
+    border-radius: 2px;
+    border: groove 2px #071d49;
+}
+
+.moderasyon-message-text {
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+#dosya1 {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.85;
+    letter-spacing: normal;
+    text-align: center;
+    color: #18203f;
+    text-decoration: none;
+}
+
+.Image-DOC-Gray {
+    width: 2.23vw;
+    height: 4.92vh;
+    object-fit: contain;
+}
+
+.CloseConf {
+    width: 1.8vw;
+    height: 2vh;
+    flex-grow: 0;
+    margin: -1vh -0.5vw 0 0;
+    float: right;
+    object-fit: contain;
+}
+
+.dosyaAd {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.85;
+    letter-spacing: normal;
+    text-align: center;
+    color: #18203f;
+}
+
+.dosyaUz {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.8em;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: #8c92a9;
+}
+
+.Icon-Right {
+    width: 2.34vh;
+    height: 2.34vh;
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    object-fit: contain;
+    margin-top: -1vh;
+}
+
+#altButton {
+    margin: 1vh 1.4vw 0 2.8vw;
+}
+
+.new-meet-button {
+    margin: 0.5vh 0 0 0;
+    border-radius: 2px;
+    background-color: #ff5f00;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    float: right;
+}
+
+.new-meet-button-icon {
+    margin-right: 0.347vw;
+    align-self: center;
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    object-fit: contain;
+}
+
+.new-meeting-close-button {
+    flex-grow: 0;
+    /*  display: flex;*/
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    border-radius: 2px;
+    background-color: #e1e4e9;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #18203f;
+}
+
+@media (min-width:768px) and (max-width: 1024px) {
+    .Administration {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1.3em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.56;
+        letter-spacing: normal;
+        color: #071d49;
+        white-space: nowrap;
+        float: none;
+    }
+
+    .RightPanel {
+        width: 23.75VW;
+        min-height: 100vh !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        background-color: #ffffff;
+        right: 0.2vw !important;
+    }
+
+    .LeftPanel {
+        margin-right: 23.9Vw;
+    }
+
+    .CardHeader {
+        background-color: #ffffff;
+        padding-top: 0.5vw;
+    }
+
+    .Setup-2-Block-Buttons {
+        font-family: 'Encode Sans', sans-serif !important;
+        font-size: 1.3em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        /*padding: 1.17vh 7.71vw 1.17vh 7.74vw;*/
+        border-radius: 2px;
+        background-color: #e1e4e9;
+        width: 18vw;
+    }
+
+    .Close {
+        width: 1.66vw;
+        height: 2.81vh;
+        flex-grow: 0;
+        margin: 1vh 0.5vw 1vh 0;
+        float: right;
+        object-fit: contain;
+    }
+
+    .ConfLogo {
+        width: 14vw;
+        height: 12vh;
+        margin-left: 4.4vw;
+    }
+
+    #testDiv {
+        background-color: white;
+        height: 0px;
+        width: 75.8vw;
+        margin-left: 0.4VH;
+        z-index: 9999999999999999;
+        position: fixed;
+        overflow: hidden;
+        transition: 1s height ease-in-out;
+    }
+
+        #testDiv.start {
+            height: 100VH;
+            width: 75.8vw;
+        }
+
+    #recBtnGroup {
+        padding-left: 7em;
+    }
+
+    .conf-circle {
+        width: 1.66vw;
+        height: 2.81vh;
+        margin: 2.81vh;
+        object-fit: contain;
+    }
+
+    .gorusText {
+        font-family: 'Encode Sans', sans-serif;
+        flex-grow: 0;
+        font-size: 1.3em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: #18203f;
+    }
+
+    .gorusText1 {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.9em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #ff4343;
+    }
+
+    .header-user-avatar {
+        width: 2.8vh;
+        height: 2.8vh !important;
+        flex-grow: 0;
+        object-fit: cover;
+        display: inline;
+        height: 5vh;
+        border-radius: 50%;
+        margin: 1vh 0vw 2vh -2.2vw;
+    }
+
+    .kisiB {
+        /*float: left;*/
+        padding-top: 1vh;
+    }
+
+    .txtRol {
+        margin: 0 0 0 3vw;
+        font-size: 0.8em;
+        font-family: 'Encode Sans', sans-serif;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #516180;
+    }
+
+    .txtName {
+        margin: -5vh 0 0 3vw;
+        font-size: 1.1em;
+        font-family: 'Encode Sans', sans-serif;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.9;
+        letter-spacing: normal;
+        text-align: left;
+        color: #071d49;
+    }
+
+    #dropdownMenu2 {
+        float: right;
+        margin-top: -5vh;
+    }
+
+    .dropdown-item {
+        text-decoration: none !important;
+    }
+
+        .dropdown-item.active, .dropdown-item:active {
+            background-color: #fd7e14 !important;
+        }
+
+    .card-body {
+        max-height: 35vh !important;
+        /* float: left !important;*/
+        overflow: auto;
+    }
+
+    .Conf-Button1 {
+        width: 21.111vw;
+        height: 4.689vh;
+        margin: 1.407vh 0 2.814vh 1.41vw;
+        /* padding: 1.172vh 6.111vw 1.172vh 6.042vw; */
+        border-radius: 2px;
+        background-color: #071d49;
+        border: solid 1px #fff;
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1.3em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    .Icon-Left {
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0;
+        margin-right: 0.347vw;
+        object-fit: contain;
+    }
+
+    #documents {
+        height: 28vh;
+        width: 22.9vw;
+        max-height: 25vh !important;
+        margin: 0.84vh 0.4vw 0.4vh;
+        /*padding: 2.34vh 8.6vw 2.34vh 8.49vw;*/
+        border-radius: 2px;
+        border: dashed 2px #ff5f00;
+    }
+
+    .moderasyon {
+        height: 20vh;
+        width: 21.9vw;
+        max-height: 36vh !important;
+        margin: 0.84vh 0.4vw 0.4vh;
+        /* padding: 2.34vh 8.6vw 2.34vh 8.49vw; */
+        border-radius: 2px;
+        border: groove 2px #071d49;
+    }
+
+    .divAks {
+        margin-top: 2vh;
+    }
+
+    moderasyondiv {
+        display: none;
+    }
+
+    #dosya1 {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1.2em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.85;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+        text-decoration: none;
+    }
+
+    .Image-DOC-Gray {
+        width: 2.23vw;
+        height: 4.92vh;
+        object-fit: contain;
+    }
+
+    .CloseConf {
+        width: 1.8vw;
+        height: 2vh;
+        flex-grow: 0;
+        margin: -1vh -0.5vw 0 0;
+        float: right;
+        object-fit: contain;
+    }
+
+    .dosyaAd {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.85;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+    }
+
+    .dosyaUz {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.8em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: center;
+        color: #8c92a9;
+    }
+
+    .Icon-Right {
+        width: 2.34vh;
+        height: 2.34vh;
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        object-fit: contain;
+        margin-top: -1vh;
+    }
+
+    #altButton {
+        margin: 1vh 1.4vw 0 2.8vw;
+    }
+
+    #drawBtn {
+        margin-left: -2vw;
+    }
+
+    .new-meet-button {
+        margin: 0.5vh 0 0 0;
+        padding: 1.172vh 4.792vw 1.172vh 4.722vw;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.675em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        float: right;
+    }
+
+    .new-meet-button-icon {
+        margin-right: 0.347vw;
+        align-self: center;
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        object-fit: contain;
+    }
+
+    .new-meeting-close-button {
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        border-radius: 2px;
+        background-color: #e1e4e9;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .Administration {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1.3em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.56;
+        letter-spacing: normal;
+        color: #071d49;
+        white-space: nowrap;
+        float: none;
+    }
+
+    .RightPanel {
+        width: 23.75VW;
+        min-height: 100vh !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        background-color: #ffffff;
+        right: 0.2vw !important;
+    }
+
+    .LeftPanel {
+        margin-right: 23.9Vw;
+    }
+
+    .CardHeader {
+        background-color: #ffffff;
+        padding-top: 0.5vw;
+    }
+
+    .Setup-2-Block-Buttons {
+        font-family: 'Encode Sans', sans-serif !important;
+        font-size: 1.3em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        /*padding: 1.17vh 7.71vw 1.17vh 7.74vw;*/
+        border-radius: 2px;
+        background-color: #e1e4e9;
+        width: 18vw;
+    }
+
+    .Close {
+        width: 1.66vw;
+        height: 2.81vh;
+        flex-grow: 0;
+        margin: 1vh 0.5vw 1vh 0;
+        float: right;
+        object-fit: contain;
+    }
+
+    .ConfLogo {
+        width: 14vw;
+        height: 12vh;
+        margin-left: 4.4vw;
+    }
+
+    #testDiv {
+        background-color: white;
+        height: 0px;
+        width: 75.8vw;
+        margin-left: 0.4VH;
+        z-index: 9999999999999999;
+        position: fixed;
+        overflow: hidden;
+        transition: 1s height ease-in-out;
+    }
+
+        #testDiv.start {
+            height: 100VH;
+            width: 75.8vw;
+        }
+
+    #recBtnGroup {
+        padding-left: 7em;
+    }
+
+    .conf-circle {
+        width: 1.66vw;
+        height: 2.81vh;
+        margin: 2.81vh;
+        object-fit: contain;
+    }
+
+    .gorusText {
+        font-family: 'Encode Sans', sans-serif;
+        flex-grow: 0;
+        font-size: 1.3em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: #18203f;
+    }
+
+    .gorusText1 {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.9em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #ff4343;
+    }
+
+    .header-user-avatar {
+        width: 4.8vh;
+        height: 4.8vh !important;
+        flex-grow: 0;
+        object-fit: cover;
+        display: inline;
+        height: 5vh;
+        border-radius: 50%;
+        margin: 2vh 0 0 0;
+    }
+
+    .kisiB {
+        /*float: left;*/
+        padding-top: 1vh;
+    }
+
+    .txtRol {
+        margin: 0 0 0 3vw;
+        font-size: 0.8em;
+        font-family: 'Encode Sans', sans-serif;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #516180;
+    }
+
+    .txtName {
+        margin: -5vh 0 0 3vw;
+        font-size: 1.2em;
+        font-family: 'Encode Sans', sans-serif;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #071d49;
+    }
+
+    #dropdownMenu2 {
+        float: right;
+        margin-top: -5vh;
+    }
+
+    .dropdown-item {
+        text-decoration: none !important;
+    }
+
+        .dropdown-item.active, .dropdown-item:active {
+            background-color: #fd7e14 !important;
+        }
+
+    .card-body {
+        max-height: 35vh !important;
+        /*float: left !important;*/
+        overflow: auto;
+    }
+
+    .Conf-Button1 {
+        width: 21.111vw;
+        height: 4.689vh;
+        margin: 1.407vh 0 2.814vh 1.41vw;
+        /* padding: 1.172vh 6.111vw 1.172vh 6.042vw; */
+        border-radius: 2px;
+        background-color: white;
+        border: solid 1px #e1e4e9;
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1.3em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #8c92a9;
+    }
+
+    .Icon-Left {
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0;
+        margin-right: 0.347vw;
+        object-fit: contain;
+    }
+
+    #documents {
+        height: 17vh;
+        width: 22.9vw;
+        max-height: 25vh !important;
+        margin: 0.84vh 0.4vw 0.4vh;
+        /*padding: 2.34vh 8.6vw 2.34vh 8.49vw;*/
+        border-radius: 2px;
+        border: dashed 2px #ff5f00;
+    }
+
+    .moderasyon {
+        height: 15vh;
+        width: 20.9vw;
+        max-height: 20vh !important;
+        margin: 0.84vh 0.4vw 0.4vh;
+        /* padding: 2.34vh 8.6vw 2.34vh 8.49vw; */
+        border-radius: 2px;
+        border: groove 2px #071d49;
+    }
+
+    .moderasyon-message-text {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #18203f;
+    }
+
+    .divAks {
+        margin-top: 2vh;
+    }
+
+    #dosya1 {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1.2em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.85;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+        text-decoration: none;
+    }
+
+    .Image-DOC-Gray {
+        width: 2.23vw;
+        height: 4.92vh;
+        object-fit: contain;
+    }
+
+    .CloseConf {
+        width: 1.8vw;
+        height: 2vh;
+        flex-grow: 0;
+        margin: -1vh -0.5vw 0 0;
+        float: right;
+        object-fit: contain;
+    }
+
+    .dosyaAd {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 1em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.85;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+    }
+
+    .dosyaUz {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.8em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: center;
+        color: #8c92a9;
+    }
+
+    .Icon-Right {
+        width: 2.34vh;
+        height: 2.34vh;
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        object-fit: contain;
+        margin-top: -1vh;
+    }
+
+    #altButton {
+        margin: 1vh 1.4vw 0 2.8vw;
+    }
+
+    .new-meet-button {
+        margin: 0.5vh 0 0 0;
+        padding: 1.172vh 4.792vw 1.172vh 4.722vw;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.675em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        float: right;
+    }
+
+    .new-meet-button-icon {
+        margin-right: 0.347vw;
+        align-self: center;
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        object-fit: contain;
+    }
+
+    .new-meeting-close-button {
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        border-radius: 2px;
+        background-color: #e1e4e9;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+    }
+}
+
+/*.tabbable-line {
+    margin-top: 2.1vh;
+}*/
+
+.tabbable-line > ul {
+    border-bottom: 0.5px solid #8c92a9;
+}
+
+.tabbable-line > .nav-tabs > li {
+    margin-right: 2px;
+}
+
+    .tabbable-line > .nav-tabs > li > a {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #8c92a9;
+        text-decoration: none;
+    }
+
+    .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+        border-bottom: 4px solid #ff5f00;
+    }
+
+        .tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+            border: 0;
+            background: none !important;
+            color: #333333;
+            text-decoration: none;
+        }
+
+    .tabbable-line > .nav-tabs > li.active {
+        position: relative;
+    }
+
+    .tabbable-line > .nav-tabs > li > a.active {
+        border: 0;
+        border-bottom: 4px solid #ff5f00;
+        color: #ff5f00;
+        background: none !important;
+    }
+
+.tabbable-line > .tab-content {
+    margin-top: -3px;
+    border: 0;
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+    background: none !important;
+}
+
+.card-header {
+    border: none;
+}
+
+.moderasyondiv {
+    display: none;
+}
+
+@media (max-width: 427px) {
+    .LeftPanel {
+        margin-right: 0 !important;
+    }
+
+    .RightPanel {
+        width: 0 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .LeftPanel {
+        margin-right: 0 !important;
+    }
+
+    .RightPanel {
+        width: 0 !important;
+    }
+}

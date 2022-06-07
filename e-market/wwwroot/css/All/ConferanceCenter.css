@@ -1,0 +1,1400 @@
+﻿.k-list-scroller ul {
+    background-color: white !important;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.k-state-hover {
+    background-color: #007bff;
+    color: white
+}
+
+.cancel {
+    float: left;
+    margin-right: 15%;
+}
+/*
+    .select2 {
+        width: 100% !important;
+    }*/
+
+.tabbable-line {
+    margin-top: 2.1vh;
+}
+
+    .tabbable-line > ul {
+        border-bottom: 0.5px solid #8c92a9;
+    }
+
+    .tabbable-line > .nav-tabs > li {
+        margin-right: 2px;
+    }
+
+        .tabbable-line > .nav-tabs > li > a {
+            font-family: 'Encode Sans', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.14;
+            letter-spacing: normal;
+            text-align: center;
+            color: #8c92a9;
+        }
+
+        .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+            border-bottom: 4px solid #ff5f00;
+        }
+
+            .tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+                border: 0;
+                background: none !important;
+                color: #333333;
+            }
+
+        .tabbable-line > .nav-tabs > li.active {
+            position: relative;
+        }
+
+        .tabbable-line > .nav-tabs > li > a.active {
+            border: 0;
+            border-bottom: 4px solid #ff5f00;
+            color: #ff5f00;
+            background: none !important;
+        }
+
+    .tabbable-line > .tab-content {
+        margin-top: -3px;
+        border: 0;
+        border-top: 1px solid #eee;
+        padding: 15px 0;
+        background: none !important;
+    }
+
+.card-header {
+    border: none;
+}
+
+.guestInput {
+    width: 2vh !important;
+    height: 2vh !important;
+}
+/*-----------------------------------------------*/
+.gorusText {
+    font-family: 'Encode Sans', sans-serif;
+    flex-grow: 0;
+    font-size: 1.3em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: #18203f;
+}
+
+.gorusText1 {
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #ff4343;
+}
+
+.back-button-float {
+    width: 6vw;
+    /*  padding: 1.172vh 4.792vw 1.172vh 4.722vw;*/
+    border-radius: 2px;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2;
+    letter-spacing: normal;
+    text-align: center;
+    float: left;
+    margin-left: 1%;
+    color: #18203f;
+    background-color: #e1e4e9;
+}
+
+::placeholder {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.8375em;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+}
+
+.new-meeting-modal-head-label {
+    flex-grow: 0;
+    /* margin: 20px 45px 2px 518px;*/
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1.125em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #071d49;
+}
+
+.new-meeting-modal-input-label {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.95em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+    /*width: 12vw;*/
+}
+
+.radio-label {
+    align-self: center;
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.87em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+.new-meeting-modal .modal-radio-tabs {
+    height: 30vh;
+}
+
+.toplanti-tip {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: 1vw;
+}
+
+.tip-radio-div {
+    margin-right: 2vw;
+}
+
+.new-meeting-close-button {
+    flex-grow: 0;
+    /*  display: flex;*/
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    padding: 1.172vh;
+    border-radius: 2px;
+    background-color: #e1e4e9;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #18203f;
+}
+
+.new-meeting-button-prev {
+    /*display: flex;*/
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    padding: 1.172vh;
+    border-radius: 2px;
+    background-color: #e1e4e9;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #18203f;
+    left: 0;
+    color: #18203f;
+}
+
+.new-meeting-send-button {
+    /*display: flex;*/
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    padding: 1.172vh;
+    border-radius: 2px;
+    background-color: #ff5f00;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    float: right;
+    color: #ffffff;
+}
+
+.new-meet-button {
+    width: auto !important;
+    height: auto;
+    margin: 0 0 1.407vh 88%;
+    /*  padding: 1.172vh 4.792vw 1.172vh 4.722vw;*/
+    border-radius: 2px;
+    background-color: #ff5f00;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    float: right;
+}
+
+.new-meet-button-icon {
+    margin-right: 0.347vw;
+    align-self: center;
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    object-fit: contain;
+}
+
+.meet-modal-input {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.95em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+}
+
+.mail-add-button {
+    background-color: #ff5f00;
+    font-size: 0.875em;
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.mail-invite-list {
+    overflow-y: scroll;
+    border: 1px gray solid;
+    height: 14vh;
+}
+
+.list-user-avatar {
+    /*height: 2.378vw;
+    width: 2.378vw;*/
+    height: auto;
+    width: 1.80em;
+    border-radius: 50%;
+    margin-right: -0.6vw;
+}
+
+.user-list-span {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #071d49;
+    margin: 0;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.user-list-div { /*
+    height: 4.689vh;
+    width: 2.478vw;*/
+    text-align: center;
+    /*border-radius: 50%;*/
+    display: flex;
+    align-items: center; /*
+    justify-content: center*/
+}
+
+.user-list-div2 { /**/
+    height: 2.378vw;
+    width: 2.378vw;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #071d49;
+    margin: 0;
+    border: 1px solid grey;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.join-button {
+    font-family: 'Encode Sans', sans-serif;
+    width: auto;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    padding: 10px;
+    border-radius: 2px;
+    background-color: #ff5f00;
+    color: #ffffff;
+}
+
+table {
+    font-family: 'Encode Sans', sans-serif;
+    border-collapse: collapse
+}
+
+.join-button-icon {
+    margin-right: 0.347vw;
+    align-self: center;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    object-fit: contain;
+}
+
+.davet-tip {
+    margin-bottom: 1vh;
+}
+
+.select-image {
+    height: 1.378vw;
+    width: 1.378vw;
+    border-radius: 50%;
+}
+/*
+#davet-tip-select .select2 {
+    width: 100% !important;
+}
+*/
+
+@media (max-width: 425px) {
+    .dt-buttons,
+    .dt-buttons .buttons-excel {
+        float: right !important;
+    }
+
+    .dataTables_filter {
+        float: right;
+    }
+}
+
+@media (min-width:768px) and (max-width: 1024px) {
+    .gorusText {
+        font-family: 'Encode Sans', sans-serif;
+        flex-grow: 0;
+        font-size: 1.3em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: #18203f;
+    }
+
+    .gorusText1 {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.9em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #ff4343;
+    }
+
+    ::placeholder {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.8375em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #516180;
+    }
+
+    .new-meeting-modal-head-label {
+        flex-grow: 0;
+        /*margin: 20px 45px 2px 518px;*/
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.825em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.56;
+        letter-spacing: normal;
+        text-align: left;
+        color: #071d49;
+    }
+
+    .new-meeting-modal-input-label {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.75em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #516180;
+        /* width: 12vh;*/
+    }
+
+    .radio-label {
+        align-self: center;
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.77em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #18203f;
+    }
+
+    .new-meeting-modal .modal-radio-tabs {
+        height: 30vh;
+    }
+
+    .toplanti-tip {
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        margin-left: 1vw;
+    }
+
+    .tip-radio-div {
+        margin-right: 2vw;
+    }
+
+    .new-meeting-close-button {
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1.172vh;
+        border-radius: 2px;
+        background-color: #e1e4e9;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+    }
+
+    .new-meeting-button-prev {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1.172vh;
+        border-radius: 2px;
+        background-color: #e1e4e9;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+        left: 0;
+        color: #18203f;
+    }
+
+    .new-meeting-send-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1.172vh;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        float: right;
+        color: #ffffff;
+    }
+
+    .new-meet-button {
+        width: auto !important;
+        height: auto;
+        /* height: 3.689vh;*/
+        margin: 0 0 1.407vh 85%;
+        padding: 1.172vh 4.792vw 1.172vh 4.722vw;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.675em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        float: right;
+    }
+
+    .new-meet-button-icon {
+        margin-right: 0.347vw;
+        align-self: center;
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        object-fit: contain;
+    }
+
+    .meet-modal-input {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.95em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #516180;
+    }
+
+    .mail-add-button {
+        background-color: #ff5f00;
+        font-size: 0.875em;
+        font-family: 'Encode Sans', sans-serif;
+    }
+
+    .mail-invite-list {
+        overflow: scroll;
+    }
+
+    .list-user-avatar {
+        /*       height: 3.689vh;
+        width: auto;*/
+        border-radius: 50%;
+        margin-right: -0.6vw;
+        max-width: 3.78vw;
+    }
+
+    .user-list-span {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #071d49;
+        margin: 0;
+        background-color: #ffffff;
+        border-radius: 50%;
+    }
+
+    .user-list-div {
+        height: 4.689vh;
+        width: 2.478vw;
+        text-align: center;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .user-list-div2 {
+        height: 2.378vw;
+        width: 2.378vw;
+        text-align: center;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #071d49;
+        margin: 0;
+        border: 1px solid grey;
+        background-color: #ffffff;
+        border-radius: 50%;
+    }
+
+    .join-button {
+        font-family: 'Encode Sans', sans-serif;
+        width: 8.625vw;
+        /*height: 3.689vh;*/
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 10px;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        color: #ffffff;
+        font-size: 0.875em;
+    }
+
+    table {
+        font-family: 'Encode Sans', sans-serif;
+        border-collapse: collapse
+    }
+
+        table td {
+            font-size: 0.675em;
+        }
+
+    .join-button-icon {
+        margin-right: 0.347vw;
+        align-self: center;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        object-fit: contain;
+    }
+
+    .davet-tip {
+        margin-bottom: 1vh;
+    }
+
+    .select-image {
+        height: 1.378vw;
+        width: 1.378vw;
+        border-radius: 50%;
+    }
+
+    .Shape {
+        font-size: 0.8em !important;
+    }
+}
+
+@media (min-width:414px) and (max-width: 768px) {
+    .gorusText {
+        font-family: 'Encode Sans', sans-serif;
+        flex-grow: 0;
+        font-size: 1.3em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: #18203f;
+    }
+
+    .gorusText1 {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.9em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #ff4343;
+    }
+
+    .Shape {
+        font-size: 0.6em !important;
+    }
+
+    ::placeholder {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.8375em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #516180;
+    }
+
+    .new-meeting-modal-head-label {
+        flex-grow: 0;
+        /*margin: 20px 45px 2px 518px;*/
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.825em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.56;
+        letter-spacing: normal;
+        text-align: left;
+        color: #071d49;
+    }
+
+    .new-meeting-modal-input-label {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.75em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #516180;
+    }
+
+    .radio-label {
+        align-self: center;
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.77em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #18203f;
+    }
+
+    .new-meeting-modal .modal-radio-tabs {
+        height: 30vh;
+    }
+
+    .toplanti-tip {
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        margin-left: 1vw;
+    }
+
+    .tip-radio-div {
+        margin-right: 2vw;
+    }
+
+    .new-meeting-close-button {
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1.172vh;
+        border-radius: 2px;
+        background-color: #e1e4e9;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+    }
+
+    .new-meeting-button-prev {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1.172vh;
+        border-radius: 2px;
+        background-color: #e1e4e9;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+        left: 0;
+        color: #18203f;
+    }
+
+    .new-meeting-send-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1.172vh;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        float: right;
+        color: #ffffff;
+    }
+
+    .new-meet-button {
+        width: auto !important;
+        height: auto;
+        /*height: 3.689vh;*/
+        margin: 0 0 1.407vh 79%;
+        padding: 1.172vh 4.792vw 1.172vh 4.722vw;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.675em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        float: right;
+    }
+
+    .new-meet-button-icon {
+        margin-right: 0.347vw;
+        align-self: center;
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        object-fit: contain;
+    }
+
+    .meet-modal-input {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.95em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #516180;
+    }
+
+    .mail-add-button {
+        background-color: #ff5f00;
+        font-size: 0.875em;
+        font-family: 'Encode Sans', sans-serif;
+    }
+
+    .mail-invite-list {
+        overflow: scroll;
+    }
+
+    .list-user-avatar {
+        /*     height: 4.689vh;
+        width: auto;*/
+        border-radius: 50%;
+        margin-right: -0.6vw;
+    }
+
+    .user-list-span {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #071d49;
+        margin: 0;
+        background-color: #ffffff;
+        border-radius: 50%;
+    }
+
+    .user-list-div {
+        height: 4.689vh;
+        width: 2.478vw;
+        text-align: center;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .user-list-div2 {
+        height: 2.378vw;
+        width: 2.378vw;
+        text-align: center;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #071d49;
+        margin: 0;
+        border: 1px solid grey;
+        background-color: #ffffff;
+        border-radius: 50%;
+    }
+
+    .join-button {
+        font-family: 'Encode Sans', sans-serif;
+        /*   width: 8.625vw;
+        height: 3.689vh;*/
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 10px;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        color: #ffffff;
+    }
+
+    table {
+        font-family: 'Encode Sans', sans-serif;
+        border-collapse: collapse
+    }
+
+        table th {
+            font-size: 0.875em;
+        }
+
+        table td {
+            font-size: 0.675em;
+        }
+
+    .join-button-icon {
+        margin-right: 0.347vw;
+        align-self: center;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        object-fit: contain;
+    }
+
+    .davet-tip {
+        margin-bottom: 1vh;
+    }
+
+    .select-image {
+        height: 1.378vw;
+        width: 1.378vw;
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 414px) {
+    .gorusText {
+        font-family: 'Encode Sans', sans-serif;
+        flex-grow: 0;
+        font-size: 1.3em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        color: #18203f;
+    }
+
+    .gorusText1 {
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.9em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #ff4343;
+    }
+
+    .mail-invite-list {
+        height: 10vh !important;
+    }
+
+    .Shape {
+        font-size: 0.5em !important;
+        height: 4vh;
+    }
+
+    ::placeholder {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.8375em;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #516180;
+    }
+
+    .new-meeting-modal-head-label {
+        flex-grow: 0;
+        /*margin: 20px 45px 2px 518px;*/
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.65em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.56;
+        letter-spacing: normal;
+        text-align: left;
+        color: #071d49;
+    }
+
+    .new-meeting-modal-input-label {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.55em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #516180;
+    }
+
+    .radio-label {
+        align-self: center;
+        flex-grow: 0;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.5em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+        color: #18203f;
+    }
+
+    .toplanti-tip {
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        margin-left: 1vw;
+    }
+
+    .tip-radio-div {
+        margin-right: 2vw;
+    }
+
+    .new-meeting-close-button {
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1.172vh;
+        border-radius: 2px;
+        background-color: #e1e4e9;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+    }
+
+    .new-meeting-button-prev {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1.172vh;
+        border-radius: 2px;
+        background-color: #e1e4e9;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #18203f;
+        left: 0;
+        color: #18203f;
+    }
+
+    .new-meeting-send-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1.172vh;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        float: right;
+        color: #ffffff;
+    }
+
+    .new-meet-button {
+        width: auto !important;
+        height: auto;
+        /* height: 3.689vh;*/
+        margin: 0 0 1.407vh 65%;
+        padding: 1.172vh 4.792vw 1.172vh 4.722vw;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.675em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        float: right;
+    }
+
+    .new-meet-button-icon {
+        margin-right: 0.347vw;
+        align-self: center;
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        object-fit: contain;
+    }
+
+    .meet-modal-input {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.95em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #516180;
+    }
+
+    .mail-add-button {
+        background-color: #ff5f00;
+        font-size: 0.875em;
+        font-family: 'Encode Sans', sans-serif;
+    }
+
+    .mail-invite-list {
+        overflow: scroll;
+    }
+
+    .list-user-avatar {
+        /*     height: 3.689vh;
+        width: auto;*/
+        border-radius: 50%;
+        margin-right: -0.6vw;
+    }
+
+    .user-list-span {
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #071d49;
+        margin: 0;
+        background-color: #ffffff;
+        border-radius: 50%;
+    }
+
+    .user-list-div {
+        height: 4.689vh;
+        width: 2.478vw;
+        text-align: center;
+        border-radius: 50%;
+        display: flex;
+        /*align-items: center;
+        justify-content: center;*/
+    }
+
+    .user-list-div2 {
+        height: 2.378vw;
+        width: 2.378vw;
+        text-align: center;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #071d49;
+        margin: 0;
+        border: 1px solid grey;
+        background-color: #ffffff;
+        border-radius: 50%;
+    }
+
+    .join-button {
+        font-family: 'Encode Sans', sans-serif;
+        /* width: 20.625vw;
+        height: 4.689vh;*/
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 10px;
+        border-radius: 2px;
+        background-color: #ff5f00;
+        color: #ffffff;
+    }
+
+    table {
+        font-family: 'Encode Sans', sans-serif;
+        border-collapse: collapse;
+        width: 100% !important;
+    }
+
+        table td {
+            font-size: 0.775em;
+        }
+
+        table th {
+            font-size: 0.75em;
+        }
+
+    .join-button-icon {
+        margin-right: 0.347vw;
+        align-self: center;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        object-fit: contain;
+    }
+
+    .davet-tip {
+        margin-bottom: 1vh;
+    }
+
+    .select-image {
+        height: 1.378vw;
+        width: 1.378vw;
+        border-radius: 50%;
+    }
+}
+
+/*select2-selection--multiple {
+    max-height: 16rem !important;
+}
+*/
+.modal.left .modal-dialog {
+    position: fixed;
+    right: 0;
+    margin: auto;
+    width: 320px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+    -ms-transform: translate3d(0%, 0, 0);
+    -o-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal.right .modal-body {
+    padding: 15px 15px 80px;
+}
+
+.modal.right.fade .modal-dialog {
+    left: -320px;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+    transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.right.fade.show .modal-dialog {
+    right: 0;
+}

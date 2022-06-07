@@ -1,0 +1,914 @@
+﻿.timefieldset {
+    display: flex;
+    justify-content: center;
+}
+
+.startdate-container {
+    margin-right: 20px
+}
+
+.timepicker {
+    width: 113px;
+}
+/*    .calendar-container {
+        padding: 100px
+    }*/
+.list-group-item {
+    background-color: #17a2b8;
+    border-color: #4471a0;
+    background-color: #17a2b8;
+    border-color: #4471a0;
+    margin-bottom: 9px;
+    color: white;
+    cursor: pointer;
+}
+
+.drg {
+    z-index: 5 !important;
+}
+
+.hizliToplantiHead {
+    font-family: 'Encode Sans', sans-serif;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+    font-size: 1.125em;
+    margin-left: 1.111vw;
+}
+
+.rowcontainer {
+    margin-bottom: 15px
+}
+
+.drg {
+    display: block;
+    margin: 0 auto;
+    width: 26px;
+    border: 1px solid white;
+    padding: 3px;
+    margin-top: -12px;
+}
+
+.functionEventClick {
+    cursor: pointer
+}
+
+.eventinfo .hidden {
+    display: none
+}
+
+.gorusmedavetiform .hidden {
+    display: none
+}
+
+.select-input-radio {
+    width: 1.389vw;
+    height: 2.345vh;
+    margin: 0.234vh 0.833vw 0.234vh 0.833vw;
+    cursor: pointer;
+    background-color: #838ea4;
+}
+
+.calendar-shared-labels {
+    border-bottom: 0.2px solid grey;
+}
+
+.radio-label {
+    align-self: center;
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.9375em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+.calendar-left-side {
+    background-color: white;
+}
+
+.calendar-div-label {
+    margin: 0.4vh 15.208vw 0.938vh 1.111vw;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1.125em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+.calendar-plans-label {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1.125em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+    margin: 1.876vh 15.625vw 0.821vh 1.111vw;
+}
+
+.celandar-button-shared {
+    width: 21.111vw;
+    height: 4.689vh;
+    margin: 1.407vh 0 2.814vh 1.111vw;
+    /*padding: 1.172vh 6.111vw 1.172vh 6.042vw;*/
+    border-radius: 2px;
+    background-color: white;
+    border: solid 1px #e1e4e9;
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #8c92a9;
+}
+
+.celandar-button-add {
+    width: 21.111vw;
+    /*height: 4.689vh;*/
+    margin: 0 0 1.407vh 1.111vw;
+    /*  padding: 1.172vh 4.792vw 1.172vh 4.722vw;*/
+    border-radius: 2px;
+    background-color: #ff5f00;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+.calendar-add-button-icon {
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin-right: 0.347vw;
+    object-fit: contain;
+}
+
+.calendar-shared-button-icon {
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin-right: 0.347vw;
+    object-fit: contain;
+}
+
+.calendar-plans {
+    margin-bottom: 2vh;
+}
+
+.tabbable-line {
+    margin-top: 2.1vh;
+    margin-bottom: 0.7vh;
+}
+
+    .tabbable-line > ul {
+        border: 0;
+    }
+
+    .tabbable-line > .nav-tabs > li {
+        margin-right: 2px;
+    }
+
+        .tabbable-line > .nav-tabs > li > a {
+            font-family: 'Encode Sans', sans-serif;
+            font-size: 0.875em;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.14;
+            letter-spacing: normal;
+            text-align: center;
+            color: #8c92a9;
+        }
+
+        .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+            border-bottom: 4px solid #ff5f00;
+        }
+
+            .tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+                border: 0;
+                background: none !important;
+                color: #333333;
+            }
+
+        .tabbable-line > .nav-tabs > li.active {
+            position: relative;
+        }
+
+        .tabbable-line > .nav-tabs > li > a.active {
+            border: 0;
+            border-bottom: 4px solid #ff5f00;
+            color: #ff5f00;
+            background: none !important;
+        }
+
+    .tabbable-line > .tab-content {
+        margin-top: -3px;
+        border: 0;
+        border-top: 1px solid #eee;
+        padding: 15px 0;
+        background: none !important;
+    }
+
+.plansTabContentStyle {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.manuelsTab {
+    height: 50vh;
+}
+
+.plansTab {
+    height: 50vh;
+}
+@media (min-width: 576px) {
+    .add-calendar-modal .modal-content {
+        height: 98.510vh;
+        background-color: #ffffff;
+        border: none !important;
+    }
+
+    .add-calendar-modal .modal-dialog {
+        right: 0;
+        position: fixed;
+        -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+        -o-transform: translate3d(0%, 0, 0);
+        transform: translate3d(0%, 0, 0);
+        width: 25.928vw;
+        height: 98.510vh;
+        margin: 0 0 0 0 !important;
+        border: none !important;
+    }
+}
+@media (max-width: 550px) {
+
+    .add-calendar-modal .modal-content {
+        height: 98.510vh;
+    }
+    .add-calendar-modal .modal-body {
+        height: 95.510vh;
+    }
+}
+@media (min-width: 1024px) {
+    .add-calendar-modal .modal-content {
+        /*width: 25.928vw;*/
+        height: 98.510vh;
+        /*margin: 0 0 0 67.222vw;
+    padding: 7.972vw 0 2.814vw;*/
+        /*border-radius: 2px;*/
+        background-color: #ffffff;
+        border: none !important;
+    }
+
+    .add-calendar-modal .modal-dialog {
+        right: 0;
+        position:absolute;
+        -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+        -o-transform: translate3d(0%, 0, 0);
+        transform: translate3d(0%, 0, 0);
+        width: 25.928vw;
+        height: 98.510vh;
+        /*padding: 7.972vw 0 2.814vw;*/
+        margin: 0 0 0 0 !important;
+        border: none !important;
+    }
+}
+
+.add-modal-head-label {
+    flex-grow: 0;
+    /* margin: 20px 45px 2px 518px;*/
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1.125em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #071d49;
+}
+
+.add-modal-input-label {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.75em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+}
+
+.add-modal-optional-label {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.75em;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: right;
+    color: #516180;
+}
+
+::placeholder {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.9375em;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+}
+
+.add-modal-save-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    padding: 1.172vh;
+    border-radius: 2px;
+    background-color: #ff5f00;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+.add-modal-close-button {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    padding: 1.172vh;
+    border-radius: 2px;
+    background-color: #e1e4e9;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #18203f;
+}
+
+.celandar-button-delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    padding: 1.172vh;
+    border-radius: 2px;
+    background-color: red;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    left: 0;
+}
+
+.modal-time-input {
+    border-radius: 2px;
+    border: solid 1px #b5bbc8;
+    background-color: #ffffff;
+    font-size: 1.3em;
+}
+
+#calendar .fc-button {
+    text-transform: capitalize;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    padding: 1.407vh 1.111vw;
+    background-color: #e1e4e9;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #516180;
+}
+
+    #calendar .fc-button:focus {
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        padding: 1.407vh 1.111vw;
+        background-color: #ff5f00;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.875em;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+    }
+
+#calendar h2 {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1.375em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+}
+
+#calendar th a {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.75em;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #000000;
+}
+
+#calendar .fc-event-main {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.75em;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+#calendar .fc-daygrid-week-number {
+    display: none;
+}
+
+#calendar {
+    width: 971px;
+    height: 95.428vh;
+}
+
+    #calendar .fc-daygrid-day-number {
+        font-family: 'Encode Sans', sans-serif;
+    }
+
+/*.radio-label input {*/
+/* position: absolute;*/
+/*opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {*/
+/*top: 0;
+    left: 0;*/
+/*height: 25px;
+    width: 25px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.radio-label input ~ .checkmark {
+    background-color: grey;
+}
+
+.radio-label input:checked ~ .checkmark {
+    background-color: orange;
+}*/
+
+.calendar-select {
+    width: 15.222vw;
+    height: 4.689vh;
+    margin: 0 0 4px;
+    padding: 0.938vh 0.833vw 0.938vh 1.111vw;
+    border-radius: 2px;
+    border: solid 1px #b5bbc8;
+    background-color: #ffffff;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.9em;
+}
+
+    .calendar-select option {
+        height: 5.627vh;
+        align-self: stretch;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1.407vh 1.111vw;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.9375em;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.6;
+        letter-spacing: normal;
+        text-align: left;
+    }
+
+.date-time-calendar-modal {
+    border-radius: 2px;
+    font-size: 1.2em;
+    border: solid 1px #b5bbc8;
+    background-color: #ffffff;
+}
+
+.gorusmedaveti {
+    margin-top: 0.8vh;
+}
+
+.saatsecim {
+    margin-top: 0.8vh;
+}
+
+#plansTabContent li {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+@media (min-width:1640px) and (max-width: 1890px) {
+    #calendar {
+        width: 771px;
+        height: 75.428vh;
+    }
+}
+
+@media (max-width: 1640px) {
+    #calendar {
+        width: 823px;
+        height: 81.428vh;
+    }
+
+    #plansTabContent li {
+        font-family: 'Encode Sans', sans-serif;
+    }
+
+    .Shape {
+        font-size: 0.8em;
+    }
+
+    #plansTabContent li {
+        height: 50%;
+        font-family: 'Encode Sans', sans-serif;
+    }
+
+    .tabbable-line > .nav-tabs > li > a {
+        font-size: 0.775em;
+    }
+
+    .content {
+        font-family: 'Encode Sans', sans-serif;
+    }
+}
+
+@media (max-width: 1441px) {
+    .tabbable-line > .nav-tabs > li > a {
+        font-size: 0.675em;
+    }
+}
+
+@media (max-width: 1224px) {
+    #calendar {
+        width: 551px;
+        height: 85.428vh;
+    }
+
+    .celandar-button-shared {
+        /*font-size: 0.675em;*/
+        font-size: 0.40em;
+    }
+
+    .celandar-button-add {
+        font-size: 0.675em;
+    }
+
+    .calendar-div-label {
+        font-size: 0.825em;
+    }
+
+    .radio-label {
+        font-size: 0.6375em;
+    }
+
+    label input[type="radio"] ~ span {
+        width: 10px;
+        height: 10px;
+        margin: 0.234vh 0.833vw 0.234vh 0.833vw;
+        cursor: pointer;
+        border-radius: 25px;
+        background-color: #ffffff;
+    }
+
+    .tabbable-line > .nav-tabs > li > a {
+        font-size: 0.775em;
+    }
+
+    .calendar-plans-label {
+        font-size: 0.825em;
+    }
+
+    #plansTabContent li {
+        height: 50%;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.725em;
+    }
+
+    .calendar-select input {
+        font-size: 50%;
+    }
+
+    .Shape {
+        font-size: 0.8em;
+    }
+
+    .calendars-select {
+        font-size: 0.8em;
+    }
+
+    .calendar-select {
+        height: 3.689vh;
+        font-size: 0.79em;
+    }
+
+        .calendar-select option {
+            font-size: 0.7375em;
+        }
+
+    .add-modal-input-label {
+        margin: 0;
+    }
+
+    .add-modal-input-label {
+        font-size: 0.65em;
+    }
+
+    .add-modal-optional-label {
+        font-size: 0.55em;
+    }
+}
+
+@media (min-width: 768px) (max-width:860px) {
+    #calendar {
+        width: 429px;
+        height: 75.428vh;
+    }
+
+        #calendar .fc-button {
+            text-transform: capitalize;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 0;
+            padding: 1.407vh 1.111vw;
+            background-color: #e1e4e9;
+            font-family: 'Encode Sans', sans-serif;
+            font-size: 0.4em;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.14;
+            letter-spacing: normal;
+            text-align: center;
+            color: #516180;
+        }
+
+        #calendar .fc-daygrid-day-number {
+            font-size: 0.8em;
+        }
+
+        #calendar .fc-button:focus {
+            flex-grow: 0;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 0;
+            padding: 1.407vh 1.111vw;
+            background-color: #ff5f00;
+            font-family: 'Encode Sans', sans-serif;
+            font-size: 0.4em;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.14;
+            letter-spacing: normal;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        #calendar h2 {
+            font-family: 'Encode Sans', sans-serif;
+            font-size: 0.675em;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.45;
+            letter-spacing: normal;
+            text-align: center;
+            color: #000000;
+        }
+
+        #calendar th a {
+            font-family: 'Encode Sans', sans-serif;
+            font-size: 0.45em;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: right;
+            color: #000000;
+        }
+
+        #calendar .fc-event-main {
+            font-family: 'Encode Sans', sans-serif;
+            font-size: 0.6em;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.33;
+            letter-spacing: normal;
+            text-align: left;
+            color: #ffffff;
+        }
+
+        #calendar .fc-daygrid-week-number {
+            display: none;
+        }
+
+        #calendar .fc-daygrid-day-number {
+            font-size: 0.8em;
+        }
+
+    .celandar-button-shared {
+        font-size: 0.675em;
+    }
+
+    .celandar-button-add {
+        font-size: 0.675em;
+    }
+
+    .calendar-div-label {
+        font-size: 0.825em;
+    }
+
+    .radio-label {
+        font-size: 0.5375em;
+    }
+
+    label input[type="radio"] ~ span {
+        width: 10px;
+        height: 10px;
+        margin: 0.234vh 0.833vw 0.234vh 0.833vw;
+        cursor: pointer;
+        border-radius: 25px;
+        background-color: #ffffff;
+    }
+
+    .tabbable-line > .nav-tabs > li > a {
+        font-size: 0.775em;
+    }
+
+    .calendar-plans-label {
+        font-size: 0.825em;
+    }
+
+    #plansTabContent li {
+        height: 50%;
+        font-family: 'Encode Sans', sans-serif;
+        font-size: 0.625em;
+    }
+
+    #plansTabContent b {
+        font-size: 1em;
+    }
+
+    .calendar-select input {
+        font-size: 50%;
+    }
+
+    .Shape {
+        font-size: 0.8em;
+    }
+
+    #shared-calendars-select {
+        font-size: 0.8em;
+    }
+
+    .add-modal-input-label {
+        margin: 0;
+    }
+
+    .add-modal-input-label {
+        font-size: 0.65em;
+    }
+
+    .add-modal-optional-label {
+        font-size: 0.55em;
+    }
+
+    .add-calendar-modal .modal-dialog {
+        width: 26%;
+    }
+
+    .add-modal-head-label {
+        font-size: 1em;
+    }
+
+    .calendar-select {
+        height: 3.689vh;
+        font-size: 0.79em;
+    }
+
+        .calendar-select option {
+            font-size: 0.7375em;
+        }
+
+    #select-shared-position {
+    }
+}
+
+@media (max-width:767px) {
+    #calendar {
+        width: 100%;
+        height: 65.428vh;
+    }
+
+    /*.calendar-left-side {
+        display: none;
+    }*/
+}
+
+.calendar-select > .select2 select2-container {
+    width: 20.444vw !important;
+}
+
+.fc .fc-daygrid-body-balanced .fc-daygrid-day-events {
+    position: relative !important;
+}
+
+.fc-daygrid-dot-event {
+    display: block !important;
+}
+
+/*.select2-container {
+    width: 100% !important;
+}
+*/

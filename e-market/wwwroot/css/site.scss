@@ -1,0 +1,208 @@
+﻿@import "../lib/bootstrap/scss/bootstrap";
+
+@media print {
+    @page {
+        size: auto;
+        font-size: 10px;
+    }
+}
+
+html, body {
+    height: 100%;
+}
+
+.cursor-grab {
+    &:hover {
+        cursor: grab;
+    }
+
+    &.grabbing {
+        cursor: grabbing;
+    }
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+//Drawing Canvas
+canvas {
+    position: absolute;
+}
+
+.editorContainer, .displayContainer {
+    border: 3px solid gray;
+    height: 80vh;
+    overflow: hidden;
+
+    > .CanvasContainer {
+        padding: 0;
+        width: 80%;
+    }
+
+    #ImageDiv {
+        width: 20%;
+        border-left: 3px solid gray;
+        height: 100%;
+        overflow-y: scroll;
+        padding: 0;
+    }
+}
+
+.displayContainer {
+    height: initial;
+
+    > .CanvasContainer {
+        width: 100%;
+    }
+}
+
+//Tool Bar
+.drawingToolbar {
+    display: flex;
+
+    > div {
+        justify-content: flex-end;
+    }
+
+    input[type="range"] {
+        margin-top: 15px;
+        height: 10px;
+    }
+
+    .controlLabel {
+        font-size: 1.05em;
+        padding: calc(1px + 0.37rem) 5px calc(1px + 0.37rem) 15px;
+    }
+
+    .separator {
+        width: 1px;
+        background-color: lightgray;
+        border: 1px inset lightgray;
+        display: inline-block;
+        margin: 4px 0;
+    }
+}
+
+//Images
+.draggableImageDiv {
+    display: inline-block;
+    margin: .25em;
+    border: 1px solid transparent;
+
+    &.hoveredImage {
+        border-color: orange;
+    }
+}
+
+.draggingImage {
+    z-index: 1000;
+    opacity: 0.9;
+    border: 1px solid orange;
+    position: absolute;
+}
+
+//Notification
+.notificationBar {
+    height: 30px;
+    border: 3px solid gray;
+    border-top: none;
+}
+
+//Legend
+.legend {
+    margin: 7px;
+    border: 1px solid darkgray;
+    position: relative;
+    z-index: 800;
+    background-color: white;
+    overflow: hidden;
+
+    > .title {
+        border-bottom: 1px solid darkgray;
+        text-align: center;
+        font-size: small;
+    }
+
+    > #legendContents {
+        overflow-y: auto;
+        font-size: x-small;
+    }
+}
+
+.imageDropdown {
+    display: inline-block;
+    padding-top: .75%;
+    padding-left: .25em;
+    padding-right: .25em;
+
+    > div {
+        background-color: aliceblue;
+        height: 22px;
+        border: 1px solid black;
+        background-repeat: no-repeat;
+        background-position: right;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        align-content: center;
+        overflow: hidden;
+
+        > div {
+            width: 80%;
+            overflow: hidden;
+            padding-left: .15em;
+            float: left;
+        }
+
+        > i {
+            float: right;
+            font-size: 1.2em;
+            overflow: hidden;
+            color: black;
+        }
+    }
+
+    > ul {
+        background-color: white;
+        border: 1px solid black;
+        border-top: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        list-style: none;
+        z-index: 1000;
+        overflow: hidden;
+
+        > li.vertical {
+            border-top: 1px solid gray;
+            height: 22px;
+
+            &:hover {
+                background-color: lightblue;
+                cursor: pointer;
+            }
+        }
+
+        > li.horizontal {
+            display: flex;
+            float: left;
+            padding: 1.5px;
+            margin: 2px;
+            border: 1px outset lightgray;
+            border-radius: 2px;
+
+            &:hover {
+                background-color: lightblue;
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+﻿.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 20px !important;
+}
+
+.card-header {
+    border: none;
+}

@@ -1,0 +1,37 @@
+﻿.list-group-item-action:hover, .list-group-item-action:focus {
+    z-index: 1;
+    color: #da9760;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+
+.duyuru-col {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.duyuru-header {
+    border: none;
+}
+
+.duyuru-list {
+    background-color: #f8f9fb;
+    border: none;
+    margin-top: 1vh;
+}
+
+.right-block-col {
+    border-bottom: 1px solid #e1e4e9;
+    margin-bottom: 2%;
+}
+
+.chart-ddl-label {
+    margin-bottom: 0;
+    font-size: 1em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+}

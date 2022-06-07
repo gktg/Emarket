@@ -1,0 +1,56 @@
+﻿.k-list-scroller ul {
+    background-color: white !important;
+}
+
+.k-state-hover {
+    background-color: #007bff;
+    color: white
+}
+
+.cancel {
+    float: left;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.k-dropdown {
+    width: 100% !important;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.Lbl {
+    font-size: 1em;
+}
+
+.card-header {
+    border: none;
+}
+
+@media (min-width: 1440px) and (max-width: 1920px) {
+    .Lbl {
+        font-size: 1em;
+    }
+}
+
+@media (min-width:1024px) and (max-width: 1439px) {
+    .Lbl {
+        font-size: 0.7em;
+    }
+}
+
+@media (min-width:768px) and (max-width: 1023px) {
+    .Lbl {
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .Lbl {
+        font-size: 1em;
+    }
+}

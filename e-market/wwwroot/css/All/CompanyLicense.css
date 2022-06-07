@@ -1,0 +1,24 @@
+﻿.cancel {
+    float: left;
+    margin-left: 1%;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.confirm {
+    margin-right: 8%;
+}
+
+.Lbl {
+    font-size: 1em;
+}
+
+.card-header {
+    border: none !important;
+}
+
+.modal {
+    font-family: 'Encode Sans', sans-serif;
+}

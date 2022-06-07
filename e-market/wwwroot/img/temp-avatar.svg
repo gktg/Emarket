@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" fill="none" viewBox="0 0 40 40">
+    <path fill="url(#pattern0)" fill-rule="evenodd" d="M20 40c11.046 0 20-8.954 20-20S31.046 0 20 0 0 8.954 0 20s8.954 20 20 20z" clip-rule="evenodd"/>
+    <defs>
+        <pattern id="pattern0" width="1" height="1" patternContentUnits="objectBoundingBox">
+            <use transform="translate(0 -.01) scale(.00085)" xlink:href="#image0"/>
+        </pattern>
+    </defs>
+</svg>

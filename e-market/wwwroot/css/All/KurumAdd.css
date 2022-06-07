@@ -1,0 +1,107 @@
+﻿.spcss {
+    float: right;
+    margin-top: -32px;
+    margin-right: 16px;
+}
+
+#InputS {
+    width: 100%;
+}
+
+.spcss {
+    float: right;
+    margin-top: -32px;
+    margin-right: 16px;
+}
+
+#InputS {
+    width: 100%;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+/*.Lbl {
+    font-size: 0.95em !important;
+}*/
+
+.tekrarliAlanBox {
+    border-bottom: 1px solid #e1e4e9;
+    margin-bottom: 2vh;
+}
+
+.DilAddButton {
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #8c92a9;
+}
+
+.TelefonAddButton {
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #8c92a9;
+}
+
+.OkulAddButton {
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #8c92a9;
+}
+
+.AdresAddButton {
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #8c92a9;
+}
+
+h5 {
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    text-align: left;
+    color: #8c92a9;
+}
+
+input[type='checkbox'] {
+    width: 2vh !important;
+    height: 2vh !important;
+}
+
+.KurumAdresAddButton {
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #8c92a9;
+}
+
+.KurumBankaAddButton {
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #8c92a9;
+}

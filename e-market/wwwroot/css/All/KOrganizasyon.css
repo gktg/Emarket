@@ -1,0 +1,93 @@
+﻿.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 20px !important;
+}
+/* .easy-tree li.li_selected>span, .easy-tree li.li_selected>span>a {
+            background: transparent;
+            color: #0000ff;
+        }*/
+.easy-tree li.parent_li > span:hover, .easy-tree li.parent_li > span:hover + ul li span {
+    background: transparent !important;
+    color: #fff;
+}
+
+#btnRemove {
+    margin-left: 10px
+}
+
+.easy-tree {
+    min-height: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 0;
+    border-top: 0;
+    padding-bottom: 15px;
+}
+
+    .easy-tree li::before {
+        border-left: 1px solid #e1e4e9 !important;
+        bottom: 50px;
+        height: 100%;
+        top: 0;
+        width: 1px;
+    }
+
+    .easy-tree li::after {
+        border-top: 1px solid #e1e4e9 !important;
+        height: 20px;
+        top: 25px;
+        width: 35px;
+    }
+
+.iptal {
+    float: left;
+}
+
+#btnCancel {
+    float: left;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.easy-tree li > span {
+    border: 1px solid #e1e4e9 !important;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 5px;
+    text-decoration: none;
+}
+
+    .easy-tree li > span > a {
+        color: #516180 !important;
+        text-decoration: none;
+    }
+
+.card-header {
+    border: none !important;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+.input-label-CompanyOrganizationDefinition {
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+}
+
+/*.add-buttons {
+    width: 8vw !important;
+}*/

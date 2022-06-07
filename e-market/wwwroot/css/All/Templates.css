@@ -1,0 +1,58 @@
+﻿.ck.ck-reset.ck-editor.ck-rounded-corners {
+    width: 100%;
+}
+
+.ck-editor__editable_inline {
+    min-height: 30vh;
+}
+
+.header-left {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1.375em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+.content {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.content-header {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.content-left {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.8em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.85;
+    letter-spacing: normal;
+    text-align: left;
+    color: #8c92a9;
+}
+
+.Lbl {
+    font-size: 0.95em !important;
+}
+
+.radio-label {
+    font-size: 0.95em !important;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.85;
+    letter-spacing: normal;
+    text-align: left;
+    color: #071d49;
+}
+
+.card-header {
+    border: none !important;
+}

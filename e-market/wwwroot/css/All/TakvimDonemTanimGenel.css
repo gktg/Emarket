@@ -1,0 +1,69 @@
+﻿.timefieldset {
+    display: flex;
+    justify-content: center;
+}
+
+.startdate-container {
+    margin-right: 20px
+}
+
+.timepicker {
+    width: 121px;
+    text-align: center;
+}
+
+.calendar-container {
+    padding: 100px
+}
+
+.rowcontainer {
+    margin-bottom: 15px
+}
+
+.functionEventClick {
+    cursor: pointer
+}
+
+.card-header {
+    border: none !important;
+}
+
+.modal-dialog {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+label {
+    color: #516180;
+    font-size: 0.85em;
+}
+
+#takvimDonemTanimModelLabel {
+    color: #516180;
+    font-weight: bold;
+}
+
+@media (min-width: 1024px) and (max-width: 1920px) {
+    #takvimDonemTanimModel .modal-body {
+        max-height: 80%;
+    }
+}
+
+@media (min-width:768px) and (max-width: 1023px) {
+    #takvimDonemTanimModel .modal-body {
+        max-height: 80%;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    #takvimDonemTanimModel .modal-dialog {
+        width: 80%;
+        left: 10%;
+        top: -1px;
+        max-height: 80%;
+    }
+
+    #takvimDonemTanimModel .modal-body {
+        max-height: calc(100vh - 143px);
+        overflow-y: auto;
+    }
+}

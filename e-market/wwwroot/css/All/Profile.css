@@ -1,0 +1,129 @@
+﻿.Back {
+    flex-grow: 0;
+    /*margin: 5.39VH 1.11VW 0 1.74VW;*/
+    padding: 2.81VH 1.39VW; /*2.81% 1.39%*/
+    background-color: #ffffff;
+}
+
+.Card {
+    flex-grow: 0;
+    height: 17.12VH;
+    margin: 0 1VW 0 1VW;
+    padding: 2.81VH 1.39VW;
+    border-radius: 2px;
+    box-shadow: 1px 0 2px 0 rgb(195 197 202 / 7%);
+    background-color: #ffffff;
+}
+
+#Influencing-Docs {
+    flex-grow: 0;
+    margin: 2.81VH 22.6VW 1.41VH 3.19VW; /* 24px 326px 12px 46px;*/
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1.3em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+.Setup {
+    width: 5.97VW;
+    height: 4.69VH;
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0.6VW;
+    border-radius: 2px;
+    background-color: #e1e4e9;
+}
+
+.Name-Surname {
+    flex-grow: 0;
+    margin: 0.59VH 0.97VW 0 0; /*5px 14px 0 0;*/
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.Email {
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.9px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+}
+
+#kurResI {
+    color: red;
+    float: left;
+    margin: 7.62VH 0 0 0.20VW; /*4.69% 0 0 0.21%;*/
+}
+
+#NameMail {
+    margin: 0 0 0 35px;
+}
+
+.ContentP {
+    flex-grow: 0;
+    font-family: 'Encode Sans', sans-serif;
+    /*font-size: 1.1em;*/
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    text-align: center;
+    color: #18203f;
+}
+
+.proftxt {
+    font-family: 'Encode Sans', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+@media (min-width:768px) and (max-width: 1024px) {
+    .Setup {
+        width: 8.97VW;
+        height: 3.69VH;
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 0.8VW;
+        border-radius: 2px;
+        background-color: #e1e4e9;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .Setup {
+        width: 21.97VW;
+        height: 4.69VH;
+        flex-grow: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        padding: 0.8VW;
+        border-radius: 2px;
+        background-color: #e1e4e9;
+    }
+}

@@ -1,0 +1,32 @@
+﻿.headError {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ff5f00;
+}
+
+.content {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+#nav2 {
+    display: none !important;
+}
+
+img {
+    height: 28.472vw;
+    width: 31.528vw;
+}
+
+.add-buttons-nofloat {
+    width: 20% !important;
+}
+
+.content-wrapper {
+    background-color: #f8f9fb;
+}

@@ -1,0 +1,51 @@
+﻿.table {
+    background-color: #f4f6f9 !important;
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+th {
+    width: 50% !important;
+    display: block !important;
+}
+
+table {
+    width: 100% !important;
+}
+
+.Lbl {
+    font-size: 1em;
+}
+
+.k-dropdown {
+    width: 100% !important;
+}
+
+.cancel {
+    float: left;
+}
+
+.rightbutton {
+    float: right;
+    margin-bottom: 2%;
+}
+
+.sehirListLabelDiv {
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.sehirListLabelLabel {
+    margin-left: 1%;
+}
+
+.sehirListLabelbutton {
+    float: right;
+}
+
+.sehirlabel {
+    margin-left: 2%;
+    margin-bottom: 2%;
+}

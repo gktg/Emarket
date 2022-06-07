@@ -1,0 +1,213 @@
+﻿.timefieldset {
+    display: flex;
+    justify-content: center;
+}
+
+.startdate-container {
+    margin-right: 20px
+}
+
+.timepicker {
+    width: 121px;
+    text-align: center;
+}
+
+.calendar-container {
+    padding: 100px
+}
+
+.rowcontainer {
+    margin-bottom: 15px
+}
+
+.k-list-container {
+    background: white
+}
+
+.cancel {
+    float: left;
+    margin-left: 0.5%;
+}
+
+.confirm {
+    margin-right: 0.5%;
+}
+
+.myHeader {
+    margin-top: 1%
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.left-head {
+    font-size: 1.375em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+.left-body {
+    font-size: 0.8125em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.85;
+    letter-spacing: normal;
+    text-align: left;
+    color: #8c92a9;
+}
+
+.input-lbl {
+    font-size: 0.85em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+}
+
+.right-block {
+    margin: 2% 0 0 0;
+}
+
+.right-block-foot {
+    margin: 3%;
+}
+
+.right-block-col {
+    border-bottom: 1px solid #e1e4e9;
+    margin-bottom: 2%;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+.taslak-button {
+    width: auto !important;
+}
+
+.add-buttons {
+    width: auto !important;
+}
+
+.add-buttons-nofloat {
+    width: auto !important;
+}
+/*------------------------------------------*/
+.select2 select2-container {
+    width: 100% !important;
+}
+
+.timefieldset {
+    display: flex;
+    justify-content: center;
+}
+
+.startdate-container {
+    margin-right: 20px
+}
+
+.timepicker {
+    width: 121px;
+    text-align: center;
+}
+
+.calendar-container {
+    padding: 100px
+}
+
+.rowcontainer {
+    margin-bottom: 15px
+}
+
+.k-list-container {
+    background: white
+}
+
+.cancel {
+    float: left;
+    margin-left: 0.5%;
+}
+
+.confirm {
+    margin-right: 0.5%;
+}
+
+.myHeader {
+    margin-top: 1%
+}
+
+.container-fluid {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.left-head {
+    font-size: 1.375em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #18203f;
+}
+
+.left-body {
+    font-size: 0.8125em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.85;
+    letter-spacing: normal;
+    text-align: left;
+    color: #8c92a9;
+}
+
+.input-lbl {
+    font-size: 0.85em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #516180;
+}
+
+.right-block {
+    margin: 2% 0 0 0;
+}
+
+.right-block-foot {
+    margin: 3%;
+}
+
+.right-block-col {
+    border-bottom: 1px solid #e1e4e9;
+    margin-bottom: 2%;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+.taslak-button {
+    width: auto !important;
+}
+
+.add-buttons {
+    width: auto !important;
+}
+
+.add-buttons-nofloat {
+    width: auto !important;
+}
