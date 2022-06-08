@@ -8,7 +8,7 @@ namespace e_market.Models
 {
     public class LoginVM
     {
-        public int TabloID { get; set; }
+        public int ID { get; set; }
 
         public string Email { get; set; }
 

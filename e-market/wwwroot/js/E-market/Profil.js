@@ -1,6 +1,7 @@
 ﻿var KisiID;
-var KisiModel = {};
-var GuncellKisiModel = {};
+var GuncelleModel = {}
+var RegisterProfil = {}
+var KisiHassasBilgilerProfil = {}
 
 $(document).ready(function () {
 
@@ -8,6 +9,8 @@ $(document).ready(function () {
     KisiID = GetURLParameter();
     KisiBilgileriGetir();
 
+    CustomInputMask(".kisiTelNo");
+    //PhoneMask();
 
 })
 
@@ -48,23 +51,35 @@ function KisiBilgileriniSayfayaBas() {
     $("#txtAd").val(KisiModel.registerProfil.ad)
     $("#txtSoyad").val(KisiModel.registerProfil.soyad)
     $("#txtEmail").val(KisiModel.registerProfil.email)
+    $("#txtDogumTarihi").val(CsharpDateToStringDateyyyymmdd(KisiModel.registerProfil.kisiHassasBilgiler.dogumTarihi)).change();
+    $("#txtTelefon").val(KisiModel.registerProfil.kisiHassasBilgiler.telefonNumarasi)
+    $("#txtAdres").val(KisiModel.registerProfil.kisiHassasBilgiler.adres)
 }
 
-function GuncelKisiBilgileriModeleBas(){
+function GuncelKisiBilgileriModeleBas() {
 
-    GuncellKisiModel["TabloID"] = KisiID;
-    GuncellKisiModel["Ad"] = $("#txtAd").val()
-    GuncellKisiModel["Soyad"] = $("#txtSoyad").val()
-    GuncellKisiModel["Email"] = $("#txtEmail").val()
+    RegisterProfil["ID"] = KisiID;
+    RegisterProfil["Ad"] = $("#txtAd").val()
+    RegisterProfil["Soyad"] = $("#txtSoyad").val()
+    RegisterProfil["Email"] = $("#txtEmail").val()
 
-    console.log(GuncellKisiModel)
+    KisiHassasBilgilerProfil["ID"] = KisiID;
+    KisiHassasBilgilerProfil["DogumTarihi"] = $("#txtDogumTarihi").val()
+    KisiHassasBilgilerProfil["TelefonNumarasi"] = $("#txtTelefon").val()
+    KisiHassasBilgilerProfil["Adres"] = $("#txtAdres").val()
+    
+    RegisterProfil["KisiHassasBilgilerProfil"] = KisiHassasBilgilerProfil
+
+    GuncelleModel["RegisterProfil"] = RegisterProfil;
+    console.log(GuncelleModel)
 }
 
 
 function KisiBilgileriGuncelle() {
 
     GuncelKisiBilgileriModeleBas();
-    model = GuncellKisiModel;
+    model = GuncelleModel;
+    console.log(model)
 
     $.ajax({
 

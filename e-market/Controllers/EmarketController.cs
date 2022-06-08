@@ -20,7 +20,6 @@ namespace e_market.Controllers
 {
     public class EmarketController : Controller
     {
-        Kategori kategori;
 
         public readonly ConnectionString _cc;
         private readonly ILogger<EmarketController> _logger;
@@ -151,7 +150,7 @@ namespace e_market.Controllers
         [Route("/emarket/ResetPassVM/")]
         public ResetPassVM ResetPass(ResetPassVM model)
         {
-            var uye = _cc.Register.Find(model.TabloID);
+            var uye = _cc.Register.Find(model.ID);
 
             uye.Sifre = model.Sifre;
 
@@ -171,7 +170,7 @@ namespace e_market.Controllers
 
                 MailMessage eposta = new MailMessage();
 
-                eposta.From = new MailAddress("antigs1998@gmail.com");
+                eposta.From = new MailAddress("antigs1998@hotmail.com");
                 eposta.To.Add(Mail);
                 eposta.Subject = "Şifre Sıfırlama";
                 eposta.Body = $"<p>Sayın, {uye.Ad} {uye.Soyad}</p>" +
@@ -180,9 +179,10 @@ namespace e_market.Controllers
                 eposta.IsBodyHtml = true;
                 using (SmtpClient smtp = new SmtpClient())
                 {
-                    smtp.Credentials = new System.Net.NetworkCredential("antigs1998@gmail.com", "1998gktg1998");
-                    smtp.Host = "smtp.gmail.com";
+                    smtp.Credentials = new System.Net.NetworkCredential("antigs1998@hotmail.com", "1998gktg1998");
+                    smtp.Host = "smtp-mail.outlook.com";
                     smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.Port = 587;
 
                     smtp.Send(eposta);
@@ -212,15 +212,30 @@ namespace e_market.Controllers
 
         }
 
-        [Route("/emarket/KisiBilgileriGuncelle/")]
-        //kisiprofilVM düzenle
-        public Register KisiBilgileriGuncelle(Register model)
-        {
-            var kisiBilgileri = _cc.Register.Where(x => x.ID == model.ID).FirstOrDefault();
+        //[Route("/emarket/KisiBilgileriGuncelle/")]
+        //public Register KisiBilgileriGuncelle(KisiProfilVM model)
+        //{
+        //    var kisiBilgileri = _cc.Register.Where(x => x.ID == model.RegisterProfil.ID).FirstOrDefault();
 
-            kisiBilgileri.Ad = model.Ad;
-            kisiBilgileri.Soyad = model.Soyad;
-            kisiBilgileri.Email = model.Email;
+        //    kisiBilgileri.Ad = model.RegisterProfil.Ad;
+        //    kisiBilgileri.Soyad = model.RegisterProfil.Soyad;
+        //    kisiBilgileri.Email = model.RegisterProfil.Email;
+
+        //    _cc.Register.Update(kisiBilgileri);
+        //    _cc.SaveChanges();
+
+
+        //    return kisiBilgileri;
+        //}
+
+        [Route("/emarket/KisiBilgileriGuncelle/")]
+        public Register KisiBilgileriGuncelle(ProfilVmcs model)
+        {
+            var kisiBilgileri = _cc.Register.Where(x => x.ID == model.RegisterProfil.ID).FirstOrDefault();
+
+            kisiBilgileri.Ad = model.RegisterProfil.Ad;
+            kisiBilgileri.Soyad = model.RegisterProfil.Soyad;
+            kisiBilgileri.Email = model.RegisterProfil.Email;
 
             _cc.Register.Update(kisiBilgileri);
             _cc.SaveChanges();
@@ -228,8 +243,6 @@ namespace e_market.Controllers
 
             return kisiBilgileri;
         }
-
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

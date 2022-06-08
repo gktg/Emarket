@@ -23,7 +23,7 @@ function SifreKarakterKontrol() {
 function ModeleBas() {
     ResetPassVM = {};
 
-    ResetPassVM["TabloID"] = GetURLParameter();
+    ResetPassVM["ID"] = GetURLParameter();
     ResetPassVM["Sifre"] = $("#sifre").val();
 
     console.log(ResetPassVM);

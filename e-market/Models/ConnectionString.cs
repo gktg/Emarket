@@ -39,7 +39,7 @@ namespace e_market.Models
             {
                 Ad = "Servet Göktuğ",
                 Soyad = "Türkan",
-                Email = "goktug@mail.com",
+                Email = "goktug.turkan5@gmail.com",
                 Sifre = "awd.123456",
                 ID = 1,
 
@@ -52,7 +52,7 @@ namespace e_market.Models
                 ID = 1,
                 Adres = new Address("tr").FullAddress(),
                 DogumTarihi = DateTime.Now.AddYears(-20),
-                TelefonNumarası = "05388828249"
+                TelefonNumarasi = "05388828249"
 
 
             }));

@@ -9,7 +9,7 @@ namespace e_market.Models
 
         public int ID { get; set; }
         public DateTime DogumTarihi { get; set; }       
-        public string TelefonNumarası { get; set; }
+        public string TelefonNumarasi { get; set; }
         public string Adres { get; set; }
         
         //relational properties

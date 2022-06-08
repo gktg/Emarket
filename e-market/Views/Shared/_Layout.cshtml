@@ -30,6 +30,12 @@
 @{
     string path = Context.Request.Path;
     string url = path.Split("/").Last();
+
+    if(url == "1")
+    {
+        string[] url2 = path.Split("/");
+        url = url2[2];
+    }
 }
 
 
