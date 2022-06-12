@@ -1,19 +1,87 @@
 ﻿var KisiID;
 var GuncelleModel = {}
-var RegisterProfil = {}
-var KisiHassasBilgilerProfil = {}
+var RegisterProfil2 = {}
+var KisiHassasBilgilerProfil2 = {}
+var FavoriKategoriModel = {}
+var FavoriKategoriler = []
+
 
 $(document).ready(function () {
 
     Email();
     KisiID = GetURLParameter();
+    KategoriGetir()
     KisiBilgileriGetir();
 
     CustomInputMask(".kisiTelNo");
     //PhoneMask();
-
 })
 
+function ParamDDLDoldur(alanID, data) {
+    var str = "";
+    str += "<option value='0'>Seçiniz</option>";
+    for (var i of data) {
+        var kategoriAdi = i.kategoriAdi == undefined ? i.kategoriAdi : i.kategoriAdi;
+        str += "<option value='" + i.kategoriID + "'>" + kategoriAdi + "</option>";
+    }
+    $("#" + alanID).html(str);
+}
+
+function KategoriGetir() {
+    $.ajax({
+        type: "Get",
+        url: "/emarket/KategoriGetir/",
+        dataType: "json",
+        data: null,
+        async: false,
+        success: function (result) {
+            console.log(result)
+            if (result != null) {
+                ParamDDLDoldur("drdKategori", result.$values)
+            }
+            else {
+                alertim.toast(siteLang.Hata, alertim.types.warning)
+
+            }
+
+
+        },
+        error: function (e) {
+
+            console.log(e);
+        }
+    })
+}
+
+function KategoriKaydet() {
+    FavoriKategoriler = $("#drdKategori").select2("val");
+    FavoriKategoriModel["ProfilID"] = KisiID;
+    FavoriKategoriModel["KategoriID"] = FavoriKategoriler;
+    $.ajax({
+        type: "Post",
+        url: "/emarket/FavoriKategorileriKaydet/",
+        dataType: "json",
+        data: FavoriKategoriModel,
+        async: false,
+        success: function (result) {
+            console.log(result)
+            if (result == true) {
+                alertim.toast(siteLang.Kaydet, alertim.types.success)
+
+            }
+            else {
+                alertim.toast(siteLang.Hata, alertim.types.warning)
+
+            }
+
+
+        },
+        error: function (e) {
+
+            console.log(e);
+        }
+    })
+}
 
 
 function KisiBilgileriGetir() {
@@ -25,9 +93,8 @@ function KisiBilgileriGetir() {
         data: null,
         async: false,
         success: function (result) {
-            console.log(result)
             if (result.registerProfil.id == KisiID) {
-
+                console.log(result)
                 KisiModel = result;
                 KisiBilgileriniSayfayaBas()
             }
@@ -54,6 +121,12 @@ function KisiBilgileriniSayfayaBas() {
     $("#txtDogumTarihi").val(CsharpDateToStringDateyyyymmdd(KisiModel.registerProfil.kisiHassasBilgiler.dogumTarihi)).change();
     $("#txtTelefon").val(KisiModel.registerProfil.kisiHassasBilgiler.telefonNumarasi)
     $("#txtAdres").val(KisiModel.registerProfil.kisiHassasBilgiler.adres)
+
+    $.each(KisiModel.registerProfil.kisiFavoriKategorileri.$values, function (x, y) {
+
+        $("#drdKategori option[value='" + y.kategoriID + "']").prop("selected", true).change();
+
+    })
 }
 
 function GuncelKisiBilgileriModeleBas() {
@@ -67,13 +140,11 @@ function GuncelKisiBilgileriModeleBas() {
     KisiHassasBilgilerProfil["DogumTarihi"] = $("#txtDogumTarihi").val()
     KisiHassasBilgilerProfil["TelefonNumarasi"] = $("#txtTelefon").val()
     KisiHassasBilgilerProfil["Adres"] = $("#txtAdres").val()
-    
-    RegisterProfil["KisiHassasBilgilerProfil"] = KisiHassasBilgilerProfil
 
     GuncelleModel["RegisterProfil"] = RegisterProfil;
+    GuncelleModel["KisiHassasBilgilerProfil"] = KisiHassasBilgilerProfil;
     console.log(GuncelleModel)
 }
-
 
 function KisiBilgileriGuncelle() {
 
@@ -107,3 +178,4 @@ function KisiBilgileriGuncelle() {
         }
     })
 }
+

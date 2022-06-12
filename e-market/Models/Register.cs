@@ -16,5 +16,7 @@ namespace e_market.Models
         public string Sifre { get; set; }
 
         public virtual KisiHassasBilgiler KisiHassasBilgiler { get; set; }
+        public virtual ICollection<KisiFavoriKategorileri> KisiFavoriKategorileri { get; set; }
+
     }
 }

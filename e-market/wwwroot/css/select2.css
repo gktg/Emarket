@@ -628,10 +628,12 @@
 .select2-container--classic.select2-container--open .select2-dropdown {
     border-color: #5897fb;
 }
+
 .select2-results__options li:hover {
     background-color: #ff5f00 !important;
     color: #ffffff !important;
 }
+
 .select2-selection__choice {
     background-color: #ff5f00 !important;
     color: #ffffff !important;
@@ -639,7 +641,9 @@
     padding: 6px !important;
     width: 100%;
 }
+
 }
+
 .select2-selection__choice__remove {
     color: black !important;
 }

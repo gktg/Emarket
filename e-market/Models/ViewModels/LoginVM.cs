@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace e_market.Models
+namespace e_market.Models.ViewModels
 {
     public class LoginVM
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace e_market.Models
+namespace e_market.Models.ViewModels
 {
-    public class ProfilVmcs
+    public class ProfilVm
     {
         public Register RegisterProfil { get; set; }
         public KisiHassasBilgiler KisiHassasBilgilerProfil { get; set; }
