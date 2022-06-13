@@ -16,6 +16,7 @@ using System.Net.Mail;
 using Microsoft.AspNetCore.Identity;
 using Bogus.DataSets;
 using Bogus;
+using Newtonsoft.Json;
 
 namespace e_market.Controllers
 {
@@ -262,25 +263,26 @@ namespace e_market.Controllers
         }
 
         [Route("/emarket/KategoriGetir/")]
-        public List<KategoriVM> KategoriGetir()
+        public JsonResult KategoriGetir()
         {
-            List<Kategori> kategori = _cc.Kategori.ToList();
+            List<Kategori> kategori = new List<Kategori>();
+            kategori= _cc.Kategori.ToList();
 
-            List<KategoriVM> kategoriVM = new List<KategoriVM>();
+            //List<KategoriVM> kategoriVM = new List<KategoriVM>();
 
-            foreach(var item in kategori)
-            {
-                var model = new KategoriVM()
-                {
-                    KategoriID = item.ID,
-                    KategoriAdi = item.KategoriAdi,
-                };
-                kategoriVM.Add(model);
+            //foreach(var item in kategori)
+            //{
+            //    var model = new KategoriVM()
+            //    {
+            //        KategoriID = item.ID,
+            //        KategoriAdi = item.KategoriAdi,
+            //    };
+            //    kategoriVM.Add(model);
 
-            };
+            //};
 
 
-            return kategoriVM;
+            return Json(kategori);
         }
 
         [Route("/emarket/FavoriKategorileriKaydet/")]

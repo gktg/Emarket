@@ -32,6 +32,7 @@ function KategoriGetir() {
         type: "Get",
         url: "/emarket/KategoriGetir/",
         dataType: "json",
+        contentType:"application/json",
         data: null,
         async: false,
         success: function (result) {

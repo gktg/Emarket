@@ -31,7 +31,13 @@ namespace e_market
             services.AddMvc();
 
             services.AddDbContext<ConnectionString>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("Myconnection")));
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation().AddJsonOptions(opt =>
+            {
+                opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
+
+            
             services.AddSession(x =>
             {
                 x.IdleTimeout = TimeSpan.FromMinutes(20);

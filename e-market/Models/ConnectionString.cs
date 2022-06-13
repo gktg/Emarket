@@ -8,11 +8,11 @@ using e_market.Models;
 using Bogus.DataSets;
 
 
-
 namespace e_market.Models
 {
     public class ConnectionString : DbContext
     {
+
         public ConnectionString(DbContextOptions<ConnectionString> options) : base(options)
         {
 
@@ -73,6 +73,8 @@ namespace e_market.Models
 
             }));
 
+
         }
+
     }
 }
