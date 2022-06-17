@@ -61,7 +61,6 @@ namespace e_market.Models
             }));
 
 
-
             modelBuilder.Entity<KisiHassasBilgiler>(x => x.HasData(new KisiHassasBilgiler
             {
 

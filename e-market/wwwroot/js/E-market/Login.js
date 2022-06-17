@@ -18,7 +18,7 @@ function Login() {
                 alertim.toast(siteLang.Giris, alertim.types.success);
                 setTimeout(function () {
 
-                    window.location.href = "Dashboard";
+                    window.location.href = "Urunler";
 
                 }, 3000);
             }

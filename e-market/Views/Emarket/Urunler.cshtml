@@ -1,0 +1,69 @@
+﻿
+
+<div class="row mt-5" id="urunTekrarli">
+</div>
+
+<script>
+
+    var result2;
+    $(document).ready(function(){
+
+        UrunleriGetir()
+
+    })
+
+    function UrunleriGetir(){
+        $.ajax({
+            type: "Get",
+            url: "/emarket/UrunGetir/",
+            dataType: "json",
+            data: null,
+            async: false,
+            success: function (result) {
+                console.log(result)
+                result2 = result;
+                if (result != null) {
+                    for(var i = 0;i < result2.$values.length;i++){+
+                        UrunTekrarli();
+                        $("#urunMedya"+i).attr("src",result2.$values[i].urunMedya)
+                        $("#urunAdi"+i).text(result2.$values[i].urunAdi)
+                        $("#urunFiyati"+i).text(result2.$values[i].urunFiyati)
+                        $("#stok"+i).text(result2.$values[i].stok)
+                    }
+                    
+
+                }
+                else {
+                    alertim.toast(siteLang.Hata, alertim.types.warning)
+
+                }
+
+
+            },
+            error: function (e) {
+
+                console.log(e);
+            }
+        })
+    }
+
+    var x = 0;
+    function UrunTekrarli(){
+        var html = `    <div class="col-md-3" id="urunDiv${x}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img id="urunMedya${x}" height="150" width="250" />
+                                    <p id="urunAdi${x}" ></p>
+                                    <p id="urunFiyati${x}" ></p>
+                                    <p id="stok${x}"></p>
+                                </div>
+                            </div>
+                        </div>`;
+        x++;
+        $("#urunTekrarli").append(html);
+
+    }
+
+
+
+</script>

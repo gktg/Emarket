@@ -8,6 +8,7 @@
 @using Microsoft.AspNetCore.Http.Extensions;
 @using e_market.Controllers;
 @using e_market.Models;
+@using e_market.Models.ViewModels;
 @using Microsoft.AspNetCore.Mvc;
 @using Microsoft.Extensions.Logging;
 @using System;
@@ -20,6 +21,7 @@
 @using System.IO;
 @using System.Data;
 @using System.Net.Mail;
+@using e_market.Tools;
 
 
 @inject IOptions<RequestLocalizationOptions> LocalizationOptions
@@ -113,13 +115,13 @@
 <body class="sidebar-mini layout-fixed">
     @if (url != "ForgotPass" && url != "Register" && url != "ResetPass" && url != "Login" && url != "")
     {
-        <div class="container">
+        <div class="container-fluid col-md-10">
             <div class="row" style="background-color:lightgray;height:40px;">
                 <div class="col-md-1 col-3 text-center pt-2">
-                    <a class="btn2" href="https://localhost:44393/emarket/Dashboard" target="_self">Ürünler</a>
+                    <a class="btn2" href="https://localhost:44393/emarket/Urunler" target="_self">Ürünler</a>
                 </div>
                 <div class="col-md-1 col-3 text-center pt-2">
-                    <a class="btn2" href="https://localhost:44393/emarket/Dashboard" target="_self">Favoriler</a>
+                    <a class="btn2" href="https://localhost:44393/emarket/Favoriler/@Accessor.HttpContext.Session.GetString("KisiID")" target="_self">Favoriler</a>
                 </div>
                 <div class="col-md-1 col-3 text-center pt-2">
                     <a class="btn2" href="https://localhost:44393/emarket/Profil/@Accessor.HttpContext.Session.GetString("KisiID")" target="_self">Profil</a>
@@ -131,8 +133,8 @@
         </div>
     }
 
-    <div class="">
-        <main role="main" class="pb-3">
+    <div class="container-fluid col-md-10">
+        <main role="main">
             @RenderBody()
             <input type="hidden" id="site-url" value="@url" />
             <input type="hidden" id="site-kisiID" value="@Accessor.HttpContext.Session.GetString("KisiID")" />

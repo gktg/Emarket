@@ -1,2 +1,0 @@
-class Select2OptionModel {
-}

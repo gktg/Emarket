@@ -6,17 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using System.IO;
 using System.Data;
 using System.Net.Mail;
-using Microsoft.AspNetCore.Identity;
 using Bogus.DataSets;
-using Bogus;
-using Newtonsoft.Json;
+using e_market.Tools;
 
 namespace e_market.Controllers
 {
@@ -77,31 +71,29 @@ namespace e_market.Controllers
                 _cc.SaveChanges();
             }
 
-            List<int> kategoriler = new List<int>() { 1, 2, 3, 4, 5 };
-            var favoriKategori = new FavoriKategoriVM()
-            {
-                ProfilID = 1,
-                KategoriID = kategoriler
-            };
-            foreach (var item in favoriKategori.KategoriID)
+            List<int> kategoriler = new List<int>() { 1, 2, 3};
+            foreach (var item in kategoriler)
             {
                 var model = new KisiFavoriKategorileri()
                 {
-                    RegisterID = favoriKategori.ProfilID,
+                    RegisterID = 1,
                     KategoriID = item
                 };
 
                 _cc.KisiFavoriKategorileri.Add(model);
                 _cc.SaveChanges();
             }
-
             return View();
         }
         public IActionResult Login()
         {
             return View();
         }
-        public IActionResult DashBoard()
+        public IActionResult Urunler()
+        {
+            return View();
+        }     
+        public IActionResult Favoriler()
         {
             return View();
         }
@@ -154,10 +146,25 @@ namespace e_market.Controllers
 
                 var kisibilgileri = KisiBilgileriGetir(kisiKontrol.ID);
 
-                HttpContext.Session.SetString("KisiID", kisibilgileri.RegisterProfil.ID.ToString());
-                HttpContext.Session.SetString("Ad", kisibilgileri.RegisterProfil.Ad + " " + kisibilgileri.RegisterProfil.Soyad);
-                HttpContext.Session.SetString("Email", kisibilgileri.RegisterProfil.Email);
+                KisiBilgileriVM kVm = new KisiBilgileriVM
+                {
+                    ID = kisiKontrol.ID,
+                    Ad = kisibilgileri.Ad,
+                    Email = kisibilgileri.Email,
+                    Soyad = kisibilgileri.Soyad,
+
+
+                };
+
+                    HttpContext.Session.SetObject("KisiID", kisibilgileri.ID.ToString());
+                HttpContext.Session.SetObject("Ad", kisibilgileri.Ad + " " + kisibilgileri.Soyad);
+                HttpContext.Session.SetObject("Email", kisibilgileri.Email);
+                HttpContext.Session.SetObject("KisiBilgileri", kVm);
+
+                KisiBilgileriVM x = HttpContext.Session.GetObject<KisiBilgileriVM>("KisiBilgileri");
+
                 return true;
+
             }
             else
             {
@@ -216,44 +223,43 @@ namespace e_market.Controllers
         }
 
         [Route("/emarket/KisiBilgileriGetir/{ID}")]
-        public KisiProfilVM KisiBilgileriGetir(int ID)
+        public Register KisiBilgileriGetir(int ID)
         {
             Register register = _cc.Register.Where(x => x.ID == ID).FirstOrDefault();
 
-
-            var model = new KisiProfilVM
-            {
-                RegisterProfil = register,
-            };
-
-            return model;
+            return register;
 
         }
 
-        //[Route("/emarket/KisiBilgileriGuncelle/")]
-        //public Register KisiBilgileriGuncelle(KisiProfilVM model)
-        //{
-        //    var kisiBilgileri = _cc.Register.Where(x => x.ID == model.RegisterProfil.ID).FirstOrDefault();
-
-        //    kisiBilgileri.Ad = model.RegisterProfil.Ad;
-        //    kisiBilgileri.Soyad = model.RegisterProfil.Soyad;
-        //    kisiBilgileri.Email = model.RegisterProfil.Email;
-
-        //    _cc.Register.Update(kisiBilgileri);
-        //    _cc.SaveChanges();
-
-
-        //    return kisiBilgileri;
-        //}
-
         [Route("/emarket/KisiBilgileriGuncelle/")]
-        public Register KisiBilgileriGuncelle(ProfilVm model)
+        [HttpPost]
+        public Register KisiBilgileriGuncelle(ProfilVm Register)
         {
-            var kisiBilgileri = _cc.Register.Find(model.RegisterProfil.ID);
+            var kisiBilgileri = _cc.Register.Find(Register.ID);
 
-            kisiBilgileri.Ad = model.RegisterProfil.Ad;
-            kisiBilgileri.Soyad = model.RegisterProfil.Soyad;
-            kisiBilgileri.Email = model.RegisterProfil.Email;
+
+            kisiBilgileri.Ad = Register.Ad;
+            kisiBilgileri.Soyad = Register.Soyad;
+            kisiBilgileri.Email = Register.Email;
+            kisiBilgileri.KisiHassasBilgiler.DogumTarihi = Register.DogumTarihi;
+            kisiBilgileri.KisiHassasBilgiler.TelefonNumarasi = Register.TelefonNumarasi;
+            kisiBilgileri.KisiHassasBilgiler.Adres = Register.Adres;
+            
+            
+
+            List<KisiFavoriKategorileri> kisiFavoriKategorileriList = new List<KisiFavoriKategorileri>();
+            
+            foreach(var item in Register.KisiFavoriKategorileri)
+            {
+                
+                var kisiFavoriModel = new KisiFavoriKategorileri
+                {
+                    RegisterID = Register.ID,
+                    KategoriID = item,
+                };
+                kisiFavoriKategorileriList.Add(kisiFavoriModel);
+            }
+            kisiBilgileri.KisiFavoriKategorileri = kisiFavoriKategorileriList;
 
             _cc.Register.Update(kisiBilgileri);
             _cc.SaveChanges();
@@ -263,46 +269,84 @@ namespace e_market.Controllers
         }
 
         [Route("/emarket/KategoriGetir/")]
-        public JsonResult KategoriGetir()
+        public List<KategoriVM> KategoriGetir()
         {
-            List<Kategori> kategori = new List<Kategori>();
-            kategori= _cc.Kategori.ToList();
-
-            //List<KategoriVM> kategoriVM = new List<KategoriVM>();
-
-            //foreach(var item in kategori)
-            //{
-            //    var model = new KategoriVM()
-            //    {
-            //        KategoriID = item.ID,
-            //        KategoriAdi = item.KategoriAdi,
-            //    };
-            //    kategoriVM.Add(model);
-
-            //};
+            List<Kategori> kategori = _cc.Kategori.ToList();
 
 
-            return Json(kategori);
+            List<KategoriVM> kategoriVM = new List<KategoriVM>();
+
+            foreach (var item in kategori)
+            {
+                var model = new KategoriVM()
+                {
+                    KategoriID = item.ID,
+                    KategoriAdi = item.KategoriAdi,
+                };
+                kategoriVM.Add(model);
+
+            };
+
+
+            return kategoriVM;
         }
 
-        [Route("/emarket/FavoriKategorileriKaydet/")]
-        public bool FavoriKategorileriKaydet(FavoriKategoriVM favoriKategori)
+        [Route("/emarket/UrunGetir/")]
+        public List<UrunVM> UrunGetir()
         {
-            foreach (var item in favoriKategori.KategoriID)
-            {
-                var model = new KisiFavoriKategorileri()
-                {
-                    RegisterID = favoriKategori.ProfilID,
-                    KategoriID = item
-                };
+            List<Urun> urun = _cc.Urun.ToList();
 
-                _cc.KisiFavoriKategorileri.Add(model);
-                _cc.SaveChanges();
+            List<UrunVM> urunler = new List<UrunVM>();
+
+            foreach (var item in urun)
+            {
+                var model = new UrunVM()
+                {
+                    ID = item.ID,
+                    KategoriID = item.KategoriID,
+                    UrunAdi = item.UrunAdi,
+                    UrunFiyati = item.UrunFiyati,
+                    UrunMedya = item.UrunMedya,
+                    Stok = item.Stok,
+                };
+                urunler.Add(model);
+
             }
 
-            return true;
-
+            return urunler;
         }
+
+        [Route("/emarket/FavoriUrunGetir/{ID}")]
+        public List<UrunVM> FavoriUrunGetir(int ID)
+        {
+            List<KisiFavoriKategorileri> favoriKategorileri = _cc.KisiFavoriKategorileri.Where(x => x.RegisterID == ID).ToList();
+
+            List<Urun> urun = _cc.Urun.ToList();
+            List<UrunVM> favoriUrunler = new List<UrunVM>();
+
+            foreach (var item in favoriKategorileri)
+            {
+                List<Urun> x = urun.Where(x => x.KategoriID == item.KategoriID).ToList();
+                foreach(var item2 in x)
+                {
+                    var model = new UrunVM()
+                    {
+                        ID = item2.ID,
+                        KategoriID = item2.KategoriID,
+                        UrunAdi = item2.UrunAdi,
+                        UrunFiyati = item2.UrunFiyati,
+                        UrunMedya = item2.UrunMedya,
+                        Stok = item2.Stok,
+                    };
+                    favoriUrunler.Add(model);
+                }
+            }
+
+
+
+            return favoriUrunler;
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

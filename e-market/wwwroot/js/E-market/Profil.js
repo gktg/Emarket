@@ -1,9 +1,9 @@
 ﻿var KisiID;
+var Register = {}
 var GuncelleModel = {}
-var RegisterProfil2 = {}
-var KisiHassasBilgilerProfil2 = {}
 var FavoriKategoriModel = {}
 var FavoriKategoriler = []
+var FavoriKategorilerInt = []
 
 
 $(document).ready(function () {
@@ -54,37 +54,6 @@ function KategoriGetir() {
     })
 }
 
-function KategoriKaydet() {
-    FavoriKategoriler = $("#drdKategori").select2("val");
-    FavoriKategoriModel["ProfilID"] = KisiID;
-    FavoriKategoriModel["KategoriID"] = FavoriKategoriler;
-    $.ajax({
-        type: "Post",
-        url: "/emarket/FavoriKategorileriKaydet/",
-        dataType: "json",
-        data: FavoriKategoriModel,
-        async: false,
-        success: function (result) {
-            console.log(result)
-            if (result == true) {
-                alertim.toast(siteLang.Kaydet, alertim.types.success)
-
-            }
-            else {
-                alertim.toast(siteLang.Hata, alertim.types.warning)
-
-            }
-
-
-        },
-        error: function (e) {
-
-            console.log(e);
-        }
-    })
-}
-
-
 function KisiBilgileriGetir() {
     $.ajax({
 
@@ -94,8 +63,7 @@ function KisiBilgileriGetir() {
         data: null,
         async: false,
         success: function (result) {
-            if (result.registerProfil.id == KisiID) {
-                console.log(result)
+            if (result.id == KisiID) {
                 KisiModel = result;
                 KisiBilgileriniSayfayaBas()
             }
@@ -116,14 +84,30 @@ function KisiBilgileriGetir() {
 
 function KisiBilgileriniSayfayaBas() {
 
-    $("#txtAd").val(KisiModel.registerProfil.ad)
-    $("#txtSoyad").val(KisiModel.registerProfil.soyad)
-    $("#txtEmail").val(KisiModel.registerProfil.email)
-    $("#txtDogumTarihi").val(CsharpDateToStringDateyyyymmdd(KisiModel.registerProfil.kisiHassasBilgiler.dogumTarihi)).change();
-    $("#txtTelefon").val(KisiModel.registerProfil.kisiHassasBilgiler.telefonNumarasi)
-    $("#txtAdres").val(KisiModel.registerProfil.kisiHassasBilgiler.adres)
+    $("#txtAd").val(KisiModel.ad)
+    $("#txtSoyad").val(KisiModel.soyad)
+    $("#txtEmail").val(KisiModel.email)
+    $("#txtDogumTarihi").val(CsharpDateToStringDateyyyymmdd(KisiModel.kisiHassasBilgiler.dogumTarihi)).change();
+    $("#txtTelefon").val(KisiModel.kisiHassasBilgiler.telefonNumarasi)
+    $("#txtAdres").val(KisiModel.kisiHassasBilgiler.adres)
 
-    $.each(KisiModel.registerProfil.kisiFavoriKategorileri.$values, function (x, y) {
+    $.each(KisiModel.kisiFavoriKategorileri.$values, function (x, y) {
+
+        $("#drdKategori option[value='" + y.kategoriID + "']").prop("selected", true).change();
+
+    })
+}
+
+function GuncellenmisKisiBilgileriniSayfayaBas() {
+
+    $("#txtAd").val(KisiModel.ad)
+    $("#txtSoyad").val(KisiModel.soyad)
+    $("#txtEmail").val(KisiModel.email)
+    $("#txtDogumTarihi").val(CsharpDateToStringDateyyyymmdd(KisiModel.kisiHassasBilgiler.dogumTarihi)).change();
+    $("#txtTelefon").val(KisiModel.kisiHassasBilgiler.telefonNumarasi)
+    $("#txtAdres").val(KisiModel.kisiHassasBilgiler.adres)
+
+    $.each(KisiModel.kisiFavoriKategorileri.$values, function (x, y) {
 
         $("#drdKategori option[value='" + y.kategoriID + "']").prop("selected", true).change();
 
@@ -132,39 +116,37 @@ function KisiBilgileriniSayfayaBas() {
 
 function GuncelKisiBilgileriModeleBas() {
 
-    RegisterProfil["ID"] = KisiID;
-    RegisterProfil["Ad"] = $("#txtAd").val()
-    RegisterProfil["Soyad"] = $("#txtSoyad").val()
-    RegisterProfil["Email"] = $("#txtEmail").val()
+    Register["ID"] = KisiID;
+    Register["Ad"] = $("#txtAd").val()
+    Register["Soyad"] = $("#txtSoyad").val()
+    Register["Email"] = $("#txtEmail").val()
+    Register["DogumTarihi"] = $("#txtDogumTarihi").val()
+    Register["TelefonNumarasi"] = $("#txtTelefon").val()
+    Register["Adres"] = $("#txtAdres").val()
+    Register["KisiFavoriKategorileri"] = $("#drdKategori").val().map(Number);
 
-    KisiHassasBilgilerProfil["ID"] = KisiID;
-    KisiHassasBilgilerProfil["DogumTarihi"] = $("#txtDogumTarihi").val()
-    KisiHassasBilgilerProfil["TelefonNumarasi"] = $("#txtTelefon").val()
-    KisiHassasBilgilerProfil["Adres"] = $("#txtAdres").val()
-
-    GuncelleModel["RegisterProfil"] = RegisterProfil;
-    GuncelleModel["KisiHassasBilgilerProfil"] = KisiHassasBilgilerProfil;
-    console.log(GuncelleModel)
+    console.log(Register)
 }
 
 function KisiBilgileriGuncelle() {
 
     GuncelKisiBilgileriModeleBas();
-    model = GuncelleModel;
-    console.log(model)
 
     $.ajax({
 
-        type: "Get",
+        type: "Post",
         url: "/emarket/KisiBilgileriGuncelle/",
         dataType: "json",
-        data: model,
+        data: Register,
         async: false,
         success: function (result) {
-            if (result.tabloID == KisiID) {
+            console.log(result)
+            if (result.id == KisiID) {
 
                 KisiModel = result;
-                KisiBilgileriniSayfayaBas()
+                GuncellenmisKisiBilgileriniSayfayaBas()
+                alertim.toast(siteLang.Kaydet, alertim.types.success)
+
             }
             else {
                 alertim.toast(siteLang.Hata, alertim.types.warning)
