@@ -28,27 +28,6 @@ namespace e_market.Controllers
 
         public IActionResult Register()
         {
-            //var kisi = new Register();
-            //kisi.Ad = "gktg";
-            //kisi.Soyad = "trkn";
-            //kisi.Email = "gktg@mail.com";
-            //kisi.Sifre = "awd.12345";
-
-            //_cc.Register.Add(kisi);
-            //_cc.SaveChanges();
-
-            //var hassas = new KisiHassasBilgiler();
-
-            //hassas.Adres = "adres";
-            //hassas.ID = kisi.ID;
-            //hassas.TelefonNumarası = "05324864832";
-            //_cc.KisiHassasBilgiler.Add(hassas);
-            //_cc.SaveChanges();
-
-
-            //kisi.KisiHassasBilgiler.Adres = "yeni adres";
-            //_cc.Update(kisi);
-            //_cc.SaveChanges();
 
             var a = new Commerce("tr").Categories(10);
             for (int i = 5; i < 10; i++)
@@ -60,10 +39,12 @@ namespace e_market.Controllers
 
                 for (int j = 5; j < 20; j++)
                 {
+                    string price = new Commerce("tr").Price(1, 11000, 2, "TL");
+                    string b = price.Substring(2, price.Length - 2) + " " + "TL";
                     Urun u = new Urun();
                     u.UrunAdi = new Commerce("tr").ProductName();
                     u.Stok = j * i;
-                    u.UrunFiyati = new Commerce("tr").Price(1, 11000, 2, "TL");
+                    u.UrunFiyati = b;
                     u.UrunMedya = new Images("tr").PicsumUrl();
                     kategorim.Urun.Add(u);
                 }
@@ -71,7 +52,7 @@ namespace e_market.Controllers
                 _cc.SaveChanges();
             }
 
-            List<int> kategoriler = new List<int>() { 1, 2, 3};
+            List<int> kategoriler = new List<int>() { 1, 2, 3 };
             foreach (var item in kategoriler)
             {
                 var model = new KisiFavoriKategorileri()
@@ -92,7 +73,7 @@ namespace e_market.Controllers
         public IActionResult Urunler()
         {
             return View();
-        }     
+        }
         public IActionResult Favoriler()
         {
             return View();
@@ -146,22 +127,10 @@ namespace e_market.Controllers
 
                 var kisibilgileri = KisiBilgileriGetir(kisiKontrol.ID);
 
-                KisiBilgileriVM kVm = new KisiBilgileriVM
-                {
-                    ID = kisiKontrol.ID,
-                    Ad = kisibilgileri.Ad,
-                    Email = kisibilgileri.Email,
-                    Soyad = kisibilgileri.Soyad,
 
-
-                };
-
-                    HttpContext.Session.SetObject("KisiID", kisibilgileri.ID.ToString());
-                HttpContext.Session.SetObject("Ad", kisibilgileri.Ad + " " + kisibilgileri.Soyad);
-                HttpContext.Session.SetObject("Email", kisibilgileri.Email);
-                HttpContext.Session.SetObject("KisiBilgileri", kVm);
-
-                KisiBilgileriVM x = HttpContext.Session.GetObject<KisiBilgileriVM>("KisiBilgileri");
+                HttpContext.Session.SetString("KisiID", kisibilgileri.ID.ToString());
+                HttpContext.Session.SetString("Ad", kisibilgileri.Ad + " " + kisibilgileri.Soyad);
+                HttpContext.Session.SetString("Email", kisibilgileri.Email);
 
                 return true;
 
@@ -189,37 +158,20 @@ namespace e_market.Controllers
         [Route("/emarket/MailGonder/")]
         public bool MailGonder(string Mail)
         {
-            try
-            {
-                var uye = _cc.Register.SingleOrDefault(x => x.Email == Mail);
-
-                MailMessage eposta = new MailMessage();
-
-                eposta.From = new MailAddress("antigs1998@hotmail.com");
-                eposta.To.Add(Mail);
-                eposta.Subject = "Şifre Sıfırlama";
-                eposta.Body = $"<p>Sayın, {uye.Ad} {uye.Soyad}</p>" +
-                    $"<a href='https://localhost:44393/emarket/ResetPass/{uye.ID}'>Şifre Sıfırla</a>";
-
-                eposta.IsBodyHtml = true;
-                using (SmtpClient smtp = new SmtpClient())
-                {
-                    smtp.Credentials = new System.Net.NetworkCredential("antigs1998@hotmail.com", "1998gktg1998");
-                    smtp.Host = "smtp-mail.outlook.com";
-                    smtp.EnableSsl = true;
-                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    smtp.Port = 587;
-
-                    smtp.Send(eposta);
-                    return true;
-                }
+            Register uye = new Register();
 
 
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
+            MailSender x = new MailSender();
+
+            x.MailGonder(uye);
+
+
+            //*****************
+
+            MailSenderStatic.MailGonderStatic(uye);
+
+            return false;
+
         }
 
         [Route("/emarket/KisiBilgileriGetir/{ID}")]
@@ -244,14 +196,14 @@ namespace e_market.Controllers
             kisiBilgileri.KisiHassasBilgiler.DogumTarihi = Register.DogumTarihi;
             kisiBilgileri.KisiHassasBilgiler.TelefonNumarasi = Register.TelefonNumarasi;
             kisiBilgileri.KisiHassasBilgiler.Adres = Register.Adres;
-            
-            
+
+
 
             List<KisiFavoriKategorileri> kisiFavoriKategorileriList = new List<KisiFavoriKategorileri>();
-            
-            foreach(var item in Register.KisiFavoriKategorileri)
+
+            foreach (var item in Register.KisiFavoriKategorileri)
             {
-                
+
                 var kisiFavoriModel = new KisiFavoriKategorileri
                 {
                     RegisterID = Register.ID,
@@ -327,7 +279,7 @@ namespace e_market.Controllers
             foreach (var item in favoriKategorileri)
             {
                 List<Urun> x = urun.Where(x => x.KategoriID == item.KategoriID).ToList();
-                foreach(var item2 in x)
+                foreach (var item2 in x)
                 {
                     var model = new UrunVM()
                     {
@@ -347,12 +299,35 @@ namespace e_market.Controllers
             return favoriUrunler;
         }
 
+        public List<UrunVM> SepeteUrunEkle(int urunID)
+        {
+            var eklenecekUrun = _cc.Urun.Find(urunID);
+
+            var eklenecekUrunModel = new UrunVM()
+            {
+                ID = eklenecekUrun.ID,
+                KategoriID = eklenecekUrun.KategoriID,
+                UrunAdi = eklenecekUrun.UrunAdi,
+                UrunFiyati = eklenecekUrun.UrunFiyati,
+                UrunMedya = eklenecekUrun.UrunMedya,
+                Stok = eklenecekUrun.Stok,
+            };
+
+            List<UrunVM> eklenmisUrunler = new List<UrunVM>();
+
+            eklenmisUrunler.Add(eklenecekUrunModel);
+
+
+            HttpContext.Session.SetObject("Sepet", eklenmisUrunler);
+
+            return eklenmisUrunler;
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
 
 
     }

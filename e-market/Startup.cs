@@ -38,9 +38,9 @@ namespace e_market
             });
 
             
-            services.AddSession(x =>
+            services.AddSession(opt =>
             {
-                x.IdleTimeout = TimeSpan.FromMinutes(20);
+                opt.IdleTimeout = TimeSpan.FromMinutes(30);
 
 
             });

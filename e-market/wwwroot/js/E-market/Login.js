@@ -35,3 +35,9 @@ function Login() {
         }
     });
 }
+
+$(".container-fluid").on('keydown', 'input', function (e) {
+    if (e.keyCode === 13) {
+        Login()
+    }
+});
