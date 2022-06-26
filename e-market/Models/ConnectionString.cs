@@ -54,7 +54,7 @@ namespace e_market.Models
             {
                 Ad = "Servet Göktuğ",
                 Soyad = "Türkan",
-                Email = "goktug.turkan5@gmail.com",
+                Email = "g@mail.com",
                 Sifre = "awd.123456",
                 ID = 1,
 

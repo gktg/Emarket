@@ -1,5 +1,22 @@
 ﻿var LoginVm = {};
 
+$(document).ready(function () {
+
+    var count = 2;
+    $(".fa-lock").on("click", function () {
+        count++;
+        if (count % 2 === 0) {
+            $("#sifre").attr("type", "password");
+
+        }
+        else if (count % 2 === 1) {
+
+            $("#sifre").attr("type", "text");
+        }
+    })
+
+})
+
 function Login() {
     LoginVm = {}
 
@@ -41,3 +58,5 @@ $(".container-fluid").on('keydown', 'input', function (e) {
         Login()
     }
 });
+
+

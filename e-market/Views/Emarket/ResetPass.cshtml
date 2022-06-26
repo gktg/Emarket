@@ -1,41 +1,43 @@
-﻿
-<script src="~/js/E-market/ResetPass.js"></script>
+﻿<script src="~/js/E-market/ResetPass.js"></script>
 
 
-<div class="login-box">
-    <div class="card">
-        <div class="card-body login-card-body">
-            <p class="login-box-msg">Yeni şifrenizden sadece bir adım uzaktasınız, şifrenizi şimdi kurtarın.</p>
-            <div class="input-group mb-3">
-                <input type="password" id="sifre" class="form-control" onchange="SifreKarakterKontrol()" placeholder="Şifreniz">
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fas fa-lock"></span>
+<div class="login-page" style="background-color:burlywood">
+
+    <div class="login-box">
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Yeni şifrenizden sadece bir adım uzaktasınız, şifrenizi şimdi kurtarın.</p>
+                <div class="input-group mb-3">
+                    <input type="password" id="sifre" class="form-control" onchange="SifreKarakterKontrol()" placeholder="Şifreniz">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <label id="sifreMesaj" style="display:none;color:red;font-size:smaller"></label>
+                <label id="sifreMesaj" style="display:none;color:red;font-size:smaller"></label>
 
-            <div class="input-group mb-3">
-                <input type="password" id="sifreTekrar" class="form-control" placeholder="Şifrenizi Onaylayın">
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fas fa-lock"></span>
+                <div class="input-group mb-3">
+                    <input type="password" id="sifreTekrar" class="form-control" placeholder="Şifrenizi Onaylayın">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <label id="sifreMesaj2" style="display:none;color:red;font-size:smaller">Şifreleriniz eşleşmiyor</label>
+                <label id="sifreMesaj2" style="display:none;color:red;font-size:smaller">Şifreleriniz eşleşmiyor</label>
 
-            <div class="row">
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary btn-block" onclick="ResetPass()">Şifrenizi Değiştirin</button>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-block" onclick="ResetPass()">Şifrenizi Değiştirin</button>
+                    </div>
+
                 </div>
-
+                <p class="mt-3 mb-1">
+                    <a href="https://localhost:44393/emarket/Login">Giriş</a>
+                </p>
             </div>
-            <p class="mt-3 mb-1">
-                <a href="https://localhost:44393/emarket/Login">Giriş</a>
-            </p>
+
         </div>
-
     </div>
 </div>

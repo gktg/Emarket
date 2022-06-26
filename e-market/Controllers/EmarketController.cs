@@ -23,6 +23,7 @@ namespace e_market.Controllers
         public EmarketController(ConnectionString cc, ILogger<EmarketController> logger)
         {
             _cc = cc;
+
             _logger = logger;
         }
 
@@ -39,7 +40,7 @@ namespace e_market.Controllers
 
                 for (int j = 5; j < 20; j++)
                 {
-                    string price = new Commerce("tr").Price(1, 11000, 2, "TL");
+                    string price = new Commerce("tr").Price(1, 5000, 2, "TL");
                     string b = price.Substring(2, price.Length - 2) + " " + "TL";
                     Urun u = new Urun();
                     u.UrunAdi = new Commerce("tr").ProductName();
@@ -72,6 +73,7 @@ namespace e_market.Controllers
         }
         public IActionResult Urunler()
         {
+
             return View();
         }
         public IActionResult Favoriler()
@@ -197,21 +199,26 @@ namespace e_market.Controllers
             kisiBilgileri.KisiHassasBilgiler.TelefonNumarasi = Register.TelefonNumarasi;
             kisiBilgileri.KisiHassasBilgiler.Adres = Register.Adres;
 
+            foreach (var item in kisiBilgileri.KisiFavoriKategorileri)
+            {
 
+                _cc.KisiFavoriKategorileri.Remove(item);
+                _cc.SaveChanges();
 
-            List<KisiFavoriKategorileri> kisiFavoriKategorileriList = new List<KisiFavoriKategorileri>();
+            }
+
 
             foreach (var item in Register.KisiFavoriKategorileri)
             {
-
-                var kisiFavoriModel = new KisiFavoriKategorileri
+                var kisiFavorileri = new KisiFavoriKategorileri()
                 {
                     RegisterID = Register.ID,
-                    KategoriID = item,
+                    KategoriID = item
                 };
-                kisiFavoriKategorileriList.Add(kisiFavoriModel);
+                _cc.KisiFavoriKategorileri.Add(kisiFavorileri);
+                _cc.SaveChanges();
             }
-            kisiBilgileri.KisiFavoriKategorileri = kisiFavoriKategorileriList;
+
 
             _cc.Register.Update(kisiBilgileri);
             _cc.SaveChanges();
@@ -256,6 +263,7 @@ namespace e_market.Controllers
                 {
                     ID = item.ID,
                     KategoriID = item.KategoriID,
+                    KategoriAdi = item.Kategori.KategoriAdi,
                     UrunAdi = item.UrunAdi,
                     UrunFiyati = item.UrunFiyati,
                     UrunMedya = item.UrunMedya,
@@ -266,6 +274,72 @@ namespace e_market.Controllers
             }
 
             return urunler;
+        }
+
+        [HttpPost]
+        [Route("/emarket/FiltreliUrunGetir/")]
+        public List<UrunVM> FiltreliUrunGetir(List<int> idList)
+        {
+            List<Urun> urun = _cc.Urun.ToList();
+
+            List<Urun> filtreliUrunler = new List<Urun>();
+
+            if (idList.Count != 0)
+            {
+                foreach (var item in idList)
+                {
+                    for (var i = 0; i < urun.Count; i++)
+                    {
+                        if (urun[i].KategoriID == item)
+                        {
+                            filtreliUrunler.Add(urun[i]);
+                        }
+                    }
+                }
+                List<UrunVM> urunler = new List<UrunVM>();
+
+                foreach (var item in filtreliUrunler)
+                {
+                    var model = new UrunVM()
+                    {
+                        ID = item.ID,
+                        KategoriID = item.KategoriID,
+                        KategoriAdi = item.Kategori.KategoriAdi,
+                        UrunAdi = item.UrunAdi,
+                        UrunFiyati = item.UrunFiyati,
+                        UrunMedya = item.UrunMedya,
+                        Stok = item.Stok,
+                    };
+                    urunler.Add(model);
+
+                }
+                return urunler;
+
+            }
+            else
+            {
+                List<UrunVM> urunler = new List<UrunVM>();
+
+                foreach (var item in urun)
+                {
+                    var model = new UrunVM()
+                    {
+                        ID = item.ID,
+                        KategoriID = item.KategoriID,
+                        KategoriAdi = item.Kategori.KategoriAdi,
+                        UrunAdi = item.UrunAdi,
+                        UrunFiyati = item.UrunFiyati,
+                        UrunMedya = item.UrunMedya,
+                        Stok = item.Stok,
+                    };
+                    urunler.Add(model);
+
+                }
+                return urunler;
+
+            }
+
+
         }
 
         [Route("/emarket/FavoriUrunGetir/{ID}")]
@@ -299,28 +373,47 @@ namespace e_market.Controllers
             return favoriUrunler;
         }
 
+        [Route("/emarket/SepeteUrunEkle/{urunID}")]
         public List<UrunVM> SepeteUrunEkle(int urunID)
         {
             var eklenecekUrun = _cc.Urun.Find(urunID);
+
+            List<UrunVM> eskiSepet = HttpContext.Session.GetObject<List<UrunVM>>("Sepet");
+
+            List<UrunVM> eklenmisUrunler = new List<UrunVM>();
 
             var eklenecekUrunModel = new UrunVM()
             {
                 ID = eklenecekUrun.ID,
                 KategoriID = eklenecekUrun.KategoriID,
+                KategoriAdi = eklenecekUrun.Kategori.KategoriAdi,
                 UrunAdi = eklenecekUrun.UrunAdi,
                 UrunFiyati = eklenecekUrun.UrunFiyati,
                 UrunMedya = eklenecekUrun.UrunMedya,
                 Stok = eklenecekUrun.Stok,
             };
 
-            List<UrunVM> eklenmisUrunler = new List<UrunVM>();
-
             eklenmisUrunler.Add(eklenecekUrunModel);
-
+            if (eskiSepet != null)
+            {
+                foreach (var item in eskiSepet)
+                {
+                    eklenmisUrunler.Add(item);
+                }
+            }
 
             HttpContext.Session.SetObject("Sepet", eklenmisUrunler);
 
-            return eklenmisUrunler;
+            return HttpContext.Session.GetObject<List<UrunVM>>("Sepet");
+
+        }
+
+        [Route("/emarket/SepetiGetir/")]
+        public List<UrunVM> SepetiGetir()
+        {
+            var x = HttpContext.Session.GetObject<List<UrunVM>>("Sepet");
+            return x;
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

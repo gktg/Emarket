@@ -1,0 +1,13 @@
+﻿.btnSepet:hover {
+    color: #Ffffff;
+    background-color: #00BFFF;
+}
+
+.btnSepet:focus {
+    color: white;
+    background-color: #00BFFF;
+}
+
+input[type="checkbox"]:disabled{
+    color: #00BFFF;
+}
