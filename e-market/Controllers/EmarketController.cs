@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using System.Data;
-using System.Net.Mail;
 using Bogus.DataSets;
 using e_market.Tools;
 
@@ -129,10 +128,10 @@ namespace e_market.Controllers
 
                 var kisibilgileri = KisiBilgileriGetir(kisiKontrol.ID);
 
-
                 HttpContext.Session.SetString("KisiID", kisibilgileri.ID.ToString());
                 HttpContext.Session.SetString("Ad", kisibilgileri.Ad + " " + kisibilgileri.Soyad);
                 HttpContext.Session.SetString("Email", kisibilgileri.Email);
+
 
                 return true;
 
@@ -360,6 +359,7 @@ namespace e_market.Controllers
                         ID = item2.ID,
                         KategoriID = item2.KategoriID,
                         UrunAdi = item2.UrunAdi,
+                        KategoriAdi = item2.Kategori.KategoriAdi,
                         UrunFiyati = item2.UrunFiyati,
                         UrunMedya = item2.UrunMedya,
                         Stok = item2.Stok,
@@ -376,7 +376,7 @@ namespace e_market.Controllers
         [Route("/emarket/SepeteUrunEkle/{urunID}")]
         public List<UrunVM> SepeteUrunEkle(int urunID)
         {
-            var eklenecekUrun = _cc.Urun.Find(urunID);
+            Urun eklenecekUrun = _cc.Urun.Find(urunID);
 
             List<UrunVM> eskiSepet = HttpContext.Session.GetObject<List<UrunVM>>("Sepet");
 
@@ -391,29 +391,65 @@ namespace e_market.Controllers
                 UrunFiyati = eklenecekUrun.UrunFiyati,
                 UrunMedya = eklenecekUrun.UrunMedya,
                 Stok = eklenecekUrun.Stok,
+                Miktar = 1,
             };
 
             eklenmisUrunler.Add(eklenecekUrunModel);
+
             if (eskiSepet != null)
             {
                 foreach (var item in eskiSepet)
                 {
+                    if (item.ID == urunID)
+                    {
+                        item.Miktar++;
+                        var x = eklenmisUrunler.FirstOrDefault(x => x.ID == urunID);
+                        eklenmisUrunler.Remove(x);
+                    }
+
                     eklenmisUrunler.Add(item);
+
+
                 }
             }
 
+
             HttpContext.Session.SetObject("Sepet", eklenmisUrunler);
 
-            return HttpContext.Session.GetObject<List<UrunVM>>("Sepet");
+            return SepetiGetir();
 
         }
 
         [Route("/emarket/SepetiGetir/")]
         public List<UrunVM> SepetiGetir()
         {
-            var x = HttpContext.Session.GetObject<List<UrunVM>>("Sepet");
-            return x;
+            List<UrunVM> sepet = HttpContext.Session.GetObject<List<UrunVM>>("Sepet");
+            return sepet;
 
+        }
+
+        [Route("/emarket/SepettenUrunSil/{urunID}")]
+        public List<UrunVM> SepettenUrunSil(int urunID)
+        {
+            List<UrunVM> sepet = HttpContext.Session.GetObject<List<UrunVM>>("Sepet");
+
+            UrunVM silinecek = sepet.FirstOrDefault(x => x.ID == urunID);
+
+            if (silinecek.Miktar > 1)
+            {
+                silinecek.Miktar--;
+                HttpContext.Session.SetObject("Sepet", sepet);
+
+            }
+            else
+            {
+                sepet.Remove(silinecek);
+                HttpContext.Session.SetObject("Sepet", sepet);
+            }
+
+
+
+            return SepetiGetir();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

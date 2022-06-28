@@ -5,7 +5,6 @@
 @using Microsoft.Extensions.Configuration;
 @using System.Globalization;
 @using System.Threading;
-@using Microsoft.AspNetCore.Http.Extensions;
 @using e_market.Controllers;
 @using e_market.Models;
 @using e_market.Models.ViewModels;
@@ -24,6 +23,7 @@
 @using e_market.Tools;
 
 
+
 @inject IOptions<RequestLocalizationOptions> LocalizationOptions
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env;
 @inject IHttpContextAccessor Accessor
@@ -37,7 +37,8 @@
     {
         string[] url2 = path.Split("/");
         url = url2[2];
-    }
+    };
+    var x = Accessor.HttpContext.Session.GetString("KisiID");
 }
 
 
@@ -115,16 +116,38 @@
                 <div class="col-md-1 col-3 text-center pt-2">
                     <a class="btn2" href="https://localhost:44393/emarket/Urunler" target="_self">ÜRÜNLER</a>
                 </div>
-                <div class="col-md-1 col-3 text-center pt-2">
-                    <a class="btn2" href="https://localhost:44393/emarket/Favoriler/@Accessor.HttpContext.Session.GetString("KisiID")" target="_self">FAVORİLER</a>
+                <div class="col-md-2 col-3 text-center pt-2">
+                    <a class="btn2" href="https://localhost:44393/emarket/Favoriler/@Accessor.HttpContext.Session.GetString("KisiID")" target="_self">FAVORİ KATEGORİLER</a>
                 </div>
                 <div class="col-md-1 col-3 text-center pt-2">
                     <a class="btn2" href="https://localhost:44393/emarket/Profil/@Accessor.HttpContext.Session.GetString("KisiID")" target="_self">PROFİL</a>
                 </div>
-                <div class="col-md-8 col-3 pt-2 text-right">
+                <div class="col-md-7 col-3 pt-2 text-right">
                     <a id="kullaniciAdi" href="https://localhost:44393/emarket/Profil/@Accessor.HttpContext.Session.GetString("KisiID")" target="_self" class="Lbl btn2">@Accessor.HttpContext.Session.GetString("Ad")</a>
                 </div>
-                <div class="col-md-1 text-center pt-1" id="sepetDiv">
+                <div class="col-md-1 text-center pt-1">
+                    <div class="dropdown">
+                        <button type="button" class="btn" data-toggle="dropdown">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="badge badge-pill badge-danger"></span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div id="sepetDiv">
+                                <div class="row total-header-section">
+                                    <div class="col-lg-6 col-sm-6 col-6">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="badge badge-pill badge-danger"></span>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
+                                        <p>Total: <span id="total" class="text-info"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                                    <button class="btn btn-primary btn-block">Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
