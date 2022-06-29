@@ -1,6 +1,8 @@
 ﻿using e_market.Models;
 using e_market.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using System.Data;
 using Bogus.DataSets;
 using e_market.Tools;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace e_market.Controllers
 {
@@ -92,6 +95,19 @@ namespace e_market.Controllers
             return View();
         }
 
+        public bool Logout()
+        {
+            HttpContext.Session.Remove("KisiID");
+            HttpContext.Session.Remove("Ad");
+            HttpContext.Session.Remove("Email");
+            if (HttpContext.Session.GetObject<List<UrunVM>>("Sepet") != null)
+            {
+                HttpContext.Session.Remove("Sepet");
+
+            }
+            return true ;
+
+        }
 
         [Route("/emarket/RegisterVm/")]
         public bool RegisterVm(Register model)
@@ -267,10 +283,27 @@ namespace e_market.Controllers
                     UrunFiyati = item.UrunFiyati,
                     UrunMedya = item.UrunMedya,
                     Stok = item.Stok,
+                    
                 };
+                if(item.KisiFavoriUrunleri.Count > 0)
+                {
+                    if (item.KisiFavoriUrunleri.ToList()[0].RegisterID == Convert.ToInt32(HttpContext.Session.GetString("KisiID")))
+                    {
+                        model.FavoriMi = true;
+                    }
+                    else
+                    {
+                        model.FavoriMi = false;
+
+                    }
+                }
+
                 urunler.Add(model);
 
+
             }
+
+
 
             return urunler;
         }
@@ -450,6 +483,25 @@ namespace e_market.Controllers
 
 
             return SepetiGetir();
+        }
+
+
+        [Route("/emarket/FavoriUrunEkle/{urunID}")]
+        [HttpPost]
+        public KisiFavoriUrunleri FavoriUrunEkle(int urunID)
+        {
+            var urun = _cc.Urun.Find(urunID);
+
+            var model = new KisiFavoriUrunleri()
+            {
+                RegisterID = Convert.ToInt16(HttpContext.Session.GetString("KisiID")),
+                UrunID = urun.ID
+            };
+
+            _cc.KisiFavoriUrunleri.Add(model);
+            _cc.SaveChanges();
+
+            return model;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

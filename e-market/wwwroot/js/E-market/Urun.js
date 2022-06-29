@@ -147,21 +147,30 @@ function SepeteUrunEkle(urunID) {
 }
 
 function UrunFavorile(urunID) {
+    $.ajax({
+        type: "Post",
+        url: "/emarket/FavoriUrunEkle/" + urunID,
+        dataType: "json",
+        data: null,
+        success: function (result) {
+            if (result != null) {
+                $("#btnFavori" + urunID).attr("src", "/images/heartred.png")
 
+            }
+        },
+        error: function (e) {
 
-
-    $("#btnFavori" + urunID).attr("src", "/images/heartred.png")
-
-
-
+            console.log(e);
+        }
+    })
 
 }
 
 
 function UrunTekrarli() {
     for (var x = 0; x < urunler.length; x++) {
-
-        var html = `    <div class="col-md-3" id="urunDiv${urunler[x].id}">
+        if (!urunler[x].favoriMi) {
+            var html = `    <div class="col-md-3" id="urunDiv${urunler[x].id}">
                             <div class="card">
                                 <div class="card-body">
                                     <img src="${urunler[x].urunMedya}" height="150" width="210" />
@@ -177,7 +186,28 @@ function UrunTekrarli() {
                                 </div>
                             </div>
                         </div>`;
-        $("#urunTekrarli").append(html);
+            $("#urunTekrarli").append(html);
+        }
+        else {
+            var html = `    <div class="col-md-3" id="urunDiv${urunler[x].id}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="${urunler[x].urunMedya}" height="150" width="210" />
+                                    <p id="urunAdi${x}">${urunler[x].urunAdi}</p>
+                                    <p id="urunFiyati${x}">${urunler[x].urunFiyati}</p>
+                                    <p id="urunKategori${x}" data-kategoriid="${urunler[x].kategoriID}">${urunler[x].kategoriAdi}</p>
+                                    <p id="stok${x}">Stok: ${urunler[x].stok}
+<button style="margin-left: 97px;" class="btn" onclick="UrunFavorile(${urunler[x].id})">
+                                        <img id="btnFavori${urunler[x].id}" src="/images/heartred.png" white="25" height="25"/>
+</button>
+                                    </p>
+                                    <button class="form-control btnSepet" id="${urunler[x].id}" onclick="SepeteUrunEkle(this.id)">Sepete Ekle</button>
+                                </div>
+                            </div>
+                        </div>`;
+            $("#urunTekrarli").append(html);
+        }
+
     }
 }
 

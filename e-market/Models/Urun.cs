@@ -1,4 +1,7 @@
-﻿namespace e_market.Models
+﻿using System.Collections.Generic;
+
+
+namespace e_market.Models
 {
     public class Urun
     {
@@ -11,5 +14,7 @@
         
         public string UrunMedya { get; set; }
         public virtual Kategori Kategori { get; set; }
+        public virtual ICollection<KisiFavoriUrunleri> KisiFavoriUrunleri { get; set; }
+
     }
 }

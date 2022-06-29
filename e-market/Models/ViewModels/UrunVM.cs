@@ -11,5 +11,7 @@
         public string UrunMedya { get; set; }
 
         public int? Miktar { get; set; }
+
+        public bool? FavoriMi { get; set; }
     }
 }

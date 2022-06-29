@@ -25,13 +25,17 @@ namespace e_market.Models
         public DbSet<Urun> Urun { get; set; }
         public DbSet<Kategori> Kategori { get; set; }
         public DbSet<KisiFavoriKategorileri> KisiFavoriKategorileri { get; set; }
+        public DbSet<KisiFavoriUrunleri> KisiFavoriUrunleri { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<KisiHassasBilgiler>().HasOne(p => p.Register).WithOne(s => s.KisiHassasBilgiler).HasForeignKey<Register>(x => x.ID);
+            modelBuilder.Entity<KisiHassasBilgiler>()
+                .HasOne(p => p.Register)
+                .WithOne(s => s.KisiHassasBilgiler)
+                .HasForeignKey<Register>(x => x.ID);
 
             modelBuilder.Entity<Kategori>()
                 .HasMany(c => c.Urun)
@@ -49,6 +53,18 @@ namespace e_market.Models
                 .HasOne(bc => bc.Kategori)
                 .WithMany(c => c.KisiFavoriKategorileri)
                 .HasForeignKey(bc => bc.KategoriID).OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<KisiFavoriUrunleri>().HasKey(bc => new { bc.RegisterID, bc.UrunID });
+
+            modelBuilder.Entity<KisiFavoriUrunleri>()
+                .HasOne(bc => bc.Register)
+                .WithMany(b => b.KisiFavoriUrunleri)
+                .HasForeignKey(bc => bc.RegisterID).OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<KisiFavoriUrunleri>()
+                .HasOne(bc => bc.Urun)
+                .WithMany(c => c.KisiFavoriUrunleri)
+                .HasForeignKey(bc => bc.UrunID).OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Register>(x => x.HasData(new Register
             {

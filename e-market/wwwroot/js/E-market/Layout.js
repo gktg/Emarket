@@ -86,9 +86,26 @@ function SepetTekrarli() {
                                 </div>
                             </div>`;
         $("#sepetDiv").append(sepetHtml);
-        
+
     });
 
 
 
+}
+
+
+function Logout() {
+    $.ajax({
+        type: "Post",
+        url: "/emarket/Logout/",
+        dataType: "json",
+        data: null,
+        success: function (result) {
+            location.href = "Login"
+        },
+        error: function (e) {
+
+            console.log(e);
+        }
+    })
 }
