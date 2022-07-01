@@ -76,6 +76,15 @@ namespace e_market.Models
 
             }));
 
+            modelBuilder.Entity<Register>(x => x.HasData(new Register
+            {
+                Ad = "Hasan",
+                Soyad = "Dönmez",
+                Email = "h@mail.com",
+                Sifre = "awd.123456",
+                ID = 2,
+
+            }));
 
             modelBuilder.Entity<KisiHassasBilgiler>(x => x.HasData(new KisiHassasBilgiler
             {
@@ -84,6 +93,18 @@ namespace e_market.Models
                 Adres = new Address("tr").FullAddress(),
                 DogumTarihi = DateTime.Now.AddYears(-20),
                 TelefonNumarasi = "05388828249"
+
+
+            }));
+
+
+            modelBuilder.Entity<KisiHassasBilgiler>(x => x.HasData(new KisiHassasBilgiler
+            {
+
+                ID = 2,
+                Adres = new Address("tr").FullAddress(),
+                DogumTarihi = DateTime.Now.AddYears(-20),
+                TelefonNumarasi = "0534194567"
 
 
             }));

@@ -1,7 +1,6 @@
 ﻿using e_market.Models;
 using e_market.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,9 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using System.Data;
-using Bogus.DataSets;
 using e_market.Tools;
-using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace e_market.Controllers
 {
@@ -32,41 +29,7 @@ namespace e_market.Controllers
         public IActionResult Register()
         {
 
-            var a = new Commerce("tr").Categories(10);
-            for (int i = 5; i < 10; i++)
-            {
-                Kategori kategorim = new Kategori();
-                kategorim.KategoriAdi = a[i];
-                kategorim.KategoriAciklama = new Lorem("tr").Sentence(10);
 
-
-                for (int j = 5; j < 20; j++)
-                {
-                    string price = new Commerce("tr").Price(1, 5000, 2, "TL");
-                    string b = price.Substring(2, price.Length - 2) + " " + "TL";
-                    Urun u = new Urun();
-                    u.UrunAdi = new Commerce("tr").ProductName();
-                    u.Stok = j * i;
-                    u.UrunFiyati = b;
-                    u.UrunMedya = new Images("tr").PicsumUrl();
-                    kategorim.Urun.Add(u);
-                }
-                _cc.Kategori.Add(kategorim);
-                _cc.SaveChanges();
-            }
-
-            List<int> kategoriler = new List<int>() { 1, 2, 3 };
-            foreach (var item in kategoriler)
-            {
-                var model = new KisiFavoriKategorileri()
-                {
-                    RegisterID = 1,
-                    KategoriID = item
-                };
-
-                _cc.KisiFavoriKategorileri.Add(model);
-                _cc.SaveChanges();
-            }
             return View();
         }
         public IActionResult Login()
@@ -105,12 +68,12 @@ namespace e_market.Controllers
                 HttpContext.Session.Remove("Sepet");
 
             }
-            return true ;
+            return true;
 
         }
 
-        [Route("/emarket/RegisterVm/")]
-        public bool RegisterVm(Register model)
+        [Route("/emarket/Register/")]
+        public bool Register(Register model)
         {
             try
             {
@@ -283,9 +246,9 @@ namespace e_market.Controllers
                     UrunFiyati = item.UrunFiyati,
                     UrunMedya = item.UrunMedya,
                     Stok = item.Stok,
-                    
+
                 };
-                if(item.KisiFavoriUrunleri.Count > 0)
+                if (item.KisiFavoriUrunleri.Count > 0)
                 {
                     if (item.KisiFavoriUrunleri.ToList()[0].RegisterID == Convert.ToInt32(HttpContext.Session.GetString("KisiID")))
                     {

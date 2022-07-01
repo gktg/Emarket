@@ -52,7 +52,7 @@ function Register() {
    
     $.ajax({
         type: "POST",
-        url: "/emarket/RegisterVm/",
+        url: "/emarket/Register/",
         dataType: "json",
         data: model,
         success: function (result) {

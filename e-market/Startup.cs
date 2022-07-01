@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Text.Json.Serialization;
+using Bogus.DataSets;
 
 namespace e_market
 {
@@ -61,6 +62,7 @@ namespace e_market
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
                 context.Database.Migrate();
+                CreateData(context);
             }
             if (env.IsDevelopment())
             {
@@ -87,6 +89,46 @@ namespace e_market
                     name: "default",
                     pattern: "{controller=Emarket}/{action=Register}/{id?}");
             });
+        }
+
+
+        public void CreateData(ConnectionString context)
+        {
+            var a = new Commerce("tr").Categories(10);
+            for (int i = 5; i < 10; i++)
+            {
+                Kategori kategorim = new Kategori();
+                kategorim.KategoriAdi = a[i];
+                kategorim.KategoriAciklama = new Lorem("tr").Sentence(10);
+
+
+                for (int j = 5; j < 20; j++)
+                {
+                    string price = new Commerce("tr").Price(1, 5000, 2, "TL");
+                    string b = price.Substring(2, price.Length - 2) + " " + "TL";
+                    Urun u = new Urun();
+                    u.UrunAdi = new Commerce("tr").ProductName();
+                    u.Stok = j * i;
+                    u.UrunFiyati = b;
+                    u.UrunMedya = new Images("tr").PicsumUrl();
+                    kategorim.Urun.Add(u);
+                }
+                context.Kategori.Add(kategorim);
+                context.SaveChanges();
+            }
+
+            List<int> kategoriler = new List<int>() { 1, 2, 3 };
+            foreach (var item in kategoriler)
+            {
+                var model = new KisiFavoriKategorileri()
+                {
+                    RegisterID = 1,
+                    KategoriID = item
+                };
+
+                context.KisiFavoriKategorileri.Add(model);
+                context.SaveChanges();
+            }
         }
     }
 }
