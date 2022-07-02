@@ -32,14 +32,15 @@ namespace e_market.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<KisiHassasBilgiler>()
-                .HasOne(p => p.Register)
-                .WithOne(s => s.KisiHassasBilgiler)
-                .HasForeignKey<Register>(x => x.ID);
+            modelBuilder.Entity<Register>()
+                .HasOne(p => p.KisiHassasBilgiler)
+                .WithOne(s => s.Register)
+                .HasForeignKey<KisiHassasBilgiler>(x => x.ID);
 
             modelBuilder.Entity<Kategori>()
                 .HasMany(c => c.Urun)
-                .WithOne(e => e.Kategori).HasForeignKey(p => p.KategoriID).OnDelete(DeleteBehavior.NoAction);
+                .WithOne(e => e.Kategori)
+                .HasForeignKey(p => p.KategoriID).OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<KisiFavoriKategorileri>().HasKey(bc => new { bc.RegisterID, bc.KategoriID });
 
@@ -76,15 +77,7 @@ namespace e_market.Models
 
             }));
 
-            modelBuilder.Entity<Register>(x => x.HasData(new Register
-            {
-                Ad = "Hasan",
-                Soyad = "Dönmez",
-                Email = "h@mail.com",
-                Sifre = "awd.123456",
-                ID = 2,
 
-            }));
 
             modelBuilder.Entity<KisiHassasBilgiler>(x => x.HasData(new KisiHassasBilgiler
             {
@@ -97,17 +90,6 @@ namespace e_market.Models
 
             }));
 
-
-            modelBuilder.Entity<KisiHassasBilgiler>(x => x.HasData(new KisiHassasBilgiler
-            {
-
-                ID = 2,
-                Adres = new Address("tr").FullAddress(),
-                DogumTarihi = DateTime.Now.AddYears(-20),
-                TelefonNumarasi = "0534194567"
-
-
-            }));
 
 
         }

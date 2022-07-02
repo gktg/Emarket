@@ -173,7 +173,7 @@ namespace e_market.Controllers
             kisiBilgileri.Ad = Register.Ad;
             kisiBilgileri.Soyad = Register.Soyad;
             kisiBilgileri.Email = Register.Email;
-            kisiBilgileri.KisiHassasBilgiler.DogumTarihi = Register.DogumTarihi;
+            kisiBilgileri.KisiHassasBilgiler.DogumTarihi = Register.DogumTarihi.Date;
             kisiBilgileri.KisiHassasBilgiler.TelefonNumarasi = Register.TelefonNumarasi;
             kisiBilgileri.KisiHassasBilgiler.Adres = Register.Adres;
 
