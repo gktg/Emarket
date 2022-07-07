@@ -12,7 +12,7 @@ $(document).ready(function () {
 function UrunleriGetir() {
     $.ajax({
         type: "Get",
-        url: "/emarket/UrunGetir/",
+        url: "/emarket/UrunleriGetir/",
         dataType: "json",
         data: null,
         async: false,
@@ -146,7 +146,7 @@ function SepeteUrunEkle(urunID) {
     })
 }
 
-function UrunFavorile(urunID) {
+function FavoriUrunEkle(urunID) {
     $.ajax({
         type: "Post",
         url: "/emarket/FavoriUrunEkle/" + urunID,
@@ -155,6 +155,28 @@ function UrunFavorile(urunID) {
         success: function (result) {
             if (result != null) {
                 $("#btnFavori" + urunID).attr("src", "/images/heartred.png")
+                $("#BtnFavori" + urunID).removeAttr("onclick")
+                $("#BtnFavori" + urunID).attr("onclick", `FavoriUrunSil(${urunID})`)
+            }
+        },
+        error: function (e) {
+
+            console.log(e);
+        }
+    })
+
+}
+function FavoriUrunSil(urunID) {
+    $.ajax({
+        type: "Post",
+        url: "/emarket/FavoriUrunSil/" + urunID,
+        dataType: "json",
+        data: null,
+        success: function (result) {
+            if (result != null) {
+                $("#btnFavori" + urunID).attr("src", "/images/heartwhite.png")
+                $("#BtnFavori" + urunID).removeAttr("onclick")
+                $("#BtnFavori" + urunID).attr("onclick", `FavoriUrunEkle(${urunID})`)
 
             }
         },
@@ -166,7 +188,6 @@ function UrunFavorile(urunID) {
 
 }
 
-
 function UrunTekrarli() {
     for (var x = 0; x < urunler.length; x++) {
         if (!urunler[x].favoriMi) {
@@ -174,15 +195,38 @@ function UrunTekrarli() {
                             <div class="card">
                                 <div class="card-body">
                                     <img src="${urunler[x].urunMedya}" height="150" width="210" />
-                                    <p id="urunAdi${x}">${urunler[x].urunAdi}</p>
-                                    <p id="urunFiyati${x}">${urunler[x].urunFiyati}</p>
-                                    <p id="urunKategori${x}" data-kategoriid="${urunler[x].kategoriID}">${urunler[x].kategoriAdi}</p>
-                                    <p id="stok${x}">Stok: ${urunler[x].stok}
-<button style="margin-left: 97px;" class="btn" onclick="UrunFavorile(${urunler[x].id})">
-                                        <img id="btnFavori${urunler[x].id}" src="/images/heartwhite.png" white="25" height="25"/>
+<div class="row mt-3">
+<div class="col-md-12">
+
+                                    <span id="urunAdi${x}">${urunler[x].urunAdi}</span>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-12">
+
+                                    <span id="urunFiyati${x}">${urunler[x].urunFiyati}</span>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-12">
+
+                                    <span id="urunKategori${x}" data-kategoriid="${urunler[x].kategoriID}">${urunler[x].kategoriAdi}</span>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-9">
+
+                                    <span id="stok${x}" style="vertical-align: -webkit-baseline-middle;">Stok: ${urunler[x].stok}
+                                    </span>
+</div>
+<div class="col-md-3">
+
+<button id="BtnFavori${urunler[x].id}"  class="btn" onclick="FavoriUrunEkle(${urunler[x].id})">
+                                        <img id="btnFavori${urunler[x].id}" src="/images/heartwhite.png" width="25"/>
 </button>
-                                    </p>
-                                    <button class="form-control btnSepet" id="${urunler[x].id}" onclick="SepeteUrunEkle(this.id)">Sepete Ekle</button>
+</div>
+</div>
+                                    <button class="form-control mt-3 btnSepet" id="${urunler[x].id}" onclick="SepeteUrunEkle(this.id)">Sepete Ekle</button>
                                 </div>
                             </div>
                         </div>`;
@@ -193,15 +237,34 @@ function UrunTekrarli() {
                             <div class="card">
                                 <div class="card-body">
                                     <img src="${urunler[x].urunMedya}" height="150" width="210" />
-                                    <p id="urunAdi${x}">${urunler[x].urunAdi}</p>
-                                    <p id="urunFiyati${x}">${urunler[x].urunFiyati}</p>
-                                    <p id="urunKategori${x}" data-kategoriid="${urunler[x].kategoriID}">${urunler[x].kategoriAdi}</p>
-                                    <p id="stok${x}">Stok: ${urunler[x].stok}
-<button style="margin-left: 97px;" class="btn" onclick="UrunFavorile(${urunler[x].id})">
-                                        <img id="btnFavori${urunler[x].id}" src="/images/heartred.png" white="25" height="25"/>
+<div class="row mt-3">
+<div class="col-md-12">
+                                    <span id="urunAdi${x}">${urunler[x].urunAdi}</span>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-12">
+                                    <span id="urunFiyati${x}">${urunler[x].urunFiyati}</span>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-12">
+                                    <span id="urunKategori${x}" data-kategoriid="${urunler[x].kategoriID}">${urunler[x].kategoriAdi}</span>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-9">
+                                    <span id="stok${x}" style="vertical-align: -webkit-baseline-middle;">Stok: ${urunler[x].stok}
+
+                                    </span>
+</div>
+<div class="col-md-3">
+<button id="BtnFavori${urunler[x].id}" class="btn" onclick="FavoriUrunSil(${urunler[x].id})">
+                                        <img id="btnFavori${urunler[x].id}" src="/images/heartred.png" width="25"/>
 </button>
-                                    </p>
-                                    <button class="form-control btnSepet" id="${urunler[x].id}" onclick="SepeteUrunEkle(this.id)">Sepete Ekle</button>
+</div>
+</div>
+                                    <button class="form-control mt-3  btnSepet" id="${urunler[x].id}" onclick="SepeteUrunEkle(this.id)">Sepete Ekle</button>
                                 </div>
                             </div>
                         </div>`;

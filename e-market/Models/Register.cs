@@ -18,6 +18,7 @@ namespace e_market.Models
         public virtual KisiHassasBilgiler KisiHassasBilgiler { get; set; }
         public virtual ICollection<KisiFavoriKategorileri> KisiFavoriKategorileri { get; set; }
         public virtual ICollection<KisiFavoriUrunleri> KisiFavoriUrunleri { get; set; }
+        public virtual ICollection<KisiEkledigiUrunler> KisiEkledigiUrunler { get; set; }
 
     }
 }

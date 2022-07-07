@@ -1,0 +1,45 @@
+﻿<script src="~/js/E-market/UrunEkle.js"></script>
+
+<div class="container col-md-12 mt-5">
+    <h1 style="display:none">Ürün Ekle</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Eklenecek Ürün Bilgileri</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Ürün Adı</label>
+                            <input class="form-control" id="txtUrunAdi">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Ürün Kategorisi</label>
+                            <select class="form-control" id="drdKategori"></select>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label>Ürün Fiyatı</label>
+                            <input class="form-control" id="txtUrunFiyati" type="number" min=0>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label>Ürün Stoğu</label>
+                            <input class="form-control" id="txtUrunStok" type="number" min=0>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label>Ürün Medyası Yükleyiniz</label>
+                            <a id="imgA" style="display:none"><img id="img" width="200" height="200" /></a>
+                            <input type="file" name="iFormFile" id="imgFile" onchange="UploadFile(this.id)" mediaid="0">
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <button class="btn btn-primary btn-lg btn-block" id="btnKaydet" onclick="UrunKaydet()">Ürün Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

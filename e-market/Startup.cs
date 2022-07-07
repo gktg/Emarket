@@ -32,6 +32,8 @@ namespace e_market
 
             services.AddMvc();
 
+            services.AddSingleton<IConfiguration>(Configuration);
+
             services.AddDbContext<ConnectionString>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("Myconnection")));
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation().AddJsonOptions(opt =>
@@ -42,8 +44,7 @@ namespace e_market
 
             services.AddSession(opt =>
             {
-                opt.IdleTimeout = TimeSpan.FromMinutes(30);               
-
+                opt.IdleTimeout = TimeSpan.FromMinutes(30);
             });
 
 
@@ -104,7 +105,7 @@ namespace e_market
 
                 for (int j = 5; j < 20; j++)
                 {
-                    string price = new Commerce("tr").Price(1, 5000, 2, "TL");
+                    string price = new Commerce("tr").Price(1, 5000, 0, "TL");
                     string b = price.Substring(2, price.Length - 2) + " " + "TL";
                     Urun u = new Urun();
                     u.UrunAdi = new Commerce("tr").ProductName();

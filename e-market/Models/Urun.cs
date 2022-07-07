@@ -15,6 +15,7 @@ namespace e_market.Models
         public string UrunMedya { get; set; }
         public virtual Kategori Kategori { get; set; }
         public virtual ICollection<KisiFavoriUrunleri> KisiFavoriUrunleri { get; set; }
+        public virtual ICollection<KisiEkledigiUrunler> KisiEkledigiUrunler { get; set; }
 
     }
 }

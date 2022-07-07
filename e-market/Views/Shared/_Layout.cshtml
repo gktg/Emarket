@@ -38,7 +38,7 @@
         string[] url2 = path.Split("/");
         url = url2[2];
     };
-    var x = Accessor.HttpContext.Session.GetString("KisiID");
+    var x = Accessor.HttpContext.Session.GetInt32("KisiID");
 }
 
 
@@ -49,8 +49,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] E-Market</title>
+    <script src="~/js/Cleopatra/sweetalert2.min.js"></script>
+    <link href="~/css/Cleopatra/sweetalert2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link href="~/lib/AdminLTE/dist/css/adminlte.css" rel="stylesheet" />
     <link href="~/lib/AdminLTE/plugins/fontawesome-free/css/all.css" rel="stylesheet" />
     <!-- DataTables -->
@@ -58,6 +60,7 @@
     <link rel="stylesheet" href="~/lib/AdminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="~/lib/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link href="~/lib/AdminLTE/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" />
+    <link href="~/css/Loading.css" rel="stylesheet" />
     @* <script src="~/lib/signalr-1-1-4/signalr.js"></script>*@
     <script src="~/lib/AdminLTE/plugins/jquery/jquery.js"></script>
     <script src="~/lib/AdminLTE/plugins/popper/umd/popper.js"></script>
@@ -82,7 +85,6 @@
     <link href="~/css/select2.css" rel="stylesheet" />
     <link href="~/lib/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css" rel="stylesheet" />
     <script src="~/lib/AdminLTE/plugins/moment/locale/tr.js"></script>
-    <script src="~/js/tools.js" asp-append-version="true"></script>
     <script src="~/lib/AdminLTE/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
     <script src="~/lib/AdminLTE/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
     <script src="~/lib/calendarIntegrations/ics.js"></script>
@@ -101,9 +103,14 @@
     <link type="text/css" href="~/lib/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.css" rel="stylesheet" />
     <script type="text/javascript" src="~/lib/jsgrid-1.5.3/jsgrid.min.js"></script>
     <!-- Yeni Tasarım Css ve Javascript -->
+    @*<link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@500&display=swap" rel="stylesheet">*@
+
+    <!-- Yeni Tasarım Css ve Javascript -->
     <script src="~/js/Lang/LangToastTr.js" type="text/javascript"></script>
     <link type="text/css" href="~/css/Sepet.css" rel="stylesheet" />
     <script src="~/js/E-market/Layout.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="~/js/tools.js" asp-append-version="true"></script>
 
 
 
@@ -117,16 +124,19 @@
                     <a class="btn2" href="https://localhost:44393/emarket/Urunler" target="_self">ÜRÜNLER</a>
                 </div>
                 <div class="col-md-2 col-3 text-center pt-2">
-                    <a class="btn2" href="https://localhost:44393/emarket/Favoriler/@Accessor.HttpContext.Session.GetString("KisiID")" target="_self">FAVORİ KATEGORİLER</a>
+                    <a class="btn2" href="https://localhost:44393/emarket/Favoriler/@Accessor.HttpContext.Session.GetInt32("KisiID")" target="_self">FAVORİ KATEGORİLER</a>
                 </div>
                 <div class="col-md-1 col-3 text-center pt-2">
-                    <a class="btn2" href="https://localhost:44393/emarket/Profil/@Accessor.HttpContext.Session.GetString("KisiID")" target="_self">PROFİL</a>
-                </div>      
+                    <a class="btn2" href="https://localhost:44393/emarket/Profil/@Accessor.HttpContext.Session.GetInt32("KisiID")" target="_self">PROFİL</a>
+                </div>
+                <div class="col-md-2 col-3 text-center pt-2">
+                    <a class="btn2" href="https://localhost:44393/emarket/UrunEkleViewList">ÜRÜN LİSTESİ</a>
+                </div>
                 <div class="col-md-2 col-3 text-center pt-2">
                     <a class="btn2" href="/">ÇIKIŞ YAPINIZ</a>
                 </div>
-                <div class="col-md-5 col-3 pt-2 text-right">
-                    <a id="kullaniciAdi" href="https://localhost:44393/emarket/Profil/@Accessor.HttpContext.Session.GetString("KisiID")" target="_self" class="Lbl btn2">@Accessor.HttpContext.Session.GetString("Ad")</a>
+                <div class="col-md-3 col-3 pt-2 text-right">
+                    <a id="kullaniciAdi" href="https://localhost:44393/emarket/Profil/@Accessor.HttpContext.Session.GetInt32("KisiID")" target="_self" class="Lbl btn2">@Accessor.HttpContext.Session.GetString("Ad")</a>
                 </div>
                 <div class="col-md-1 text-center pt-1">
                     <div class="dropdown">
@@ -207,5 +217,4 @@
             color: blue;
             outline: unset !important;
         }
-
 </style>

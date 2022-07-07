@@ -5,7 +5,13 @@ $(document).ready(function () {
 
     $('select:not(".select2-hidden-accessible,[data-role]")').select2();
     SepetiGetir()
+
+
 })
+
+$(document).on('click', '.container-fluid .dropdown-menu', function (e) {
+    e.stopPropagation();
+});
 
 function SepetiGetir() {
     $.ajax({
@@ -21,7 +27,7 @@ function SepetiGetir() {
                 sepet = result.$values;
                 console.log(sepet)
                 $.each(sepet, function (x, y) {
-                    toplamUcret += parseFloat(y.urunFiyati) * y.miktar
+                    toplamUcret += parseFloat(y.urunFiyati)
                     sepetUzunluk += y.miktar
                 });
                 SepetTekrarli()
@@ -51,7 +57,7 @@ function SepettenUrunSil(id) {
                 sepet = result.$values;
                 console.log(sepet)
                 $.each(sepet, function (x, y) {
-                    toplamUcret += parseFloat(y.urunFiyati) * y.miktar
+                    toplamUcret += parseFloat(y.urunFiyati)
                     sepetUzunluk += y.miktar
                 });
                 SepetTekrarli()

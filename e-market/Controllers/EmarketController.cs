@@ -10,6 +10,9 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using System.Data;
 using e_market.Tools;
+using System.Threading.Tasks;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace e_market.Controllers
 {
@@ -18,12 +21,15 @@ namespace e_market.Controllers
 
         public readonly ConnectionString _cc;
         private readonly ILogger<EmarketController> _logger;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger)
+
+        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger, IWebHostEnvironment webHostEnvironment)
         {
             _cc = cc;
-
             _logger = logger;
+            _webHostEnvironment = webHostEnvironment;
+
         }
 
         public IActionResult Register()
@@ -54,6 +60,14 @@ namespace e_market.Controllers
             return View();
         }
         public IActionResult Profil()
+        {
+            return View();
+        }
+        public IActionResult UrunEkleView()
+        {
+            return View();
+        }
+        public IActionResult UrunEkleViewList()
         {
             return View();
         }
@@ -107,7 +121,7 @@ namespace e_market.Controllers
 
                 var kisibilgileri = KisiBilgileriGetir(kisiKontrol.ID);
 
-                HttpContext.Session.SetString("KisiID", kisibilgileri.ID.ToString());
+                HttpContext.Session.SetInt32("KisiID", kisibilgileri.ID);
                 HttpContext.Session.SetString("Ad", kisibilgileri.Ad + " " + kisibilgileri.Soyad);
                 HttpContext.Session.SetString("Email", kisibilgileri.Email);
 
@@ -144,9 +158,6 @@ namespace e_market.Controllers
             MailSender x = new MailSender();
 
             x.MailGonder(uye);
-
-
-            //*****************
 
             MailSenderStatic.MailGonderStatic(uye);
 
@@ -228,8 +239,8 @@ namespace e_market.Controllers
             return kategoriVM;
         }
 
-        [Route("/emarket/UrunGetir/")]
-        public List<UrunVM> UrunGetir()
+        [Route("/emarket/UrunleriGetir/")]
+        public List<UrunVM> UrunleriGetir()
         {
             List<Urun> urun = _cc.Urun.ToList();
 
@@ -250,7 +261,7 @@ namespace e_market.Controllers
                 };
                 if (item.KisiFavoriUrunleri.Count > 0)
                 {
-                    if (item.KisiFavoriUrunleri.ToList()[0].RegisterID == Convert.ToInt32(HttpContext.Session.GetString("KisiID")))
+                    if (item.KisiFavoriUrunleri.ToList()[0].RegisterID == HttpContext.Session.GetInt32("KisiID"))
                     {
                         model.FavoriMi = true;
                     }
@@ -399,6 +410,10 @@ namespace e_market.Controllers
                     if (item.ID == urunID)
                     {
                         item.Miktar++;
+                        var fiyat = eklenecekUrun.UrunFiyati.Substring(0, eklenecekUrun.UrunFiyati.Length - 3);
+                        var fiyat2 = Convert.ToInt32(fiyat);
+                        var sonUcret = item.Miktar * fiyat2;
+                        item.UrunFiyati = Convert.ToString(sonUcret + "TL");
                         var x = eklenmisUrunler.FirstOrDefault(x => x.ID == urunID);
                         eklenmisUrunler.Remove(x);
                     }
@@ -448,7 +463,6 @@ namespace e_market.Controllers
             return SepetiGetir();
         }
 
-
         [Route("/emarket/FavoriUrunEkle/{urunID}")]
         [HttpPost]
         public KisiFavoriUrunleri FavoriUrunEkle(int urunID)
@@ -457,7 +471,7 @@ namespace e_market.Controllers
 
             var model = new KisiFavoriUrunleri()
             {
-                RegisterID = Convert.ToInt16(HttpContext.Session.GetString("KisiID")),
+                RegisterID = (int)HttpContext.Session.GetInt32("KisiID"),
                 UrunID = urun.ID
             };
 
@@ -465,6 +479,155 @@ namespace e_market.Controllers
             _cc.SaveChanges();
 
             return model;
+        }
+
+        [Route("/emarket/FavoriUrunSil/{urunID}")]
+        [HttpPost]
+        public KisiFavoriUrunleri FavoriUrunSil(int urunID)
+        {
+            var urun = _cc.KisiFavoriUrunleri.Where(x => x.UrunID == urunID).FirstOrDefault();
+
+            _cc.KisiFavoriUrunleri.Remove(urun);
+            _cc.SaveChanges();
+
+            return urun;
+        }
+
+
+        [Route("/emarket/UrunEkle/")]
+        [HttpPost]
+        public UrunVM UrunEkle(UrunVM urunVM)
+        {
+            if (urunVM == null)
+            {
+                return null;
+
+            }
+            else
+            {
+                var yeniUrun = new Urun
+                {
+                    KategoriID = urunVM.KategoriID,
+                    UrunAdi = urunVM.UrunAdi,
+                    UrunFiyati = urunVM.UrunFiyati + " TL",
+                    Stok = urunVM.Stok,
+                    UrunMedya = urunVM.UrunMedya,
+                };
+
+                _cc.Urun.Add(yeniUrun);
+                _cc.SaveChanges();
+
+                var kisiEkledigiUrunModel = new KisiEkledigiUrunler
+                {
+                    RegisterID = (int)HttpContext.Session.GetInt32("KisiID"),
+                    UrunID = yeniUrun.ID
+                };
+
+                _cc.KisiEkledigiUrunler.Add(kisiEkledigiUrunModel);
+                _cc.SaveChanges();
+
+
+                return urunVM;
+            }
+        }
+
+
+        [Route("/emarket/KisiEkledigiUrunGetir/")]
+        [HttpGet]
+        public List<UrunVM> KisiEkledigiUrunGetir()
+        {
+            var urunIdList = _cc.KisiEkledigiUrunler.Where(x => x.RegisterID == HttpContext.Session.GetInt32("KisiID")).ToList();
+            var urunler = _cc.Urun.ToList();
+            List<UrunVM> kisiEkledigiUrunler = new List<UrunVM>();
+
+            List<int> myIds = urunler.Select(x => x.ID).ToList();
+            IEnumerable<int> ortakIdList = myIds.Intersect(urunIdList.Select(x => x.UrunID).ToList());
+
+
+            kisiEkledigiUrunler.AddRange(ortakIdList.Select(x => new UrunVM
+            {
+                ID = x,
+                UrunAdi = urunler.FirstOrDefault(y => y.ID == x).UrunAdi,
+                UrunFiyati = urunler.FirstOrDefault(y => y.ID == x).UrunFiyati,
+                UrunMedya = urunler.FirstOrDefault(y => y.ID == x).UrunMedya,
+                Stok = urunler.FirstOrDefault(y => y.ID == x).Stok,
+                KategoriID = urunler.FirstOrDefault(y => y.ID == x).KategoriID,
+
+            }).ToList());
+
+            return kisiEkledigiUrunler;
+
+        }
+
+
+
+        [Route("/emarket/UrunGetirIDIle/{urunID}")]
+        [HttpGet]
+        public UrunVM UrunGetirIDIle(int urunID)
+        {
+            var urunler = _cc.Urun.FirstOrDefault(x => x.ID == urunID);
+
+            var urunModel = new UrunVM
+            {
+                ID=urunID,
+                UrunAdi = urunler.UrunAdi,
+                UrunFiyati = urunler.UrunFiyati.Substring(0, urunler.UrunFiyati.Length - 3),
+                Stok = urunler.Stok,
+                KategoriID=urunler.KategoriID,
+                UrunMedya = urunler.UrunMedya,
+                
+            };
+
+            return urunModel;
+        }
+
+        [Route("/emarket/UrunGuncelle/")]
+        [HttpPost]
+        public bool UrunGuncelle(UrunVM urun)
+        {
+            var GuncellenecekUrun = _cc.Urun.FirstOrDefault(x => x.ID == urun.ID);
+
+            GuncellenecekUrun.UrunAdi = urun.UrunAdi;
+            GuncellenecekUrun.UrunFiyati = urun.UrunFiyati + " TL";
+            GuncellenecekUrun.KategoriID = urun.KategoriID;
+            GuncellenecekUrun.Stok = urun.Stok;
+            GuncellenecekUrun.UrunMedya = urun.UrunMedya;
+
+            _cc.Update(GuncellenecekUrun);
+            _cc.SaveChanges();
+
+            return true;
+        }
+
+        public async Task<MedyaKutuphanesi> WriteFile(IFormFile file)
+        {
+
+            var medya = new MedyaKutuphanesi();
+            string fileName;
+            var guid = Guid.NewGuid().ToString("N");
+
+            if (file != null)
+            {
+                var wwwRootPath = _webHostEnvironment.WebRootPath;
+                fileName = guid + (file.FileName).Replace(" ", "_");
+                var pathBuilt = Path.Combine(Environment.CurrentDirectory, wwwRootPath + "/Medya");
+
+                medya.MedyaAdi = fileName;
+                medya.MedyaUrl = "/Medya/" + fileName;
+
+                if (!Directory.Exists(pathBuilt))
+                {
+                    Directory.CreateDirectory(pathBuilt);
+                }
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), wwwRootPath + "/Medya/", fileName);
+
+
+                await using var stream = new FileStream(path, FileMode.Create);
+                await file.CopyToAsync(stream);
+
+            }
+            return medya;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

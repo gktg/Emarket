@@ -3662,63 +3662,69 @@ function strArrayToInt(list) {
     return result;
 }
 
-//ülke ve ülkeye göre şehir geitren fonk'lar
-function UlkeGetir() {
-    var ParametreRequest = {
-        Tanim: "test",
-        ModelName: "ParamUlkeler",
-        UstId: 0
-    }
-    Post("/globalparameters/ParamList", ParametreRequest, function (result) {
-        if (result.isSuccess == true) {
-            console.log(result.value);
-            UlkeListforDDL = result.value;
-            ParamDDLDoldur("Ulke_", result.value);
-        } else {
-            alertim.toast(siteLang.Hata, alertim.types.danger);
-        }
-    }, function (e) {
-        console.log(e);
-    }, false, false)
-}
-function SehirListGetir(alanID, ulkeID) {
-    var ParametreRequest = {
-        Tanim: "test",
-        ModelName: "ParamUlkeler",
-        UstId: ulkeID
-    }
-    Post("/globalparameters/ParamList", ParametreRequest, function (result) {
-        if (result.isSuccess == true) {
-            console.log(result.value);
-            SehirListforDDL = result.value;
-            ParamDDLDoldur(alanID, result.value);
-        } else {
-            alertim.toast(siteLang.Hata, alertim.types.danger);
-        }
-    }, function (e) {
-        console.log(e);
-    }, false, false)
-}
 
-//ülke ve ülkeye göre şehir geitren fonk'lar
+function MakeDatatable(x, y) {
+    let tableId = "#" + x;
+    if (y == true) {
+        //$(tableId).DataTable().destroy();
+        //$(tableId).DataTable().clear();
 
-//param hizmet tipleri'ni getiren fonk.
-function HizmetTipleriGetir() {
-    var ParametreRequest = {
-        Tanim: "test",
-        ModelName: "ParamHizmetTipleri",
-        UstId: 0
+        $(tableId).DataTable({
+            "paging": true,
+            "responsive": true,
+            "language": {
+                "lengthMenu": siteLang.lengthComputable,
+                "info": siteLang.info,
+                "searchPlaceholder": siteLang.searchPlaceholder,
+                "zeroRecords": siteLang.zeroRecords,
+                "paginate": {
+                    "infoEmpty": siteLang.infoEmpty,
+                    "first": siteLang.First,
+                    "last": siteLang.Last,
+                    "next": siteLang.Next,
+                    "previous": siteLang.Previous,
+                }
+            },
+            "dom": 'Bfrtip',
+
+            "buttons": [
+                {
+                    "extend": 'excel',
+                    "text": siteLang.ExceleAktar,
+                    "className": "btn btn-success",
+                    "exportOptions": {
+                        "columns": ":not(:last-child)"
+                    }
+                }]
+        })
+    } else {
+        //$(tableId).DataTable().destroy();
+        //$(tableId).DataTable().clear();
+
+        $(tableId).DataTable({
+            "paging": true,
+            "responsive": true,
+            "language": {
+                "lengthMenu": siteLang.lengthComputable,
+                "info": siteLang.info,
+                "searchPlaceholder": siteLang.searchPlaceholder,
+                "zeroRecords": siteLang.zeroRecords,
+                "paginate": {
+                    "infoEmpty": siteLang.infoEmpty,
+                    "first": siteLang.First,
+                    "last": siteLang.Last,
+                    "next": siteLang.Next,
+                    "previous": siteLang.Previous,
+                }
+            },
+            //"language": {
+            //    "url": siteLang.DataTableLang
+            //},
+            "dom": 'Bfrtip',
+            "buttons": [
+            ]
+        })
+
     }
-    Post("/globalparameters/ParamList", ParametreRequest, function (result) {
-        if (result.isSuccess == true) {
-            console.log(result.value);
-            UlkeListforDDL = result.value;
-            ParamDDLDoldur("HizmetTipleri", result.value);
-        } else {
-            alertim.toast(siteLang.Hata, alertim.types.danger);
-        }
-    }, function (e) {
-        console.log(e);
-    }, false, false)
+
 }
-//param hizmet tipleri'ni getiren fonk.
