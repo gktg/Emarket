@@ -6,6 +6,8 @@ $(document).ready(function () {
     MakeDatatable("urunTable", false)
     KategoriGetir()
     KisiEkledigiUrunGetir()
+
+
 })
 
 
@@ -89,4 +91,32 @@ function KisiEkledigiUrunGetir() {
 function Goruntule(id) {
 
     location.href ="/emarket/UrunEkleView/"+id
+}
+
+function Sil(urunID) {
+    $.ajax({
+        type: "Post",
+        url: "/emarket/UrunSil/"+urunID,
+        dataType: "json",
+        contentType: "application/json",
+        data: null,
+        async: false,
+        success: function (result) {
+            if (result == true) {
+                alertim.toast(siteLang.Sil, alertim.types.success)
+                setTimeout(function () {
+                    location.href = "/emarket/UrunEkleViewList"
+                }, 700)
+            }
+            else {
+                alertim.toast(siteLang.Hata, alertim.types.warning)
+
+            }
+
+        },
+        error: function (e) {
+
+            console.log(e);
+        }
+    })
 }

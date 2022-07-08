@@ -86,7 +86,7 @@ function SepetTekrarli() {
                                 </div>
                                 <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
                                     <p>${y.urunAdi}</p>
-                                    <span class="price text-info">${y.urunFiyati}</span>
+                                    <span class="price text-info">${y.urunFiyati} TL</span>
                                     <span class="count"> Quantity:${y.miktar}</span>
                                     <span id="${y.id}" onclick="SepettenUrunSil(this.id)"><i class="fas fa-trash-alt"></i></span>
                                 </div>

@@ -9,7 +9,7 @@ namespace e_market.Models
         
         public int KategoriID { get; set; }
         public string UrunAdi { get; set; }
-        public string UrunFiyati { get; set; }
+        public int UrunFiyati { get; set; }
         public int Stok { get; set; }
         
         public string UrunMedya { get; set; }

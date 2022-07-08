@@ -1,11 +1,35 @@
 ﻿var urunler = [];
 var kategoriler = [];
 
+
 $(document).ready(function () {
 
     UrunleriGetir()
     KategoriGetir()
 
+    $("#drdSirala").on("change", function () {
+        var selectedValue = $("#drdSirala").val();
+        if (selectedValue == 1) {
+            $("#urunTekrarli").find("div[id^='urunDiv']").each(function (x, y) {
+
+                y.remove();
+            })
+
+            urunler.sortByKeyAsc("urunFiyati")
+            UrunTekrarli(urunler);
+
+        }
+        else if (selectedValue == 2) {
+            $("#urunTekrarli").find("div[id^='urunDiv']").each(function (x, y) {
+
+                y.remove();
+            })
+
+            urunler.sortByKeyDesc("urunFiyati")
+            UrunTekrarli(urunler);
+
+        }
+    })
 
 })
 
@@ -18,10 +42,10 @@ function UrunleriGetir() {
         async: false,
         success: function (result) {
             console.log(result)
-            if (result != null) {
-                urunler = result.$values;
+            if (result != null) {       
 
-                UrunTekrarli();
+                urunler = result.$values;
+                UrunTekrarli(urunler);
 
 
 
@@ -99,8 +123,9 @@ function FiltreliUrunGetir() {
 
                     y.remove();
                 })
+                $("#drdSirala").val(0).change();
                 urunler = result.$values;
-                UrunTekrarli();
+                UrunTekrarli(urunler);
 
             }
         },
@@ -123,6 +148,7 @@ function FiltreTemizle() {
         $(y).attr("disabled", false)
 
     })
+    $("#drdSirala").val(0).change();
 
     UrunleriGetir()
 }
@@ -188,83 +214,83 @@ function FavoriUrunSil(urunID) {
 
 }
 
-function UrunTekrarli() {
-    for (var x = 0; x < urunler.length; x++) {
-        if (!urunler[x].favoriMi) {
-            var html = `    <div class="col-md-3" id="urunDiv${urunler[x].id}">
+function UrunTekrarli(urunlerList) {
+    for (var x = 0; x < urunlerList.length; x++) {
+        if (!urunlerList[x].favoriMi) {
+            var html = `    <div class="col-md-3" id="urunDiv${urunlerList[x].id}">
                             <div class="card">
                                 <div class="card-body">
-                                    <img src="${urunler[x].urunMedya}" height="150" width="210" />
+                                    <img src="${urunlerList[x].urunMedya}" height="150" width="210" />
 <div class="row mt-3">
 <div class="col-md-12">
 
-                                    <span id="urunAdi${x}">${urunler[x].urunAdi}</span>
-</div>
-</div>
-<div class="row mt-3">
-<div class="col-md-12">
-
-                                    <span id="urunFiyati${x}">${urunler[x].urunFiyati}</span>
+                                    <span id="urunAdi${x}">${urunlerList[x].urunAdi}</span>
 </div>
 </div>
 <div class="row mt-3">
 <div class="col-md-12">
 
-                                    <span id="urunKategori${x}" data-kategoriid="${urunler[x].kategoriID}">${urunler[x].kategoriAdi}</span>
+                                    <span id="urunFiyati${x}">${urunlerList[x].urunFiyati} TL</span>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-12">
+
+                                    <span id="urunKategori${x}" data-kategoriid="${urunlerList[x].kategoriID}">${urunlerList[x].kategoriAdi}</span>
 </div>
 </div>
 <div class="row mt-3">
 <div class="col-md-9">
 
-                                    <span id="stok${x}" style="vertical-align: -webkit-baseline-middle;">Stok: ${urunler[x].stok}
+                                    <span id="stok${x}" style="vertical-align: -webkit-baseline-middle;">Stok: ${urunlerList[x].stok}
                                     </span>
 </div>
 <div class="col-md-3">
 
-<button id="BtnFavori${urunler[x].id}"  class="btn" onclick="FavoriUrunEkle(${urunler[x].id})">
-                                        <img id="btnFavori${urunler[x].id}" src="/images/heartwhite.png" width="25"/>
+<button id="BtnFavori${urunlerList[x].id}"  class="btn" onclick="FavoriUrunEkle(${urunlerList[x].id})">
+                                        <img id="btnFavori${urunlerList[x].id}" src="/images/heartwhite.png" width="25"/>
 </button>
 </div>
 </div>
-                                    <button class="form-control mt-3 btnSepet" id="${urunler[x].id}" onclick="SepeteUrunEkle(this.id)">Sepete Ekle</button>
+                                    <button class="form-control mt-3 btnSepet" id="${urunlerList[x].id}" onclick="SepeteUrunEkle(this.id)">Sepete Ekle</button>
                                 </div>
                             </div>
                         </div>`;
             $("#urunTekrarli").append(html);
         }
         else {
-            var html = `    <div class="col-md-3" id="urunDiv${urunler[x].id}">
+            var html = `    <div class="col-md-3" id="urunDiv${urunlerList[x].id}">
                             <div class="card">
                                 <div class="card-body">
-                                    <img src="${urunler[x].urunMedya}" height="150" width="210" />
+                                    <img src="${urunlerList[x].urunMedya}" height="150" width="210" />
 <div class="row mt-3">
 <div class="col-md-12">
-                                    <span id="urunAdi${x}">${urunler[x].urunAdi}</span>
-</div>
-</div>
-<div class="row mt-3">
-<div class="col-md-12">
-                                    <span id="urunFiyati${x}">${urunler[x].urunFiyati}</span>
+                                    <span id="urunAdi${x}">${urunlerList[x].urunAdi}</span>
 </div>
 </div>
 <div class="row mt-3">
 <div class="col-md-12">
-                                    <span id="urunKategori${x}" data-kategoriid="${urunler[x].kategoriID}">${urunler[x].kategoriAdi}</span>
+                                    <span id="urunFiyati${x}">${urunlerList[x].urunFiyati} TL</span>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-12">
+                                    <span id="urunKategori${x}" data-kategoriid="${urunlerList[x].kategoriID}">${urunlerList[x].kategoriAdi}</span>
 </div>
 </div>
 <div class="row mt-3">
 <div class="col-md-9">
-                                    <span id="stok${x}" style="vertical-align: -webkit-baseline-middle;">Stok: ${urunler[x].stok}
+                                    <span id="stok${x}" style="vertical-align: -webkit-baseline-middle;">Stok: ${urunlerList[x].stok}
 
                                     </span>
 </div>
 <div class="col-md-3">
-<button id="BtnFavori${urunler[x].id}" class="btn" onclick="FavoriUrunSil(${urunler[x].id})">
-                                        <img id="btnFavori${urunler[x].id}" src="/images/heartred.png" width="25"/>
+<button id="BtnFavori${urunlerList[x].id}" class="btn" onclick="FavoriUrunSil(${urunlerList[x].id})">
+                                        <img id="btnFavori${urunlerList[x].id}" src="/images/heartred.png" width="25"/>
 </button>
 </div>
 </div>
-                                    <button class="form-control mt-3  btnSepet" id="${urunler[x].id}" onclick="SepeteUrunEkle(this.id)">Sepete Ekle</button>
+                                    <button class="form-control mt-3  btnSepet" id="${urunlerList[x].id}" onclick="SepeteUrunEkle(this.id)">Sepete Ekle</button>
                                 </div>
                             </div>
                         </div>`;
@@ -287,5 +313,14 @@ function KategoriTekrarli() {
             </div> `;
     $("#kategoriTekrarli").append(btn);
 
+    var sirala = `<div class="col-md-12 mt-3">
+                  <select class="form-control" id="drdSirala" >
+                        <option value="0">Seçiniz</option>
+                        <option value="1">Fiyat Artan</option>
+                        <option value="2">Fiyat Azalan</option>
+                   </select>
+            </div> `
+    $("#kategoriTekrarli").append(sirala);
+    $("#drdSirala").select2();
 
 }

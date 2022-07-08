@@ -64,7 +64,7 @@ function UrunTekrarli() {
                                     <div class="card-body">
                                         <img src="${urunler[x].urunMedya}" height="150" width="250" />
                                         <p id="urunAdi${x}">${urunler[x].urunAdi}</p>
-                                        <p id="urunFiyati${x}">${urunler[x].urunFiyati}</p>
+                                        <p id="urunFiyati${x}">${urunler[x].urunFiyati} TL</p>
                                         <p id="urunKategori${x}" data-kategoriid="${urunler[x].kategoriID}">${urunler[x].kategoriAdi}</p>
                                         <p id="stok${x}">${urunler[x].stok}</p>
                                         <button class="form-control btnSepet" id="${urunler[x].id}" onclick="SepeteUrunEkle(this.id)">Sepete Ekle</button>

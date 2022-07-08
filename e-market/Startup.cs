@@ -106,7 +106,7 @@ namespace e_market
                 for (int j = 5; j < 20; j++)
                 {
                     string price = new Commerce("tr").Price(1, 5000, 0, "TL");
-                    string b = price.Substring(2, price.Length - 2) + " " + "TL";
+                    int b = Convert.ToInt32(price.Substring(2, price.Length - 2));
                     Urun u = new Urun();
                     u.UrunAdi = new Commerce("tr").ProductName();
                     u.Stok = j * i;

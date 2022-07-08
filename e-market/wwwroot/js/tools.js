@@ -1056,17 +1056,18 @@ function denemeFormatBinlikKusuratsiz(nStr, ayrac, decimal) {
 //    }
 //    return mergedata;
 //}//Kullanılmıyor
-//Array.prototype.sortByKeyAsc = function (key) {
-//    return this.sort(function (a, b) {
-//        var x = a[key]; var y = b[key];
-//        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-//    });
-//}//Kullanılmıyor
-//Array.prototype.sortByKeyDesc = function (key) {
-//    return this.sort(function (a, b) {
-//        var x = a[key]; var y = b[key];
-//        return ((x > y) ? -1 : ((x < y) ? 1 : 0));
-//    });
+Array.prototype.sortByKeyAsc = function (key) {
+    return this.sort(function (a, b) {
+        var x = a[key]; var y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+}
+Array.prototype.sortByKeyDesc = function (key) {
+    return this.sort(function (a, b) {
+        var x = a[key]; var y = b[key];
+        return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+    })
+};
 //}//Kullanılmıyor
 //Array.prototype.ListBy = function (prop) {
 //    var arr = [];

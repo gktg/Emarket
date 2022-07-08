@@ -146,7 +146,9 @@ function UrunKaydet() {
         success: function (result) {
             if (result != null) {
                 alertim.toast(siteLang.Kaydet, alertim.types.success);
-
+                setTimeout(function () {
+                    location.href = "/emarket/UrunEkleViewList"
+                }, 700)
             }
             else {
                 alertim.toast(siteLang.Hata, alertim.types.danger);

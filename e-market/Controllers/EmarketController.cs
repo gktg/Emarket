@@ -196,17 +196,20 @@ namespace e_market.Controllers
 
             }
 
-
-            foreach (var item in Register.KisiFavoriKategorileri)
+            if(Register.KisiFavoriKategorileri != null)
             {
-                var kisiFavorileri = new KisiFavoriKategorileri()
+                foreach (var item in Register.KisiFavoriKategorileri)
                 {
-                    RegisterID = Register.ID,
-                    KategoriID = item
-                };
-                _cc.KisiFavoriKategorileri.Add(kisiFavorileri);
-                _cc.SaveChanges();
+                    var kisiFavorileri = new KisiFavoriKategorileri()
+                    {
+                        RegisterID = Register.ID,
+                        KategoriID = item
+                    };
+                    _cc.KisiFavoriKategorileri.Add(kisiFavorileri);
+                    _cc.SaveChanges();
+                }
             }
+
 
 
             _cc.Register.Update(kisiBilgileri);
@@ -410,10 +413,10 @@ namespace e_market.Controllers
                     if (item.ID == urunID)
                     {
                         item.Miktar++;
-                        var fiyat = eklenecekUrun.UrunFiyati.Substring(0, eklenecekUrun.UrunFiyati.Length - 3);
-                        var fiyat2 = Convert.ToInt32(fiyat);
+                        var fiyat = eklenecekUrun.UrunFiyati;
+                        var fiyat2 = fiyat;
                         var sonUcret = item.Miktar * fiyat2;
-                        item.UrunFiyati = Convert.ToString(sonUcret + "TL");
+                        item.UrunFiyati = (int)sonUcret;
                         var x = eklenmisUrunler.FirstOrDefault(x => x.ID == urunID);
                         eklenmisUrunler.Remove(x);
                     }
@@ -509,7 +512,7 @@ namespace e_market.Controllers
                 {
                     KategoriID = urunVM.KategoriID,
                     UrunAdi = urunVM.UrunAdi,
-                    UrunFiyati = urunVM.UrunFiyati + " TL",
+                    UrunFiyati = urunVM.UrunFiyati,
                     Stok = urunVM.Stok,
                     UrunMedya = urunVM.UrunMedya,
                 };
@@ -569,9 +572,9 @@ namespace e_market.Controllers
 
             var urunModel = new UrunVM
             {
-                ID=urunID,
+                ID = urunID,
                 UrunAdi = urunler.UrunAdi,
-                UrunFiyati = urunler.UrunFiyati.Substring(0, urunler.UrunFiyati.Length - 3),
+                UrunFiyati = urunler.UrunFiyati,
                 Stok = urunler.Stok,
                 KategoriID=urunler.KategoriID,
                 UrunMedya = urunler.UrunMedya,
@@ -585,20 +588,53 @@ namespace e_market.Controllers
         [HttpPost]
         public bool UrunGuncelle(UrunVM urun)
         {
-            var GuncellenecekUrun = _cc.Urun.FirstOrDefault(x => x.ID == urun.ID);
+            try
+            {
+                var GuncellenecekUrun = _cc.Urun.FirstOrDefault(x => x.ID == urun.ID);
 
-            GuncellenecekUrun.UrunAdi = urun.UrunAdi;
-            GuncellenecekUrun.UrunFiyati = urun.UrunFiyati + " TL";
-            GuncellenecekUrun.KategoriID = urun.KategoriID;
-            GuncellenecekUrun.Stok = urun.Stok;
-            GuncellenecekUrun.UrunMedya = urun.UrunMedya;
+                GuncellenecekUrun.UrunAdi = urun.UrunAdi;
+                GuncellenecekUrun.UrunFiyati = urun.UrunFiyati;
+                GuncellenecekUrun.KategoriID = urun.KategoriID;
+                GuncellenecekUrun.Stok = urun.Stok;
+                GuncellenecekUrun.UrunMedya = urun.UrunMedya;
 
-            _cc.Update(GuncellenecekUrun);
-            _cc.SaveChanges();
+                _cc.Update(GuncellenecekUrun);
+                _cc.SaveChanges();
 
-            return true;
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
         }
 
+        [Route("/emarket/UrunSil/{urunID}")]
+        [HttpPost]
+        public bool UrunSil(int urunID)
+        {
+            try
+            {
+                var urunIliski = _cc.KisiEkledigiUrunler.FirstOrDefault(x => x.UrunID == urunID && x.RegisterID == HttpContext.Session.GetInt32("KisiID"));
+
+                _cc.Remove(urunIliski);
+                _cc.SaveChanges();
+
+                var urun = _cc.Urun.FirstOrDefault(x => x.ID == urunID);
+                _cc.Remove(urun);
+                _cc.SaveChanges();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
+        }
         public async Task<MedyaKutuphanesi> WriteFile(IFormFile file)
         {
 

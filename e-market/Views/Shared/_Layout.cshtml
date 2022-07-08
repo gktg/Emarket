@@ -126,17 +126,24 @@
                 <div class="col-md-2 col-3 text-center pt-2">
                     <a class="btn2" href="https://localhost:44393/emarket/Favoriler/@Accessor.HttpContext.Session.GetInt32("KisiID")" target="_self">FAVORİ KATEGORİLER</a>
                 </div>
-                <div class="col-md-1 col-3 text-center pt-2">
-                    <a class="btn2" href="https://localhost:44393/emarket/Profil/@Accessor.HttpContext.Session.GetInt32("KisiID")" target="_self">PROFİL</a>
-                </div>
+
                 <div class="col-md-2 col-3 text-center pt-2">
                     <a class="btn2" href="https://localhost:44393/emarket/UrunEkleViewList">ÜRÜN LİSTESİ</a>
                 </div>
-                <div class="col-md-2 col-3 text-center pt-2">
-                    <a class="btn2" href="/">ÇIKIŞ YAPINIZ</a>
-                </div>
-                <div class="col-md-3 col-3 pt-2 text-right">
-                    <a id="kullaniciAdi" href="https://localhost:44393/emarket/Profil/@Accessor.HttpContext.Session.GetInt32("KisiID")" target="_self" class="Lbl btn2">@Accessor.HttpContext.Session.GetString("Ad")</a>
+
+                <div class="col-md-6 col-3 pt-2 text-right">
+
+                    <div class="dropdown">
+                        <a id="kullaniciAdi" data-toggle="dropdown" class="Lbl btn2">@Accessor.HttpContext.Session.GetString("Ad")</a>
+                        <div class="dropdown-menu">
+                            <div class="col-md-12 col-3 text-center pt-2">
+                                <a class="btn2" href="https://localhost:44393/emarket/Profil/@Accessor.HttpContext.Session.GetInt32("KisiID")" target="_self">PROFİL</a>
+                            </div>
+                            <div class="col-md-12 col-3 text-center pt-2">
+                                <a class="btn2" href="/">ÇIKIŞ YAPINIZ</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-1 text-center pt-1">
                     <div class="dropdown">
