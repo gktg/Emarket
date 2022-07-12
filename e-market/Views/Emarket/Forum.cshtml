@@ -1,0 +1,73 @@
+﻿
+
+
+<div class="container-fluid col-md-10 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <img width="100" height="100" src="~/images/generated_photos_5e6813f56d3b380006d7f6e5.jpg" />
+                    <p>Graves Hastalığı</p>
+                    <p>Servet Göktuğ Türkan</p>
+                    <p>Mesaj Tarihi: 12.07.2022</p>
+                </div>
+                <div class="col-md-9">
+                    <p>
+                        Stres ve otoimmün hastalık arasındaki bağlantı çözüldü!
+                        Bir milyon kişiyle 30 yıl boyunca sürdürülen bir araştırma sonucunda stres bozukluğu yaşayan kişilerde eklem iltihabı ve Crohn hastalığı gibi oto-immün hastalıkları görülme ihtimalinin arttığı belirlendi.
+                        Bazı travmatik yaşam stresi türlerinin oto-immün hastalıklarına sebep olması çok normal karşılanabilir. Neticede kişinin yaşadığı stresin karın ağrısı gibi fiziksel belirtileri olması alışılmadık bir durum değil. Ancak ilginç bir şekilde bu alanda yapılan ve stres tabanlı psikiyatrik durumlarla bağışıklık sistemine bağlı hastalıkları ilişkilendiren bilimsel araştırma sayısı oldukça sınırlı.
+                        Yeni ve oldukça geniş araştırma İsveç’te bir milyon kişiyi 30 yıl boyunca takip etti. Bu kişiler arasından 100 binden fazlası stresle ilişkili bozukluklar yaşadı. Bunlar travma sonrası stres bozukluğundan (PTSD) akut stres tepkisine ve uyum bozukluğuna kadar pek çok rahatsızlığı içeriyor. Bu katılımcılar daha sonra 30 yıllık zaman dilimi içinde stres tabanlı bozukluk yaşamayan diğer katılımcılarla karşılaştırıldı.
+                        Neticede stres bozukluğu teşhisi konulan kişilerin, 41 farklı oto-immün hastalığına yakalanma ihtimalinin yüzde 30 ila 40 oranında daha fazla olduğu belirlendi. Araştırmanın yöneticilerinden Unnur Anna Valdimarsdóttir “Önceki çalışmalardan, çok fazla stresin bağışıklık sistemine etki edebildiğini öğrenmiştik ancak bu çalışma ilk kez PTSD ve diğer stres bozukluklarının oto-immün hastalıkları ile birebir ilişkili olduğunu gösteriyor” diyor.
+                        Erken tedavi oto-immün hastalıklarından da koruyor!
+                        Genç yaşta PTSD teşhisi konulan hastalarda oto-immün hastalığı riskinin daha da yüksek olduğu görüldü. Ancak bundan daha ilginci, PTSD teşhisinin hemen ardından antidepresan tedavisine başlayan hastalarda oto-immün hastalığı görülme ihtimalinin azalması. Bu durum stres ile oto-immün hastalıkları arasındaki ilişkiyi daha da kuvvetlendirse de araştırmacılar bunun sadece gözlemsel bir deney olduğunu bu yüzden sadece bir korelasyondan bahsedilebileceğini vurguluyor.
+                        Belki de çalışmanın en ikna edici sonucu, psikolojik stresle fiziksel iltihap durumlarının arasında güçlü bir bağ olduğu olabilir. Bazı araştırma alanlarında birçok psikolojik bozukluğun sebebinin beyindeki iltihaplanma olduğuna dair önemli bir hipotez öne sürülüyor. Hatta bir araştırma, intihar düşüncesini tetikleyen şeyin beyindeki iltihaplanma olduğunu iddia ediyor.
+                        Bu tartışmayı tavuk-yumurta ilişkisine çevirmek oldukça kolay ancak gerçekte fiziksel ve psikolojik durumlar arasındaki ilişki çok daha karmaşık ve iç içe geçmiş bir yapıda olabilir. Oto-immün hastalıkları ve psikolojik durumlar temelde aynı madalyonun iki yüzü olabilir ve bu bağı anlayabilmemiz, bu hastalıklara sahip kişileri daha iyi tedavi edebilmemize imkân verebilir.
+                    </p>
+                    <div class="row justify-content-end">
+                        <button class="btn" id="btnBegen"><i class="fas fa-thumbs-up"></i>Beğen</button>
+                        <button class="btn" id="btnYorum"><i class="fas fa-comment"></i>Yorum Yap</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+
+    p {
+        margin-bottom: 0px !important
+    }
+
+    #btnBegen {
+        color: gray
+    }
+
+        #btnBegen:hover {
+            color: blue
+        }
+
+    #btnYorum {
+        color: gray
+    }
+
+        #btnYorum:hover {
+            color: blue
+        }
+</style>
+
+<script>
+
+    var x = 0;
+    $("#btnBegen").on("click", function () {
+        x++
+        if (x % 2 == 0) {
+            $("#btnBegen").css("color", "gray");
+        }
+        else {
+            $("#btnBegen").css("color", "blue");
+        }
+    })
+
+</script>

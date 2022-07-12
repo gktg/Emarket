@@ -190,7 +190,7 @@ function FavoriUrunEkle(urunID) {
             console.log(e);
         }
     })
-
+    
 }
 function FavoriUrunSil(urunID) {
     $.ajax({

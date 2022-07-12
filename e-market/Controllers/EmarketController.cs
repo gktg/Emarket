@@ -34,8 +34,6 @@ namespace e_market.Controllers
 
         public IActionResult Register()
         {
-
-
             return View();
         }
         public IActionResult Login()
@@ -68,6 +66,10 @@ namespace e_market.Controllers
             return View();
         }
         public IActionResult UrunEkleViewList()
+        {
+            return View();
+        }
+        public IActionResult Forum()
         {
             return View();
         }
@@ -196,7 +198,7 @@ namespace e_market.Controllers
 
             }
 
-            if(Register.KisiFavoriKategorileri != null)
+            if (Register.KisiFavoriKategorileri != null)
             {
                 foreach (var item in Register.KisiFavoriKategorileri)
                 {
@@ -576,9 +578,9 @@ namespace e_market.Controllers
                 UrunAdi = urunler.UrunAdi,
                 UrunFiyati = urunler.UrunFiyati,
                 Stok = urunler.Stok,
-                KategoriID=urunler.KategoriID,
+                KategoriID = urunler.KategoriID,
                 UrunMedya = urunler.UrunMedya,
-                
+
             };
 
             return urunModel;
