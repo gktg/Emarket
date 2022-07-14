@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace e_market.Models
 {
-    public class Register
+    public class Register:BaseEntity
     {
-        public int ID { get; set; }
         public string Ad { get; set; }
 
         public string Soyad { get; set; }
@@ -19,6 +18,8 @@ namespace e_market.Models
         public virtual ICollection<KisiFavoriKategorileri> KisiFavoriKategorileri { get; set; }
         public virtual ICollection<KisiFavoriUrunleri> KisiFavoriUrunleri { get; set; }
         public virtual ICollection<KisiEkledigiUrunler> KisiEkledigiUrunler { get; set; }
+        public virtual ICollection<Gonderi> Gonderi { get; set; }
+
 
     }
 }

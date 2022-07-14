@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Text.Json.Serialization;
 using Bogus.DataSets;
+using e_market.Models.Enums;
+using e_market.Repository;
 
 namespace e_market
 {
@@ -52,6 +54,9 @@ namespace e_market
 
             services.AddControllers().AddJsonOptions(x =>
             x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            services.AddScoped<IUrunRepository, UrunRepository>();
+            services.AddScoped<IKisiFavoriKategorileriRepository, KisiFavoriKategorileriRepository>();
+            services.AddScoped<IRegisterRepository, RegisterRepository>();
         }
 
 
@@ -101,6 +106,8 @@ namespace e_market
                 Kategori kategorim = new Kategori();
                 kategorim.KategoriAdi = a[i];
                 kategorim.KategoriAciklama = new Lorem("tr").Sentence(10);
+                kategorim.Status = DataStatus.Inserted;
+                kategorim.CreatedDate = DateTime.Now;
 
 
                 for (int j = 5; j < 20; j++)
@@ -113,6 +120,8 @@ namespace e_market
                     u.UrunFiyati = b;
                     u.UrunMedya = new Images("tr").PicsumUrl();
                     kategorim.Urun.Add(u);
+                    kategorim.Status = DataStatus.Inserted;
+                    kategorim.CreatedDate = DateTime.Now;
                 }
                 context.Kategori.Add(kategorim);
                 context.SaveChanges();
@@ -124,7 +133,9 @@ namespace e_market
                 var model = new KisiFavoriKategorileri()
                 {
                     RegisterID = 1,
-                    KategoriID = item
+                    KategoriID = item,
+                    CreatedDate = DateTime.Now,
+                    Status = DataStatus.Inserted,
                 };
 
                 context.KisiFavoriKategorileri.Add(model);

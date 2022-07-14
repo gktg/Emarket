@@ -1,6 +1,6 @@
 ﻿namespace e_market.Models
 {
-    public class KisiFavoriUrunleri
+    public class KisiFavoriUrunleri : BaseEntity
     {
         public int RegisterID { get; set; }
 

@@ -27,6 +27,7 @@ namespace e_market.Models
         public DbSet<KisiFavoriKategorileri> KisiFavoriKategorileri { get; set; }
         public DbSet<KisiFavoriUrunleri> KisiFavoriUrunleri { get; set; }
         public DbSet<KisiEkledigiUrunler> KisiEkledigiUrunler { get; set; }
+        public DbSet<Gonderi> Gonderi { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,14 +37,16 @@ namespace e_market.Models
             modelBuilder.Entity<Register>()
                 .HasOne(p => p.KisiHassasBilgiler)
                 .WithOne(s => s.Register)
-                .HasForeignKey<KisiHassasBilgiler>(x => x.ID);
+                .HasForeignKey<KisiHassasBilgiler>(x => x.ID).OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Kategori>()
                 .HasMany(c => c.Urun)
                 .WithOne(e => e.Kategori)
                 .HasForeignKey(p => p.KategoriID).OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<KisiFavoriKategorileri>().HasKey(bc => new { bc.RegisterID, bc.KategoriID });
+            modelBuilder.Entity<KisiFavoriKategorileri>()
+                .Ignore(x => x.ID)
+                .HasKey(bc => new { bc.RegisterID, bc.KategoriID });
 
             modelBuilder.Entity<KisiFavoriKategorileri>()
                 .HasOne(bc => bc.Register)
@@ -57,7 +60,9 @@ namespace e_market.Models
                 .HasForeignKey(bc => bc.KategoriID).OnDelete(DeleteBehavior.NoAction);
 
 
-            modelBuilder.Entity<KisiFavoriUrunleri>().HasKey(bc => new { bc.RegisterID, bc.UrunID });
+            modelBuilder.Entity<KisiFavoriUrunleri>()
+                .Ignore(x => x.ID)
+                .HasKey(bc => new { bc.RegisterID, bc.UrunID });
 
             modelBuilder.Entity<KisiFavoriUrunleri>()
                 .HasOne(bc => bc.Register)
@@ -70,7 +75,9 @@ namespace e_market.Models
                 .HasForeignKey(bc => bc.UrunID).OnDelete(DeleteBehavior.NoAction);
 
 
-            modelBuilder.Entity<KisiEkledigiUrunler>().HasKey(bc => new { bc.RegisterID, bc.UrunID });
+            modelBuilder.Entity<KisiEkledigiUrunler>()
+                .Ignore(x => x.ID)
+                .HasKey(bc => new { bc.RegisterID, bc.UrunID });
 
             modelBuilder.Entity<KisiEkledigiUrunler>()
                 .HasOne(bc => bc.Register)
@@ -82,6 +89,12 @@ namespace e_market.Models
                 .WithMany(c => c.KisiEkledigiUrunler)
                 .HasForeignKey(bc => bc.UrunID).OnDelete(DeleteBehavior.NoAction);
 
+
+            modelBuilder.Entity<Register>()
+                .HasMany(c => c.Gonderi)
+                .WithOne(e => e.Register)
+                .HasForeignKey(p => p.RegisterID).OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<Register>(x => x.HasData(new Register
             {
                 Ad = "Servet Göktuğ",
@@ -89,6 +102,11 @@ namespace e_market.Models
                 Email = "g@mail.com",
                 Sifre = "awd.123456",
                 ID = 1,
+                CreatedDate = DateTime.Now,
+                Status = Enums.DataStatus.Inserted,
+
+
+
 
             }));
 
@@ -96,12 +114,12 @@ namespace e_market.Models
 
             modelBuilder.Entity<KisiHassasBilgiler>(x => x.HasData(new KisiHassasBilgiler
             {
-
-                ID = 1,
                 Adres = new Address("tr").FullAddress(),
                 DogumTarihi = DateTime.Now.AddYears(-20),
-                TelefonNumarasi = "05388828249"
-
+                TelefonNumarasi = "05388828249",
+                ID = 1,
+                CreatedDate = DateTime.Now,
+                Status = Enums.DataStatus.Inserted,
 
             }));
 

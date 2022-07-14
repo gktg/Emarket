@@ -13,6 +13,9 @@ using e_market.Tools;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
+using e_market.Repository;
+using e_market.Models.Enums;
 
 namespace e_market.Controllers
 {
@@ -22,14 +25,19 @@ namespace e_market.Controllers
         public readonly ConnectionString _cc;
         private readonly ILogger<EmarketController> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IUrunRepository _urunRepository;
+        private readonly IKisiFavoriKategorileriRepository _kisiFavoriKategorileriRepository;
+        private readonly IRegisterRepository _registerRepository;
 
 
-        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger, IWebHostEnvironment webHostEnvironment)
+        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger, IWebHostEnvironment webHostEnvironment, IUrunRepository urunRepository, IKisiFavoriKategorileriRepository kisiFavoriKategorileriRepository, IRegisterRepository registerRepository)
         {
             _cc = cc;
             _logger = logger;
             _webHostEnvironment = webHostEnvironment;
-
+            _urunRepository = urunRepository;
+            _kisiFavoriKategorileriRepository = kisiFavoriKategorileriRepository;
+            _registerRepository = registerRepository;
         }
 
         public IActionResult Register()
@@ -40,35 +48,43 @@ namespace e_market.Controllers
         {
             return View();
         }
+
         public IActionResult Urunler()
         {
 
             return View();
         }
+
         public IActionResult Favoriler()
         {
             return View();
         }
+
         public IActionResult ForgotPass()
         {
             return View();
         }
+
         public IActionResult ResetPass()
         {
             return View();
         }
+
         public IActionResult Profil()
         {
             return View();
         }
+
         public IActionResult UrunEkleView()
         {
             return View();
         }
+
         public IActionResult UrunEkleViewList()
         {
             return View();
         }
+
         public IActionResult Forum()
         {
             return View();
@@ -87,6 +103,7 @@ namespace e_market.Controllers
             return true;
 
         }
+
 
         [Route("/emarket/Register/")]
         public bool Register(Register model)
@@ -186,16 +203,18 @@ namespace e_market.Controllers
             kisiBilgileri.Ad = Register.Ad;
             kisiBilgileri.Soyad = Register.Soyad;
             kisiBilgileri.Email = Register.Email;
+            kisiBilgileri.ModifiedDate = DateTime.Now;
+            kisiBilgileri.Status = DataStatus.Updated;
+
             kisiBilgileri.KisiHassasBilgiler.DogumTarihi = Register.DogumTarihi.Date;
             kisiBilgileri.KisiHassasBilgiler.TelefonNumarasi = Register.TelefonNumarasi;
             kisiBilgileri.KisiHassasBilgiler.Adres = Register.Adres;
+            kisiBilgileri.KisiHassasBilgiler.ModifiedDate = DateTime.Now;
+            kisiBilgileri.KisiHassasBilgiler.Status = DataStatus.Updated;
 
             foreach (var item in kisiBilgileri.KisiFavoriKategorileri)
             {
-
-                _cc.KisiFavoriKategorileri.Remove(item);
-                _cc.SaveChanges();
-
+                _kisiFavoriKategorileriRepository.Remove(item);
             }
 
             if (Register.KisiFavoriKategorileri != null)
@@ -205,18 +224,18 @@ namespace e_market.Controllers
                     var kisiFavorileri = new KisiFavoriKategorileri()
                     {
                         RegisterID = Register.ID,
-                        KategoriID = item
+                        KategoriID = item,
+                        Status = DataStatus.Inserted,
+                        CreatedDate = DateTime.Now,
+
                     };
-                    _cc.KisiFavoriKategorileri.Add(kisiFavorileri);
-                    _cc.SaveChanges();
+                    _kisiFavoriKategorileriRepository.Add(kisiFavorileri);
+
                 }
+                //_kisiFavoriKategorileriRepository.AddRange(eklenecekler);
             }
 
-
-
-            _cc.Register.Update(kisiBilgileri);
-            _cc.SaveChanges();
-
+            _registerRepository.Update(kisiBilgileri);
 
             return kisiBilgileri;
         }
@@ -518,9 +537,7 @@ namespace e_market.Controllers
                     Stok = urunVM.Stok,
                     UrunMedya = urunVM.UrunMedya,
                 };
-
-                _cc.Urun.Add(yeniUrun);
-                _cc.SaveChanges();
+                _urunRepository.Add(yeniUrun);
 
                 var kisiEkledigiUrunModel = new KisiEkledigiUrunler
                 {
@@ -668,12 +685,60 @@ namespace e_market.Controllers
             return medya;
         }
 
+        [Route("/emarket/GonderiKaydet/")]
+        [HttpPost]
+        public Gonderi GonderiKaydet(GonderiVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var gonderi = new Gonderi()
+                {
+                    GonderiPaylasim = model.GonderiPaylasim,
+                    RegisterID = (int)HttpContext.Session.GetInt32("KisiID"),
+                    GonderiTarihi = DateTime.Now,
+                };
+                _cc.Gonderi.Add(gonderi);
+                _cc.SaveChanges();
+                return gonderi;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        [Route("/emarket/GonderileriGetir")]
+        [HttpGet]
+        public List<GonderiVM> GonderileriGetir()
+        {
+            var gonderiler = _cc.Gonderi.ToList();
+
+            var gonderilerList = new List<GonderiVM>();
+
+            foreach (var item in gonderiler)
+            {
+                var gonderilerModel = new GonderiVM
+                {
+                    ID = item.ID,
+                    GonderiPaylasim = item.GonderiPaylasim,
+                    GonderiTarihi = item.GonderiTarihi,
+                    RegisterID = item.RegisterID,
+                    Register = item.Register,
+                };
+                gonderilerList.Add(gonderilerModel);
+            };
+
+            return gonderilerList;
+        }
+
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
 
     }
 }

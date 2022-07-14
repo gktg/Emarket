@@ -3,9 +3,8 @@
 
 namespace e_market.Models
 {
-    public class Urun
+    public class Urun : BaseEntity
     {
-        public int ID { get; set; }
         
         public int KategoriID { get; set; }
         public string UrunAdi { get; set; }

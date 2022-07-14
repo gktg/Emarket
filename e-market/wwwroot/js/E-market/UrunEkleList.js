@@ -58,7 +58,7 @@ function KisiEkledigiUrunGetir() {
                     var urunAdi = urunler[i].urunAdi == null ? '' : urunler[i].urunAdi;
                     var urunFiyati = urunler[i].urunFiyati == null ? '' : urunler[i].urunFiyati;
                     var stok = urunler[i].stok == null ? '' : urunler[i].stok;
-                    var kategoriAdi = kategoriler.find(x => x.$id == urunler[i].kategoriID).kategoriAdi;
+                    var kategoriAdi = kategoriler.find(x => x.kategoriID == urunler[i].kategoriID).kategoriAdi;
 
                     satirlar += "<tr >\
                        <td >"+ urunAdi + "</td>\

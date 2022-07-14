@@ -1,7 +1,17 @@
-﻿
+﻿<script src="~/js/E-market/Forum.js"></script>
 
 
 <div class="container-fluid col-md-10 mt-5">
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card" style="border-radius:60rem">
+                <button type="button" class="card-body btn" data-toggle="modal" data-target="#GonderiModel">Gönderi Oluştur</button>
+            </div>
+        </div>
+    </div>
+
+
     <div class="card">
         <div class="card-body">
             <div class="row">
@@ -33,8 +43,32 @@
     </div>
 </div>
 
+<div class="modal fade " id="GonderiModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="GonderiModelLabel">
+                    Gönderi Oluşturun
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="editor"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnKaydet">Gönderiyi Paylaş</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <style>
+
+
 
     p {
         margin-bottom: 0px !important
@@ -55,19 +89,8 @@
         #btnYorum:hover {
             color: blue
         }
+
+    .ck-editor__editable_inline {
+        min-height: 20rem;
+    }
 </style>
-
-<script>
-
-    var x = 0;
-    $("#btnBegen").on("click", function () {
-        x++
-        if (x % 2 == 0) {
-            $("#btnBegen").css("color", "gray");
-        }
-        else {
-            $("#btnBegen").css("color", "blue");
-        }
-    })
-
-</script>
