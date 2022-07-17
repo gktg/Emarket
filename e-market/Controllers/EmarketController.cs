@@ -28,9 +28,11 @@ namespace e_market.Controllers
         private readonly IUrunRepository _urunRepository;
         private readonly IKisiFavoriKategorileriRepository _kisiFavoriKategorileriRepository;
         private readonly IRegisterRepository _registerRepository;
+        private readonly IGonderiRepository _gonderiRepository;
 
 
-        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger, IWebHostEnvironment webHostEnvironment, IUrunRepository urunRepository, IKisiFavoriKategorileriRepository kisiFavoriKategorileriRepository, IRegisterRepository registerRepository)
+
+        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger, IWebHostEnvironment webHostEnvironment, IUrunRepository urunRepository, IKisiFavoriKategorileriRepository kisiFavoriKategorileriRepository, IRegisterRepository registerRepository, IGonderiRepository gonderiRepository)
         {
             _cc = cc;
             _logger = logger;
@@ -38,8 +40,10 @@ namespace e_market.Controllers
             _urunRepository = urunRepository;
             _kisiFavoriKategorileriRepository = kisiFavoriKategorileriRepository;
             _registerRepository = registerRepository;
+            _gonderiRepository = gonderiRepository;
         }
 
+        #region View
         public IActionResult Register()
         {
             return View();
@@ -90,6 +94,8 @@ namespace e_market.Controllers
             return View();
         }
 
+        #endregion
+
         public bool Logout()
         {
             HttpContext.Session.Remove("KisiID");
@@ -118,9 +124,7 @@ namespace e_market.Controllers
                     Sifre = model.Sifre
                 };
 
-                _cc.Register.Add(registerModel);
-                _cc.SaveChanges();
-
+                _registerRepository.Add(registerModel);
                 return true;
             }
             catch (Exception e)
@@ -266,7 +270,7 @@ namespace e_market.Controllers
         [Route("/emarket/UrunleriGetir/")]
         public List<UrunVM> UrunleriGetir()
         {
-            List<Urun> urun = _cc.Urun.ToList();
+            List<Urun> urun = _urunRepository.GetAll();
 
             List<UrunVM> urunler = new List<UrunVM>();
 
@@ -310,7 +314,7 @@ namespace e_market.Controllers
         [Route("/emarket/FiltreliUrunGetir/")]
         public List<UrunVM> FiltreliUrunGetir(List<int> idList)
         {
-            List<Urun> urun = _cc.Urun.ToList();
+            List<Urun> urun = _urunRepository.GetAll();
 
             List<Urun> filtreliUrunler = new List<Urun>();
 
@@ -372,12 +376,14 @@ namespace e_market.Controllers
 
         }
 
+
+        #region FavoriUrun
         [Route("/emarket/FavoriUrunGetir/{ID}")]
         public List<UrunVM> FavoriUrunGetir(int ID)
         {
-            List<KisiFavoriKategorileri> favoriKategorileri = _cc.KisiFavoriKategorileri.Where(x => x.RegisterID == ID).ToList();
+            List<KisiFavoriKategorileri> favoriKategorileri = _kisiFavoriKategorileriRepository.Where(x => x.RegisterID == ID);
 
-            List<Urun> urun = _cc.Urun.ToList();
+            List<Urun> urun = _urunRepository.GetAll();
             List<UrunVM> favoriUrunler = new List<UrunVM>();
 
             foreach (var item in favoriKategorileri)
@@ -404,6 +410,39 @@ namespace e_market.Controllers
             return favoriUrunler;
         }
 
+        [Route("/emarket/FavoriUrunEkle/{urunID}")]
+        [HttpPost]
+        public KisiFavoriUrunleri FavoriUrunEkle(int urunID)
+        {
+            var urun = _cc.Urun.Find(urunID);
+
+            var model = new KisiFavoriUrunleri()
+            {
+                RegisterID = (int)HttpContext.Session.GetInt32("KisiID"),
+                UrunID = urun.ID
+            };
+
+            _cc.KisiFavoriUrunleri.Add(model);
+            _cc.SaveChanges();
+
+            return model;
+        }
+
+        [Route("/emarket/FavoriUrunSil/{urunID}")]
+        [HttpPost]
+        public KisiFavoriUrunleri FavoriUrunSil(int urunID)
+        {
+            var urun = _cc.KisiFavoriUrunleri.Where(x => x.UrunID == urunID).FirstOrDefault();
+
+            _cc.KisiFavoriUrunleri.Remove(urun);
+            _cc.SaveChanges();
+
+            return urun;
+        }
+
+        #endregion
+
+        #region Sepet
         [Route("/emarket/SepeteUrunEkle/{urunID}")]
         public List<UrunVM> SepeteUrunEkle(int urunID)
         {
@@ -486,37 +525,9 @@ namespace e_market.Controllers
 
             return SepetiGetir();
         }
+        #endregion
 
-        [Route("/emarket/FavoriUrunEkle/{urunID}")]
-        [HttpPost]
-        public KisiFavoriUrunleri FavoriUrunEkle(int urunID)
-        {
-            var urun = _cc.Urun.Find(urunID);
-
-            var model = new KisiFavoriUrunleri()
-            {
-                RegisterID = (int)HttpContext.Session.GetInt32("KisiID"),
-                UrunID = urun.ID
-            };
-
-            _cc.KisiFavoriUrunleri.Add(model);
-            _cc.SaveChanges();
-
-            return model;
-        }
-
-        [Route("/emarket/FavoriUrunSil/{urunID}")]
-        [HttpPost]
-        public KisiFavoriUrunleri FavoriUrunSil(int urunID)
-        {
-            var urun = _cc.KisiFavoriUrunleri.Where(x => x.UrunID == urunID).FirstOrDefault();
-
-            _cc.KisiFavoriUrunleri.Remove(urun);
-            _cc.SaveChanges();
-
-            return urun;
-        }
-
+        #region Kişi Ürün Kontrol
 
         [Route("/emarket/UrunEkle/")]
         [HttpPost]
@@ -582,7 +593,6 @@ namespace e_market.Controllers
         }
 
 
-
         [Route("/emarket/UrunGetirIDIle/{urunID}")]
         [HttpGet]
         public UrunVM UrunGetirIDIle(int urunID)
@@ -617,8 +627,7 @@ namespace e_market.Controllers
                 GuncellenecekUrun.Stok = urun.Stok;
                 GuncellenecekUrun.UrunMedya = urun.UrunMedya;
 
-                _cc.Update(GuncellenecekUrun);
-                _cc.SaveChanges();
+                _urunRepository.Update(GuncellenecekUrun);
 
                 return true;
             }
@@ -641,9 +650,8 @@ namespace e_market.Controllers
                 _cc.Remove(urunIliski);
                 _cc.SaveChanges();
 
-                var urun = _cc.Urun.FirstOrDefault(x => x.ID == urunID);
-                _cc.Remove(urun);
-                _cc.SaveChanges();
+                var urun = _urunRepository.FirstOrDefault(x => x.ID == urunID);
+                _urunRepository.Remove(urun);
 
                 return true;
             }
@@ -654,6 +662,61 @@ namespace e_market.Controllers
             }
 
         }
+
+        #endregion
+
+        #region Forum
+
+        [Route("/emarket/GonderiKaydet/")]
+        [HttpPost]
+        public Gonderi GonderiKaydet(GonderiVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var gonderi = new Gonderi()
+                {
+                    GonderiPaylasim = model.GonderiPaylasim,
+                    RegisterID = (int)HttpContext.Session.GetInt32("KisiID"),
+                    GonderiTarihi = DateTime.Now,
+                };
+                _gonderiRepository.Add(gonderi);
+
+                return gonderi;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        [Route("/emarket/GonderileriGetir")]
+        [HttpGet]
+        public List<GonderiVM> GonderileriGetir()
+        {
+            var gonderiler = _gonderiRepository.GetAll();
+
+            var gonderilerList = new List<GonderiVM>();
+
+            foreach (var item in gonderiler)
+            {
+                var gonderilerModel = new GonderiVM
+                {
+                    ID = item.ID,
+                    GonderiPaylasim = item.GonderiPaylasim,
+                    GonderiTarihi = item.GonderiTarihi,
+                    RegisterID = item.RegisterID,
+                    Register = item.Register,
+                };
+                gonderilerList.Add(gonderilerModel);
+            };
+
+            return gonderilerList;
+        }
+
+        #endregion
+
+
+
         public async Task<MedyaKutuphanesi> WriteFile(IFormFile file)
         {
 
@@ -684,54 +747,6 @@ namespace e_market.Controllers
             }
             return medya;
         }
-
-        [Route("/emarket/GonderiKaydet/")]
-        [HttpPost]
-        public Gonderi GonderiKaydet(GonderiVM model)
-        {
-            if (ModelState.IsValid)
-            {
-                var gonderi = new Gonderi()
-                {
-                    GonderiPaylasim = model.GonderiPaylasim,
-                    RegisterID = (int)HttpContext.Session.GetInt32("KisiID"),
-                    GonderiTarihi = DateTime.Now,
-                };
-                _cc.Gonderi.Add(gonderi);
-                _cc.SaveChanges();
-                return gonderi;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        [Route("/emarket/GonderileriGetir")]
-        [HttpGet]
-        public List<GonderiVM> GonderileriGetir()
-        {
-            var gonderiler = _cc.Gonderi.ToList();
-
-            var gonderilerList = new List<GonderiVM>();
-
-            foreach (var item in gonderiler)
-            {
-                var gonderilerModel = new GonderiVM
-                {
-                    ID = item.ID,
-                    GonderiPaylasim = item.GonderiPaylasim,
-                    GonderiTarihi = item.GonderiTarihi,
-                    RegisterID = item.RegisterID,
-                    Register = item.Register,
-                };
-                gonderilerList.Add(gonderilerModel);
-            };
-
-            return gonderilerList;
-        }
-
-
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
