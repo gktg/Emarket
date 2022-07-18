@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authorization;
 using e_market.Repository;
 using e_market.Models.Enums;
+using System.Net.Http;
 
 namespace e_market.Controllers
 {
@@ -46,6 +47,7 @@ namespace e_market.Controllers
         #region View
         public IActionResult Register()
         {
+
             return View();
         }
         public IActionResult Login()
@@ -716,6 +718,18 @@ namespace e_market.Controllers
         #endregion
 
 
+        [HttpGet]
+        public async Task GetMembers()
+        {
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://localhost:44324/api/GetAllMembers"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                }
+            }
+
+        }
 
         public async Task<MedyaKutuphanesi> WriteFile(IFormFile file)
         {
