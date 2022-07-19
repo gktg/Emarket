@@ -137,7 +137,7 @@ namespace e_market.Controllers
         }
 
         [Route("/emarket/LoginKontrol/")]
-        public bool LoginKontrol(LoginVM model)
+        public async Task<bool> LoginKontrolAsync(LoginVM model)
         {
             var kisiKontrol = _cc.Register.Where(x => x.Email == model.Email && x.Sifre == model.Sifre).FirstOrDefault();
 
