@@ -65,7 +65,7 @@ function Register() {
 
                     window.location.href = "/emarket/Login";
 
-                }, 3000);
+                }, 1000);
             }
             else {
                 alertim.toast(siteLang.Hata, alertim.types.warning)

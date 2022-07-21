@@ -17,6 +17,10 @@ using Microsoft.AspNetCore.Authorization;
 using e_market.Repository;
 using e_market.Models.Enums;
 using System.Net.Http;
+using System.Net.Http.Json;
+using Google.Ads.GoogleAds.Lib;
+using Google.Ads.GoogleAds.V11.Services;
+using Google.Ads.GoogleAds;
 
 namespace e_market.Controllers
 {
@@ -47,7 +51,6 @@ namespace e_market.Controllers
         #region View
         public IActionResult Register()
         {
-
             return View();
         }
         public IActionResult Login()
@@ -112,7 +115,6 @@ namespace e_market.Controllers
 
         }
 
-
         [Route("/emarket/Register/")]
         public bool Register(Register model)
         {
@@ -137,9 +139,9 @@ namespace e_market.Controllers
         }
 
         [Route("/emarket/LoginKontrol/")]
-        public async Task<bool> LoginKontrolAsync(LoginVM model)
+        public bool LoginKontrolAsync(LoginVM model)
         {
-            var kisiKontrol = _cc.Register.Where(x => x.Email == model.Email && x.Sifre == model.Sifre).FirstOrDefault();
+            var kisiKontrol = _registerRepository.Where(x => x.Email == model.Email && x.Sifre == model.Sifre).FirstOrDefault();
 
             if (kisiKontrol != null)
             {
@@ -163,26 +165,20 @@ namespace e_market.Controllers
         [Route("/emarket/ResetPassVM/")]
         public ResetPassVM ResetPass(ResetPassVM model)
         {
-            var uye = _cc.Register.Find(model.ID);
+            var uye = _registerRepository.Find(model.ID);
 
             uye.Sifre = model.Sifre;
 
-            _cc.Register.Update(uye);
-            _cc.SaveChanges();
-
+            _registerRepository.Update(uye);
 
             return model;
         }
 
         [Route("/emarket/MailGonder/")]
-        public bool MailGonder(string Mail)
+        public bool MailGonder(string mail)
         {
-            Register uye = new Register();
+            var uye = _registerRepository.GetAll().FirstOrDefault(x => x.Email == mail);
 
-
-            MailSender x = new MailSender();
-
-            x.MailGonder(uye);
 
             MailSenderStatic.MailGonderStatic(uye);
 
@@ -193,7 +189,7 @@ namespace e_market.Controllers
         [Route("/emarket/KisiBilgileriGetir/{ID}")]
         public Register KisiBilgileriGetir(int ID)
         {
-            Register register = _cc.Register.Where(x => x.ID == ID).FirstOrDefault();
+            Register register = _registerRepository.Where(x => x.ID == ID).FirstOrDefault();
 
             return register;
 
@@ -203,7 +199,7 @@ namespace e_market.Controllers
         [HttpPost]
         public Register KisiBilgileriGuncelle(ProfilVm Register)
         {
-            var kisiBilgileri = _cc.Register.Find(Register.ID);
+            var kisiBilgileri = _registerRepository.Find(Register.ID);
 
 
             kisiBilgileri.Ad = Register.Ad;
@@ -416,7 +412,7 @@ namespace e_market.Controllers
         [HttpPost]
         public KisiFavoriUrunleri FavoriUrunEkle(int urunID)
         {
-            var urun = _cc.Urun.Find(urunID);
+            var urun = _urunRepository.Find(urunID);
 
             var model = new KisiFavoriUrunleri()
             {
@@ -448,7 +444,7 @@ namespace e_market.Controllers
         [Route("/emarket/SepeteUrunEkle/{urunID}")]
         public List<UrunVM> SepeteUrunEkle(int urunID)
         {
-            Urun eklenecekUrun = _cc.Urun.Find(urunID);
+            Urun eklenecekUrun = _urunRepository.Find(urunID);
 
             List<UrunVM> eskiSepet = HttpContext.Session.GetObject<List<UrunVM>>("Sepet");
 
@@ -599,7 +595,7 @@ namespace e_market.Controllers
         [HttpGet]
         public UrunVM UrunGetirIDIle(int urunID)
         {
-            var urunler = _cc.Urun.FirstOrDefault(x => x.ID == urunID);
+            var urunler = _urunRepository.FirstOrDefault(x => x.ID == urunID);
 
             var urunModel = new UrunVM
             {
@@ -621,7 +617,7 @@ namespace e_market.Controllers
         {
             try
             {
-                var GuncellenecekUrun = _cc.Urun.FirstOrDefault(x => x.ID == urun.ID);
+                var GuncellenecekUrun = _urunRepository.FirstOrDefault(x => x.ID == urun.ID);
 
                 GuncellenecekUrun.UrunAdi = urun.UrunAdi;
                 GuncellenecekUrun.UrunFiyati = urun.UrunFiyati;
@@ -718,19 +714,6 @@ namespace e_market.Controllers
         #endregion
 
 
-        [HttpGet]
-        public async Task GetMembers()
-        {
-            using (var httpClient = new HttpClient())
-            {
-                using (var response = await httpClient.GetAsync("https://localhost:44324/api/GetAllMembers"))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                }
-            }
-
-        }
-
         public async Task<MedyaKutuphanesi> WriteFile(IFormFile file)
         {
 
@@ -771,3 +754,6 @@ namespace e_market.Controllers
 
     }
 }
+
+
+

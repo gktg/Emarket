@@ -3,27 +3,9 @@ var Gonderiler = [];
 
 $(document).ready(function () {
     GonderileriGetir();
-    var x = 0;
-    $("#btnBegen").on("click", function () {
-        x++
-        if (x % 2 == 0) {
-            $("#btnBegen").css("color", "gray");
-        }
-        else {
-            $("#btnBegen").css("color", "blue");
-        }
-    })
 
-    var y = 0;
-    $("#btnYorum").on("click", function () {
-        y++
-        if (y % 2 == 0) {
-            $("#btnYorum").css("color", "gray");
-        }
-        else {
-            $("#btnYorum").css("color", "blue");
-        }
-    })
+
+
     ClassicEditor
         .create(document.querySelector('#editor'), {
             toolbar: []
@@ -117,8 +99,8 @@ function GonderileriBas() {
                     <div class="col-md-9">
                         <p>${Gonderiler[x].gonderiPaylasim}</p>
                         <div class="row justify-content-end">
-                            <button class="btn" id="btnBegen${x}"><i class="fas fa-thumbs-up"></i>Beğen</button>
-                            <button class="btn" id="btnYorum${x}"><i class="fas fa-comment"></i>Yorum Yap</button>
+                            <button class="btn" id="btnBegen${x}" onclick="Begen(this.id)"><i class="fas fa-thumbs-up"></i>Beğen</button>
+                            <button class="btn" id="btnYorum${x}" onclick="YorumYap(this.id)"><i class="fas fa-comment"></i>Yorum Yap</button>
                         </div>
                     </div>
                 </div>
@@ -127,5 +109,35 @@ function GonderileriBas() {
 
         $("#cardTekrar").append(html);
     }
+
+}
+
+function Begen(id) {
+
+    $("#" + id).css("color", "blue");
+    $("#" + id).attr("onclick", "Begenme(this.id)");
+
+
+}
+
+function Begenme(id) {
+
+    $("#" + id).removeAttr("style");
+    $("#" + id).attr("onclick", "Begen(this.id)");
+
+}
+
+function YorumYap(id) {
+
+    $("#" + id).css("color", "blue");
+    $("#" + id).attr("onclick", "YorumIptal(this.id)");
+
+
+}
+
+function YorumIptal(id) {
+
+    $("#" + id).removeAttr("style");
+    $("#" + id).attr("onclick", "YorumYap(this.id)");
 
 }

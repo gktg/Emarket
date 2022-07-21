@@ -4,6 +4,7 @@ var GuncelleModel = {}
 var FavoriKategoriModel = {}
 var FavoriKategoriler = []
 var FavoriKategorilerInt = []
+var KisiGonderileri = []
 
 
 $(document).ready(function () {
@@ -12,9 +13,7 @@ $(document).ready(function () {
     KisiID = GetURLParameter();
     KategoriGetir()
     KisiBilgileriGetir();
-
     CustomInputMask(".kisiTelNo");
-    //PhoneMask();
 })
 
 function ParamDDLDoldur(alanID, data) {
@@ -32,7 +31,7 @@ function KategoriGetir() {
         type: "Get",
         url: "/emarket/KategoriGetir/",
         dataType: "json",
-        contentType:"application/json",
+        contentType: "application/json",
         data: null,
         async: false,
         success: function (result) {
@@ -65,7 +64,12 @@ function KisiBilgileriGetir() {
         success: function (result) {
             if (result.id == KisiID) {
                 KisiModel = result;
+                KisiGonderileri = KisiModel.gonderi.$values;
                 KisiBilgileriniSayfayaBas()
+
+                if (KisiGonderileri != null) {
+                    GonderileriTabloBas()
+                }
             }
             else {
                 alertim.toast(siteLang.Hata, alertim.types.warning)
@@ -79,6 +83,22 @@ function KisiBilgileriGetir() {
             console.log(e);
         }
     })
+}
+
+
+function GonderileriTabloBas() {
+    var satirlar = "";
+    for (var i = 0; i < KisiGonderileri.length; i++) {
+        satirlar += "<tr >\
+                       <td >"+ KisiGonderileri[i].gonderiPaylasim + "</td>\
+                        <td >"+ CSStringDateToStringddmmyyyyhhmm(KisiGonderileri[i].gonderiTarihi) + "</td>\
+                        <td >"+ KisiGonderileri[i].status + "</td>\
+                        <td class='text-center'><button type='button' class='btn' onclick='Goruntule(" + KisiGonderileri[i].id + ")'> <img src='/img/eye.svg'/> </button>\
+                        <button type='button' class='btn ' onclick='Sil(" + KisiGonderileri[i].id + ")'> <img src='/img/trash.svg'/> </button></td>\
+                         </tr>";
+    }
+    $("#gonderilerTbody").html(satirlar);
+    MakeDatatable("gonderilerTable", false)
 }
 
 
@@ -126,39 +146,5 @@ function GuncelKisiBilgileriModeleBas() {
     Register["KisiFavoriKategorileri"] = $("#drdKategori").val().map(Number);
 
     console.log(Register)
-}
-
-function KisiBilgileriGuncelle() {
-
-    GuncelKisiBilgileriModeleBas();
-
-    $.ajax({
-
-        type: "Post",
-        url: "/emarket/KisiBilgileriGuncelle/",
-        dataType: "json",
-        data: Register,
-        async: false,
-        success: function (result) {
-            console.log(result)
-            if (result.id == KisiID) {
-
-                KisiModel = result;
-                GuncellenmisKisiBilgileriniSayfayaBas()
-                alertim.toast(siteLang.Kaydet, alertim.types.success)
-
-            }
-            else {
-                alertim.toast(siteLang.Hata, alertim.types.warning)
-
-            }
-
-
-        },
-        error: function (e) {
-
-            console.log(e);
-        }
-    })
 }
 

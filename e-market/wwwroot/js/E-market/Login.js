@@ -37,7 +37,7 @@ function Login() {
 
                     window.location.href = "Urunler";
 
-                }, 3000);
+                }, 1000);
             }
             else {
                 alertim.toast(siteLang.Giris2, alertim.types.warning);

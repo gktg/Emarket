@@ -3406,38 +3406,38 @@ function CustomInputMask(numaraAlani) {
         //{ val: "GB", mask: "+44 9 (999) 999999" },
         //{ val: "RU", mask: "+7 (999) 9999999" }
     ];
-    $.ajax({
-        type: "GET",
-        url: "/Panel/UlkeMaskGetir",
-        dataType: "json",
-        data: null,
-        success: function (result) {
-            if (result.isSuccess == true) {
-                data = result.value;
-                for (var i of data) {
-                    var maskModel = {
-                        val: i.ulkeKod,
-                        mask: i.telefonMask
-                    }
-                    masks.push(maskModel);
-                }
-            } else {
-                alertim.toast(siteLang.Hata, alertim.types.danger);
-            }
-        },
-        error: function (e) {
-            console.log(e);
-        }, //success: function (result) {
-    });
+    //$.ajax({
+    //    type: "GET",
+    //    url: "/Panel/UlkeMaskGetir",
+    //    dataType: "json",
+    //    data: null,
+    //    success: function (result) {
+    //        if (result.isSuccess == true) {
+    //            data = result.value;
+    //            for (var i of data) {
+    //                var maskModel = {
+    //                    val: i.ulkeKod,
+    //                    mask: i.telefonMask
+    //                }
+    //                masks.push(maskModel);
+    //            }
+    //        } else {
+    //            alertim.toast(siteLang.Hata, alertim.types.danger);
+    //        }
+    //    },
+    //    error: function (e) {
+    //        console.log(e);
+    //    }, //success: function (result) {
+    //});
 
-    $(document).on("click", ".countryCode", function (elem) {
-        var countryVal = $(this).attr("value"); masks.forEach(function (item) {
-            if (item.val == countryVal) {
-                $(numaraAlani).inputmask(item.mask);
-            }
-        });
-        $('#ddlImg').attr("src", "/lib/flag-icons/24x24/" + countryVal + ".png");
-    });
+    //$(document).on("click", ".countryCode", function (elem) {
+    //    var countryVal = $(this).attr("value"); masks.forEach(function (item) {
+    //        if (item.val == countryVal) {
+    //            $(numaraAlani).inputmask(item.mask);
+    //        }
+    //    });
+    //    $('#ddlImg').attr("src", "/lib/flag-icons/24x24/" + countryVal + ".png");
+    //});
 }
 function CepTelefonuMask(numaraAlani) {
     $(numaraAlani).inputmask("+\\90 599 999 9999");

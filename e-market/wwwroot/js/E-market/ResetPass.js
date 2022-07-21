@@ -54,8 +54,11 @@ function ResetPass() {
         dataType: "json",
         data: model,
         success: function (result) {
-            alert("Şifreniz Güncellenmiştir");
+            setTimeout(function () {
 
+                window.location.href = "/emarket/Login";
+
+            }, 1000);
         },
         error: function (e) {
 

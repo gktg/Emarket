@@ -66,10 +66,10 @@ namespace e_market
         {
             if (env.IsDevelopment())
             {
-                context.Database.EnsureDeleted();
+                //context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
                 context.Database.Migrate();
-                CreateData(context);
+                //CreateData(context);
             }
             if (env.IsDevelopment())
             {
@@ -145,3 +145,7 @@ namespace e_market
         }
     }
 }
+
+
+
+

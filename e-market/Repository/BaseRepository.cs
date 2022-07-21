@@ -68,16 +68,6 @@ namespace e_market.Repository
             }
         }
 
-        public T Find(int id)
-        {
-            return _cc.Set<T>().Find(id);
-        }
-
-        public T FirstOrDefault(Expression<Func<T, bool>> exp)
-        {
-            return _cc.Set<T>().FirstOrDefault(exp);
-        }
-
         public List<T> GetActives()
         {
             return Where(x => x.Status != DataStatus.Deleted);
@@ -98,10 +88,6 @@ namespace e_market.Repository
             return Where(x => x.Status == DataStatus.Deleted);
         }
 
-        public object Select(Expression<Func<T, object>> exp)
-        {
-            return _cc.Set<T>().Select(exp).ToList();
-        }
 
         public void Update(T item)
         {
@@ -121,6 +107,21 @@ namespace e_market.Repository
                 Update(element);
 
             }
+        }
+
+        public T Find(int id)
+        {
+            return _cc.Set<T>().Find(id);
+        }
+
+        public T FirstOrDefault(Expression<Func<T, bool>> exp)
+        {
+            return _cc.Set<T>().FirstOrDefault(exp);
+        }
+
+        public object Select(Expression<Func<T, object>> exp)
+        {
+            return _cc.Set<T>().Select(exp).ToList();
         }
 
         public List<T> Where(Expression<Func<T, bool>> exp)

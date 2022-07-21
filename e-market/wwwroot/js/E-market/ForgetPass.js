@@ -15,7 +15,7 @@
         type: "POST",
         url: "/emarket/MailGonder/",
         dataType: "json",
-        data: {Mail:mail},
+        data: mail,
         success: function (result) {
             if (result == true) {
                 alert("Mail Gönderildi");
