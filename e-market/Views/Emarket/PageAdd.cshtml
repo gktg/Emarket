@@ -1,0 +1,29 @@
+﻿<script src="~/js/E-market/PageAdd.js"></script>
+
+<div class="container-fluid col-md-10">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <label>Sayfa Adı</label>
+            <input id="txtSayfaAdi" class="form-control" type="text" />
+        </div>
+        <div class="col-md-4">
+            <label>Url</label>
+            <input type="text" class="form-control" id="txtUrl" />
+        </div>
+        <div class="col-md-4">
+            <label>Erişim</label>
+            <select class="form-control" id="drdErisim">
+                <option value="0">Seçiniz</option>
+                <option value="1">Admin</option>
+                <option value="2">User</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-2 ml-auto">
+            <div>
+                <button class="form-control btn-primary" onclick="SayfaEkle()" >Sayfayı Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>

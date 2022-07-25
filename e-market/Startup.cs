@@ -58,6 +58,7 @@ namespace e_market
             services.AddScoped<IKisiFavoriKategorileriRepository, KisiFavoriKategorileriRepository>();
             services.AddScoped<IRegisterRepository, RegisterRepository>();
             services.AddScoped<IGonderiRepository, GonderiRepository>();
+            services.AddScoped<IPageRepository, PageRepository>();
         }
 
 

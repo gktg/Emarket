@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using e_market.Models;
 using Bogus.DataSets;
-
+using e_market.Models.Enums;
 
 namespace e_market.Models
 {
@@ -28,6 +28,7 @@ namespace e_market.Models
         public DbSet<KisiFavoriUrunleri> KisiFavoriUrunleri { get; set; }
         public DbSet<KisiEkledigiUrunler> KisiEkledigiUrunler { get; set; }
         public DbSet<Gonderi> Gonderi { get; set; }
+        public DbSet<Page> Page { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -100,14 +101,11 @@ namespace e_market.Models
                 Ad = "Servet Göktuğ",
                 Soyad = "Türkan",
                 Email = "g@mail.com",
-                Sifre = "awd.123456",
+                Sifre = "+hBCBANDrxIZaywz3zTgEzSrJWuH0QEXdL6Kvku6Wic=",
+                Role = Role.Admin,
                 ID = 1,
                 CreatedDate = DateTime.Now,
-                Status = Enums.DataStatus.Inserted,
-
-
-
-
+                Status = DataStatus.Inserted,
             }));
 
 

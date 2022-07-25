@@ -1,4 +1,5 @@
-﻿using System;
+﻿using e_market.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,6 +14,8 @@ namespace e_market.Models
         public string Email { get; set; }
 
         public string Sifre { get; set; }
+
+        public Role Role { get; set; }
 
         public virtual KisiHassasBilgiler KisiHassasBilgiler { get; set; }
         public virtual ICollection<KisiFavoriKategorileri> KisiFavoriKategorileri { get; set; }

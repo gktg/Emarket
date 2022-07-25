@@ -71,12 +71,14 @@ namespace e_market.Repository
         public List<T> GetActives()
         {
             return Where(x => x.Status != DataStatus.Deleted);
-        }
+        }     
 
         public List<T> GetAll()
         {
             return _cc.Set<T>().ToList();
         }
+
+
 
         public List<T> GetModifieds()
         {

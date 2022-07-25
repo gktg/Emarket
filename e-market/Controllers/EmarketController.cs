@@ -1,7 +1,6 @@
 ﻿using e_market.Models;
 using e_market.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -13,14 +12,10 @@ using e_market.Tools;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Authorization;
 using e_market.Repository;
 using e_market.Models.Enums;
-using System.Net.Http;
-using System.Net.Http.Json;
-using Google.Ads.GoogleAds.Lib;
-using Google.Ads.GoogleAds.V11.Services;
-using Google.Ads.GoogleAds;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace e_market.Controllers
 {
@@ -34,10 +29,11 @@ namespace e_market.Controllers
         private readonly IKisiFavoriKategorileriRepository _kisiFavoriKategorileriRepository;
         private readonly IRegisterRepository _registerRepository;
         private readonly IGonderiRepository _gonderiRepository;
+        private readonly IPageRepository _pageRepository;
 
 
 
-        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger, IWebHostEnvironment webHostEnvironment, IUrunRepository urunRepository, IKisiFavoriKategorileriRepository kisiFavoriKategorileriRepository, IRegisterRepository registerRepository, IGonderiRepository gonderiRepository)
+        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger, IWebHostEnvironment webHostEnvironment, IUrunRepository urunRepository, IKisiFavoriKategorileriRepository kisiFavoriKategorileriRepository, IRegisterRepository registerRepository, IGonderiRepository gonderiRepository, IPageRepository pageRepository)
         {
             _cc = cc;
             _logger = logger;
@@ -46,6 +42,7 @@ namespace e_market.Controllers
             _kisiFavoriKategorileriRepository = kisiFavoriKategorileriRepository;
             _registerRepository = registerRepository;
             _gonderiRepository = gonderiRepository;
+            _pageRepository = pageRepository;
         }
 
         #region View
@@ -57,10 +54,8 @@ namespace e_market.Controllers
         {
             return View();
         }
-
         public IActionResult Urunler()
         {
-
             return View();
         }
 
@@ -99,8 +94,19 @@ namespace e_market.Controllers
             return View();
         }
 
+        public IActionResult UyeListesi()
+        {
+            return View();
+        }
+
+        public IActionResult PageAdd()
+        {
+            return View();
+        }
+
         #endregion
 
+        #region Emarket
         public bool Logout()
         {
             HttpContext.Session.Remove("KisiID");
@@ -112,7 +118,6 @@ namespace e_market.Controllers
 
             }
             return true;
-
         }
 
         [Route("/emarket/Register/")]
@@ -125,8 +130,11 @@ namespace e_market.Controllers
                     Ad = model.Ad,
                     Soyad = model.Soyad,
                     Email = model.Email,
-                    Sifre = model.Sifre
+                    Role = Role.User,
                 };
+
+                registerModel.Sifre = HashPass.hashPass(model.Sifre);
+
 
                 _registerRepository.Add(registerModel);
                 return true;
@@ -141,7 +149,8 @@ namespace e_market.Controllers
         [Route("/emarket/LoginKontrol/")]
         public bool LoginKontrolAsync(LoginVM model)
         {
-            var kisiKontrol = _registerRepository.Where(x => x.Email == model.Email && x.Sifre == model.Sifre).FirstOrDefault();
+
+            var kisiKontrol = _registerRepository.Where(x => x.Email == model.Email && x.Sifre == HashPass.hashPass(model.Sifre)).FirstOrDefault();
 
             if (kisiKontrol != null)
             {
@@ -149,9 +158,9 @@ namespace e_market.Controllers
                 var kisibilgileri = KisiBilgileriGetir(kisiKontrol.ID);
 
                 HttpContext.Session.SetInt32("KisiID", kisibilgileri.ID);
+                HttpContext.Session.SetString("Rol", (kisibilgileri.Role.ToString()));
                 HttpContext.Session.SetString("Ad", kisibilgileri.Ad + " " + kisibilgileri.Soyad);
                 HttpContext.Session.SetString("Email", kisibilgileri.Email);
-
 
                 return true;
 
@@ -374,6 +383,16 @@ namespace e_market.Controllers
 
         }
 
+        [HttpPost]
+        [Route("/emarket/UyeList/")]
+        public List<Register> UyeList()
+        {
+            var result = _registerRepository.GetRegisters();
+
+            return result;
+        }
+
+        #endregion
 
         #region FavoriUrun
         [Route("/emarket/FavoriUrunGetir/{ID}")]
@@ -713,6 +732,41 @@ namespace e_market.Controllers
 
         #endregion
 
+        [HttpGet]
+        [Route("/emarket/SayfaYonetimi/")]
+        public List<Page> SayfaYonetimi()
+        {
+            string rol = HttpContext.Session.GetString("Rol");
+
+            List<Page> pages = new List<Page>();
+
+            if (rol == "Admin")
+            {
+                pages = _pageRepository.GetAdminPages();
+                return pages;
+
+            }
+            else if (rol == "User")
+            {
+                pages = _pageRepository.GetUserPages();
+                return pages;
+            }
+
+            return pages;
+
+        }
+
+        [HttpPost]
+        [Route("/emarket/SayfaEkle/")]
+        public Page SayfaEkle(Page page)
+        {
+            if (page.PageName != null)
+            {
+                _pageRepository.Add(page);
+
+            }
+            return page;
+        }
 
         public async Task<MedyaKutuphanesi> WriteFile(IFormFile file)
         {

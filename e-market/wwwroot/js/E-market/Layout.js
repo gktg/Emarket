@@ -1,11 +1,12 @@
 ﻿var sepet = [];
+var pages = [];
 var toplamUcret = 0;
 var sepetUzunluk = 0;
 $(document).ready(function () {
 
     $('select:not(".select2-hidden-accessible,[data-role]")').select2();
     SepetiGetir()
-
+    SayfaYonetimi()
 
 })
 
@@ -97,4 +98,51 @@ function SepetTekrarli() {
 
 
 
+}
+
+function SayfaYonetimi() {
+    $.ajax({
+        type: "get",
+        url: "/emarket/SayfaYonetimi/",
+        dataType: "json",
+        data: null,
+        success: function (result) {
+            if (result != null) {
+                pages = result.$values;
+
+                for (var i = 0; i < pages.length; i++) {
+
+                    var page = `<div class="col-md-2 text-center pt-2">
+                                <a class="btn2" href="${pages[i].pageUrl}">${pages[i].pageName}</a>
+                            </div>`;
+                    $("#navbarRow").append(page)
+                }
+
+            }
+            else {
+
+            }
+        },
+        error: function (e) {
+
+            console.log(e);
+        }
+    })
+}
+
+
+function Logout() {
+    $.ajax({
+        type: "get",
+        url: "/emarket/Logout/",
+        dataType: "json",
+        data: null,
+        success: function (result) {
+            location.href = "/"
+        },
+        error: function (e) {
+
+            console.log(e);
+        }
+    })
 }
