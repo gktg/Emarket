@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace e_market.Models
 {
-    public class KisiEkledigiUrunler : BaseEntity
+    public class KisiEkledigiUrunler : BaseJunctionEntity
     {
         public int RegisterID { get; set; }
 

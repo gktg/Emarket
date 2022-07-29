@@ -5,12 +5,10 @@ namespace e_market.Models
 {
     public class Urun : BaseEntity
     {
-        
         public int KategoriID { get; set; }
         public string UrunAdi { get; set; }
         public int UrunFiyati { get; set; }
         public int Stok { get; set; }
-        
         public string UrunMedya { get; set; }
         public virtual Kategori Kategori { get; set; }
         public virtual ICollection<KisiFavoriUrunleri> KisiFavoriUrunleri { get; set; }

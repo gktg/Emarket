@@ -249,5 +249,7 @@
 
     Giris:"Girişiniz Başarılıdır",
     Giris2: "Girişiniz Başarıszıdır. Kontrol Ediniz",
-    SifreHata2: "Yeni Şifreniz Eski Şifrelerinizden Biri İle Aynı Olamaz"
+    SifreHata2: "Yeni Şifreniz Eski Şifrelerinizden Biri İle Aynı Olamaz",
+    FavoriUrunYok: "Favori Olarak Eklenen Bir Ürün Bulunamadı"
+
 })

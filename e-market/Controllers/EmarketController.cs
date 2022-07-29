@@ -74,6 +74,12 @@ namespace e_market.Controllers
             return View();
         }
 
+        [Route("FavoriUrunler")]
+        public IActionResult FavoriUrunler()
+        {
+            return View();
+        }
+
         [Route("ForgotPass")]
         public IActionResult ForgotPass()
         {
@@ -459,8 +465,9 @@ namespace e_market.Controllers
 
 
         }
-        [Route("/emarket/FavoriUrunGetir/{ID}")]
-        public List<UrunVM> FavoriUrunGetir(int ID)
+
+        [Route("/emarket/FavoriKategoriUrunleriGetir/{ID}")]
+        public List<UrunVM> FavoriKategoriUrunleriGetir(int ID)
         {
             List<KisiFavoriKategorileri> favoriKategorileri = _kisiFavoriKategorileriRepository.Where(x => x.RegisterID == ID);
 
@@ -520,6 +527,31 @@ namespace e_market.Controllers
 
             return urun;
         }
+        [Route("/emarket/FavoriUrunGetir/{id}")]
+        [HttpGet]
+        public List<UrunVM> FavoriUrunGetir(int id)
+        {
+            List<UrunVM> urunList = new List<UrunVM>();
+            List<Urun> urunlerim = _urunRepository.GetActives();
+
+            List<int> urunIDList = _cc.KisiFavoriUrunleri.Where(x => x.RegisterID == id).Select(x => x.UrunID).ToList();
+
+            urunList.AddRange(urunIDList.Select(x => new UrunVM {
+                ID = x,
+                UrunAdi = urunlerim.FirstOrDefault(y => y.ID == x).UrunAdi,
+                UrunFiyati = urunlerim.FirstOrDefault(y => y.ID == x).UrunFiyati,
+                UrunMedya = urunlerim.FirstOrDefault(y => y.ID == x).UrunMedya,
+                Stok = urunlerim.FirstOrDefault(y => y.ID == x).Stok,
+                KategoriID = urunlerim.FirstOrDefault(y => y.ID == x).KategoriID,
+                KategoriAdi = urunlerim.FirstOrDefault(y => y.ID == x).Kategori.KategoriAdi,
+                FavoriMi = true,
+
+            }).ToList());
+
+
+            return urunList;
+        }
+
 
         #endregion
 
@@ -555,8 +587,7 @@ namespace e_market.Controllers
                     {
                         item.Miktar++;
                         var fiyat = eklenecekUrun.UrunFiyati;
-                        var fiyat2 = fiyat;
-                        var sonUcret = item.Miktar * fiyat2;
+                        var sonUcret = item.Miktar * fiyat;
                         item.UrunFiyati = (int)sonUcret;
                         var x = eklenmisUrunler.FirstOrDefault(x => x.ID == urunID);
                         eklenmisUrunler.Remove(x);
@@ -592,7 +623,9 @@ namespace e_market.Controllers
 
             if (silinecek.Miktar > 1)
             {
+                var urunTekFiyat = silinecek.UrunFiyati / silinecek.Miktar;
                 silinecek.Miktar--;
+                silinecek.UrunFiyati = (int)(urunTekFiyat * silinecek.Miktar);
                 HttpContext.Session.SetObject("Sepet", sepet);
 
             }

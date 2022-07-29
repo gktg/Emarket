@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace e_market.Models
 {
-    public class KisiFavoriKategorileri : BaseEntity
+    public class KisiFavoriKategorileri : BaseJunctionEntity
     {
 
         public int RegisterID { get; set; }

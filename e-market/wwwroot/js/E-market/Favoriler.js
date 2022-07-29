@@ -3,14 +3,14 @@ var KisiID;
 $(document).ready(function () {
 
     KisiID = $("#site-kisiID").val()
-    FavoriUrunGetir();
+    FavoriKategoriUrunleriGetir();
 
 })
 
-function FavoriUrunGetir() {
+function FavoriKategoriUrunleriGetir() {
     $.ajax({
         type: "Get",
-        url: "/emarket/FavoriUrunGetir/" + KisiID,
+        url: "/emarket/FavoriKategoriUrunleriGetir/" + KisiID,
         dataType: "json",
         data: null,
         async: false,

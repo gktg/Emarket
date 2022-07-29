@@ -7,7 +7,7 @@
     padding: 20px;
     top: 30px !important;
     width: 350px !important;
-    left: -110px !important;
+    left: -124px !important;
     box-shadow: 0px 5px 30px black;
 }
 
@@ -59,7 +59,7 @@
     content: " ";
     position: absolute;
     top: -20px;
-    right: 68px;
+    right: 60px;
     border: 10px solid transparent;
     border-bottom-color: #fff;
 }
