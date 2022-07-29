@@ -38,7 +38,7 @@
     if (int.TryParse(url, out int value))
     {
         string[] url2 = path.Split("/");
-        url = url2[2];
+        url = url2[1];
     };
 
 
@@ -126,16 +126,16 @@
                 <div class="col-md-6">
                     <div class="row" id="navbarRow">
                         <div class="col-md-2 col-3 text-center pt-2">
-                            <a class="btn2" href="https://localhost:44393/emarket/Urunler" target="_self">ÜRÜNLER</a>
+                            <a class="btn2" href="https://localhost:44393/Urunler" target="_self">ÜRÜNLER</a>
                         </div>
                         <div class="col-md-3 col-3 text-center pt-2">
-                            <a class="btn2" href="https://localhost:44393/emarket/Favoriler/@Accessor.HttpContext.Session.GetInt32("KisiID")" target="_self">FAVORİ KATEGORİLER</a>
+                            <a class="btn2" href="https://localhost:44393/Favoriler" target="_self">FAVORİ KATEGORİLER</a>
                         </div>
                         <div class="col-md-2 col-3 text-center pt-2">
-                            <a class="btn2" href="https://localhost:44393/emarket/UrunEkleViewList">ÜRÜN LİSTESİ</a>
+                            <a class="btn2" href="https://localhost:44393/UrunEkleViewList">ÜRÜN LİSTESİ</a>
                         </div>
                         <div class="col-md-1 col-3 text-center pt-2">
-                            <a class="btn2" href="https://localhost:44393/emarket/Forum">FORUM</a>
+                            <a class="btn2" href="https://localhost:44393/Forum">FORUM</a>
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                                 <a id="kullaniciAdi" data-toggle="dropdown" class="Lbl btn2">@Accessor.HttpContext.Session.GetString("Ad")</a>
                                 <div class="dropdown-menu">
                                     <div class="col-md-12 col-3 text-center pt-2">
-                                        <a class="btn2" href="https://localhost:44393/emarket/Profil/@Accessor.HttpContext.Session.GetInt32("KisiID")" target="_self">PROFİL</a>
+                                        <a class="btn2" href="https://localhost:44393/Profil" target="_self">PROFİL</a>
                                     </div>
                                     <div class="col-md-12 col-3 text-center pt-2">
                                         <a class="btn2" onclick="Logout()" >ÇIKIŞ YAPINIZ</a>
@@ -192,6 +192,7 @@
             <input type="hidden" id="site-kisiID" value="@Accessor.HttpContext.Session.GetInt32("KisiID")" />
             <input type="hidden" id="site-ad" value="@Accessor.HttpContext.Session.GetString("Ad")" />
             <input type="hidden" id="site-email" value="@Accessor.HttpContext.Session.GetString("Email")" />
+            <input type="hidden" id="site-role" value="@Accessor.HttpContext.Session.GetString("Rol")" />
         </main>
     </div>
 
@@ -236,5 +237,9 @@
             color: blue;
             outline: unset !important;
         }
+
+    input[type=search] {
+        display: none !important
+    }
 </style>
 

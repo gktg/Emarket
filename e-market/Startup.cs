@@ -16,6 +16,7 @@ using System.Text.Json.Serialization;
 using Bogus.DataSets;
 using e_market.Models.Enums;
 using e_market.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace e_market
 {
@@ -50,15 +51,34 @@ namespace e_market
             });
 
 
+
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddControllers().AddJsonOptions(x =>
             x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+
             services.AddScoped<IUrunRepository, UrunRepository>();
             services.AddScoped<IKisiFavoriKategorileriRepository, KisiFavoriKategorileriRepository>();
             services.AddScoped<IRegisterRepository, RegisterRepository>();
             services.AddScoped<IGonderiRepository, GonderiRepository>();
             services.AddScoped<IPageRepository, PageRepository>();
+
+
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/";
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                    options.SlidingExpiration = true;
+                    options.Cookie.Name = "MyAppCookie";
+                    options.AccessDeniedPath = "/";
+                });
         }
 
 
@@ -89,6 +109,8 @@ namespace e_market
 
             app.UseRouting();
 
+            app.UseCookiePolicy();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

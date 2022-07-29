@@ -1,4 +1,4 @@
-﻿<script src="~/js/E-market/PageAdd.js"></script>
+﻿<script src="~/js/E-market/SayfaEkle.js"></script>
 
 <div class="container-fluid col-md-10">
     <div class="row mt-5">
@@ -22,7 +22,27 @@
     <div class="row mt-5">
         <div class="col-md-2 ml-auto">
             <div>
-                <button class="form-control btn-primary" onclick="SayfaEkle()" >Sayfayı Kaydet</button>
+                <button class="form-control btn-primary" onclick="SayfaEkle()">Sayfayı Kaydet</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div>
+                <table id="sayfaTable" style="width: 100% !important;" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Sayfa Adı</th>
+                            <th>Sayfa Url</th>
+                            <th>Sayfa Erişim Yetkisi</th>
+                            <th>İşlemler</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="tbodySayfa">
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@ var KisiGonderileri = []
 $(document).ready(function () {
 
     Email();
-    KisiID = GetURLParameter();
+    KisiID = $("#site-kisiID").val()
     KategoriGetir()
     KisiBilgileriGetir();
     CustomInputMask(".kisiTelNo");
@@ -107,32 +107,23 @@ function KisiBilgileriniSayfayaBas() {
     $("#txtAd").val(KisiModel.ad)
     $("#txtSoyad").val(KisiModel.soyad)
     $("#txtEmail").val(KisiModel.email)
-    $("#txtDogumTarihi").val(CsharpDateToStringDateyyyymmdd(KisiModel.kisiHassasBilgiler.dogumTarihi)).change();
-    $("#txtTelefon").val(KisiModel.kisiHassasBilgiler.telefonNumarasi)
-    $("#txtAdres").val(KisiModel.kisiHassasBilgiler.adres)
+    if (KisiModel.kisiHassasBilgiler != null) {
+        $("#txtDogumTarihi").val(CsharpDateToStringDateyyyymmdd(KisiModel.kisiHassasBilgiler.dogumTarihi)).change();
+        $("#txtTelefon").val(KisiModel.kisiHassasBilgiler.telefonNumarasi)
+        $("#txtAdres").val(KisiModel.kisiHassasBilgiler.adres)
+    }
 
-    $.each(KisiModel.kisiFavoriKategorileri.$values, function (x, y) {
+    if (KisiModel.kisiFavoriKategorileri.$values.length > 0)
+    {
+        $.each(KisiModel.kisiFavoriKategorileri.$values, function (x, y) {
 
-        $("#drdKategori option[value='" + y.kategoriID + "']").prop("selected", true).change();
+            $("#drdKategori option[value='" + y.kategoriID + "']").prop("selected", true).change();
 
-    })
+        })
+    }
+
 }
 
-function GuncellenmisKisiBilgileriniSayfayaBas() {
-
-    $("#txtAd").val(KisiModel.ad)
-    $("#txtSoyad").val(KisiModel.soyad)
-    $("#txtEmail").val(KisiModel.email)
-    $("#txtDogumTarihi").val(CsharpDateToStringDateyyyymmdd(KisiModel.kisiHassasBilgiler.dogumTarihi)).change();
-    $("#txtTelefon").val(KisiModel.kisiHassasBilgiler.telefonNumarasi)
-    $("#txtAdres").val(KisiModel.kisiHassasBilgiler.adres)
-
-    $.each(KisiModel.kisiFavoriKategorileri.$values, function (x, y) {
-
-        $("#drdKategori option[value='" + y.kategoriID + "']").prop("selected", true).change();
-
-    })
-}
 
 function GuncelKisiBilgileriModeleBas() {
 
@@ -148,3 +139,29 @@ function GuncelKisiBilgileriModeleBas() {
     console.log(Register)
 }
 
+
+function KisiBilgileriGuncelle() {
+    GuncelKisiBilgileriModeleBas()
+    $.ajax({
+        type: "Post",
+        url: "/emarket/KisiBilgileriGuncelle/",
+        dataType: "json",
+        data: Register,
+        async: false,
+        success: function (result) {
+            if (result.id == KisiID) {
+                KisiModel = result;
+            }
+            else {
+                alertim.toast(siteLang.Hata, alertim.types.warning)
+
+            }
+
+
+        },
+        error: function (e) {
+
+            console.log(e);
+        }
+    })
+}

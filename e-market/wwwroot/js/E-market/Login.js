@@ -35,7 +35,7 @@ function Login() {
                 alertim.toast(siteLang.Giris, alertim.types.success);
                 setTimeout(function () {
 
-                    window.location.href = "Urunler";
+                    window.location.href = "/Urunler";
 
                 }, 1000);
             }

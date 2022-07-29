@@ -1227,7 +1227,6 @@ function JSDateToStringDateyyyymmdd(date) {
         return "";
     }
 }
-
 function JS1DateToStringDateyyyymmdd(date) {
     try {
         var yyyy = date.getFullYear();
@@ -1247,6 +1246,17 @@ function CSStringDateToStringddmmyyyyhhmm(dateStr) {
         var hh = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
         var min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
         return dd + "." + mm + "." + yyyy + " " + hh + ":" + min;
+    } catch (err) {
+        return "";
+    }
+}
+function CSStringDateToStringddmmyyyy(dateStr) {
+    try {
+        var date = StringDateTimeToJSDateTime(dateStr);
+        var yyyy = date.getFullYear();
+        var mm = date.getMonth() < 9 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+        var dd = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        return dd + "." + mm + "." + yyyy;
     } catch (err) {
         return "";
     }

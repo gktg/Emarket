@@ -90,7 +90,7 @@ function KisiEkledigiUrunGetir() {
 
 function Goruntule(id) {
 
-    location.href ="/emarket/UrunEkleView/"+id
+    location.href ="UrunEkleView/"+id
 }
 
 function Sil(urunID) {
@@ -105,7 +105,7 @@ function Sil(urunID) {
             if (result == true) {
                 alertim.toast(siteLang.Sil, alertim.types.success)
                 setTimeout(function () {
-                    location.href = "/emarket/UrunEkleViewList"
+                    location.href = "UrunEkleViewList"
                 }, 700)
             }
             else {

@@ -54,11 +54,20 @@ function ResetPass() {
         dataType: "json",
         data: model,
         success: function (result) {
-            setTimeout(function () {
+            if (result == true) {
+                alertim.toast(siteLang.sifreGunc, alertim.types.success);
 
-                window.location.href = "/emarket/Login";
+                setTimeout(function () {
 
-            }, 1000);
+                    window.location.href = "/Login";
+
+                }, 1000);
+            }
+            else {
+                alertim.toast(siteLang.SifreHata2, alertim.types.danger);
+
+            }
+
         },
         error: function (e) {
 

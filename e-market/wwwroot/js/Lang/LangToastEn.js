@@ -246,5 +246,9 @@ var siteLang = ({
     day: "day",
     min: "min.",
     sec: "sec.",
-    hour: "ho."
+    hour: "ho.",
+    Giris: "Girişiniz Başarılıdır",
+    Giris2: "Girişiniz Başarıszıdır. Kontrol Ediniz",
+    SifreHata2: "Yeni Şifreniz Eski Şifrelerinizden Biri İle Aynı Olamaz"
+
 })

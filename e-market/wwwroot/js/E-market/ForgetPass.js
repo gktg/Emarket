@@ -1,5 +1,6 @@
-﻿function MailGonder() {
-    var mail = $("#email").val()
+﻿var mail = "";
+function MailGonder() {
+     mail = $("#email").val()
 
     if (mail == "") {
         $('#email').addClass("is-invalid");
@@ -15,7 +16,7 @@
         type: "POST",
         url: "/emarket/MailGonder/",
         dataType: "json",
-        data: mail,
+        data: {mail : mail},
         success: function (result) {
             if (result == true) {
                 alert("Mail Gönderildi");

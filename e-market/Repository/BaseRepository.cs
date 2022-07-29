@@ -78,8 +78,6 @@ namespace e_market.Repository
             return _cc.Set<T>().ToList();
         }
 
-
-
         public List<T> GetModifieds()
         {
             return Where(x => x.Status == DataStatus.Updated);

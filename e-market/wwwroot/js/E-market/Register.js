@@ -63,7 +63,7 @@ function Register() {
                 });
                 setTimeout(function () {
 
-                    window.location.href = "/emarket/Login";
+                    window.location.href = "/Login";
 
                 }, 1000);
             }

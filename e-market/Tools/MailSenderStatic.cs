@@ -25,7 +25,7 @@ namespace e_market.Tools
             eposta.To.Add(uye.Email);
             eposta.Subject = "Şifre Sıfırlama";
             eposta.Body = $"<p>Sayın, {uye.Ad} {uye.Soyad}</p>" +
-                $"<a href='https://localhost:44393/emarket/ResetPass/{uye.ID}'>Şifre Sıfırla</a>";
+                $"<a href='https://localhost:44393/ResetPass/{uye.ID}'>Şifre Sıfırla</a>";
 
             eposta.IsBodyHtml = true;
             using (SmtpClient smtp = new SmtpClient())
@@ -37,7 +37,6 @@ namespace e_market.Tools
                 smtp.Port = 587;
 
                 smtp.Send(eposta);
-
 
             }
 

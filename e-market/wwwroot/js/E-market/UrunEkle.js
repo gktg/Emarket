@@ -147,7 +147,7 @@ function UrunKaydet() {
             if (result != null) {
                 alertim.toast(siteLang.Kaydet, alertim.types.success);
                 setTimeout(function () {
-                    location.href = "/emarket/UrunEkleViewList"
+                    location.href = "UrunEkleViewList"
                 }, 700)
             }
             else {
@@ -170,7 +170,7 @@ function UrunGuncelle() {
             if (result == true) {
                 alertim.toast(siteLang.Guncelle, alertim.types.success);
                 setTimeout(function () {
-                    location.href = "/emarket/UrunEkleViewList"
+                    location.href = "UrunEkleViewList"
                 }, 700)
             }
             else {

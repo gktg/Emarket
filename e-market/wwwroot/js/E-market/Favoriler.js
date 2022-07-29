@@ -2,7 +2,7 @@
 var KisiID;
 $(document).ready(function () {
 
-    KisiID = GetURLParameter();
+    KisiID = $("#site-kisiID").val()
     FavoriUrunGetir();
 
 })

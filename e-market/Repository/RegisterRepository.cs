@@ -15,7 +15,8 @@ namespace e_market.Repository
 
         public List<Register> GetRegisters()
         {
-            return Where(x => x.Role == Role.User && x.Status == DataStatus.Inserted);
+            return Where(x => x.Role == Role.User && x.Status != DataStatus.Deleted);
         }
+
     }
 }

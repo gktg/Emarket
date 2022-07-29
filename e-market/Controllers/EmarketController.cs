@@ -16,9 +16,14 @@ using e_market.Repository;
 using e_market.Models.Enums;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 namespace e_market.Controllers
 {
+
     public class EmarketController : Controller
     {
 
@@ -50,56 +55,71 @@ namespace e_market.Controllers
         {
             return View();
         }
+
+        [Route("Login")]
         public IActionResult Login()
         {
             return View();
         }
+
+        [Route("Urunler")]
         public IActionResult Urunler()
         {
             return View();
         }
 
+        [Route("Favoriler")]
         public IActionResult Favoriler()
         {
             return View();
         }
 
+        [Route("ForgotPass")]
         public IActionResult ForgotPass()
         {
             return View();
         }
 
+        [Route("ResetPass/{id}")]
         public IActionResult ResetPass()
         {
             return View();
         }
 
+        [Route("Profil")]
         public IActionResult Profil()
         {
             return View();
         }
 
+        [Route("UrunEkleView")]
         public IActionResult UrunEkleView()
         {
             return View();
         }
 
+        [Route("UrunEkleViewList")]
         public IActionResult UrunEkleViewList()
         {
             return View();
         }
 
+        [Route("Forum")]
         public IActionResult Forum()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
+        [Route("UyeListesi")]
         public IActionResult UyeListesi()
         {
             return View();
         }
 
-        public IActionResult PageAdd()
+        [Authorize(Roles = "Admin")]
+        [Route("SayfaEkle")]
+        public IActionResult SayfaEkle()
         {
             return View();
         }
@@ -151,20 +171,45 @@ namespace e_market.Controllers
         {
 
             var kisiKontrol = _registerRepository.Where(x => x.Email == model.Email && x.Sifre == HashPass.hashPass(model.Sifre)).FirstOrDefault();
+            ClaimsIdentity identity = null;
+            bool isAuthenticate = false;
 
             if (kisiKontrol != null)
             {
-
-                var kisibilgileri = KisiBilgileriGetir(kisiKontrol.ID);
-
-                HttpContext.Session.SetInt32("KisiID", kisibilgileri.ID);
-                HttpContext.Session.SetString("Rol", (kisibilgileri.Role.ToString()));
-                HttpContext.Session.SetString("Ad", kisibilgileri.Ad + " " + kisibilgileri.Soyad);
-                HttpContext.Session.SetString("Email", kisibilgileri.Email);
-
-                return true;
+                HttpContext.Session.SetInt32("KisiID", kisiKontrol.ID);
+                HttpContext.Session.SetString("Rol", (kisiKontrol.Role.ToString()));
+                HttpContext.Session.SetString("Ad", kisiKontrol.Ad + " " + kisiKontrol.Soyad);
+                HttpContext.Session.SetString("Email", kisiKontrol.Email);
 
             }
+            var kisiRol = kisiKontrol.Role;
+            switch (kisiRol)
+            {
+                case Role.Admin:
+                    identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                    identity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(Role), Role.Admin)));
+                    identity.AddClaim(new Claim(ClaimTypes.Name, kisiKontrol.Ad));
+                    isAuthenticate = true;
+                    break;
+                case Role.User:
+                    identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                    identity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(Role), Role.User)));
+                    identity.AddClaim(new Claim(ClaimTypes.Name, kisiKontrol.Ad));
+                    isAuthenticate = true; break;
+            };
+
+            if (isAuthenticate)
+            {
+                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties
+                {
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(30),
+                    IsPersistent = false,
+                    AllowRefresh = false
+                });
+                return true;
+            }
+
             else
             {
                 return false;
@@ -172,18 +217,31 @@ namespace e_market.Controllers
         }
 
         [Route("/emarket/ResetPassVM/")]
-        public ResetPassVM ResetPass(ResetPassVM model)
+        public bool ResetPass(ResetPassVM model)
         {
             var uye = _registerRepository.Find(model.ID);
+            var yeniHashpass = HashPass.hashPass(model.Sifre);
 
-            uye.Sifre = model.Sifre;
+            if (uye.Sifre != yeniHashpass)
+            {
+                uye.Sifre = yeniHashpass;
 
-            _registerRepository.Update(uye);
+                _registerRepository.Update(uye);
+                return true;
 
-            return model;
+            }
+            else
+            {
+                return false;
+            }
+
+
+
+
         }
 
         [Route("/emarket/MailGonder/")]
+        [HttpPost]
         public bool MailGonder(string mail)
         {
             var uye = _registerRepository.GetAll().FirstOrDefault(x => x.Email == mail);
@@ -191,7 +249,7 @@ namespace e_market.Controllers
 
             MailSenderStatic.MailGonderStatic(uye);
 
-            return false;
+            return true;
 
         }
 
@@ -217,11 +275,27 @@ namespace e_market.Controllers
             kisiBilgileri.ModifiedDate = DateTime.Now;
             kisiBilgileri.Status = DataStatus.Updated;
 
-            kisiBilgileri.KisiHassasBilgiler.DogumTarihi = Register.DogumTarihi.Date;
-            kisiBilgileri.KisiHassasBilgiler.TelefonNumarasi = Register.TelefonNumarasi;
-            kisiBilgileri.KisiHassasBilgiler.Adres = Register.Adres;
-            kisiBilgileri.KisiHassasBilgiler.ModifiedDate = DateTime.Now;
-            kisiBilgileri.KisiHassasBilgiler.Status = DataStatus.Updated;
+            if (kisiBilgileri.KisiHassasBilgiler != null)
+            {
+                kisiBilgileri.KisiHassasBilgiler.DogumTarihi = Register.DogumTarihi.Date;
+                kisiBilgileri.KisiHassasBilgiler.TelefonNumarasi = Register.TelefonNumarasi;
+                kisiBilgileri.KisiHassasBilgiler.Adres = Register.Adres;
+                kisiBilgileri.KisiHassasBilgiler.ModifiedDate = DateTime.Now;
+                kisiBilgileri.KisiHassasBilgiler.Status = DataStatus.Updated;
+            }
+            else
+            {
+                var KisiHassasBilgilerModel = new KisiHassasBilgiler()
+                {
+                    ID = Register.ID,
+                    DogumTarihi = Register.DogumTarihi,
+                    TelefonNumarasi = Register.TelefonNumarasi,
+                    Adres = Register.Adres,
+                };
+                _cc.KisiHassasBilgiler.Add(KisiHassasBilgilerModel);
+                _cc.SaveChanges();
+            }
+
 
             foreach (var item in kisiBilgileri.KisiFavoriKategorileri)
             {
@@ -243,7 +317,6 @@ namespace e_market.Controllers
                     _kisiFavoriKategorileriRepository.Add(kisiFavorileri);
 
                 }
-                //_kisiFavoriKategorileriRepository.AddRange(eklenecekler);
             }
 
             _registerRepository.Update(kisiBilgileri);
@@ -274,10 +347,14 @@ namespace e_market.Controllers
             return kategoriVM;
         }
 
+
+        #endregion
+
+        #region Urun
         [Route("/emarket/UrunleriGetir/")]
         public List<UrunVM> UrunleriGetir()
         {
-            List<Urun> urun = _urunRepository.GetAll();
+            List<Urun> urun = _urunRepository.GetActives();
 
             List<UrunVM> urunler = new List<UrunVM>();
 
@@ -382,19 +459,6 @@ namespace e_market.Controllers
 
 
         }
-
-        [HttpPost]
-        [Route("/emarket/UyeList/")]
-        public List<Register> UyeList()
-        {
-            var result = _registerRepository.GetRegisters();
-
-            return result;
-        }
-
-        #endregion
-
-        #region FavoriUrun
         [Route("/emarket/FavoriUrunGetir/{ID}")]
         public List<UrunVM> FavoriUrunGetir(int ID)
         {
@@ -732,6 +796,8 @@ namespace e_market.Controllers
 
         #endregion
 
+        #region Sayfa Yönetimi
+
         [HttpGet]
         [Route("/emarket/SayfaYonetimi/")]
         public List<Page> SayfaYonetimi()
@@ -762,11 +828,50 @@ namespace e_market.Controllers
         {
             if (page.PageName != null)
             {
+                page.PageName = page.PageName.ToUpper();
                 _pageRepository.Add(page);
 
             }
             return page;
         }
+
+        [HttpGet]
+        [Route("/emarket/SayfaGetir/")]
+        public List<Page> SayfaGetir()
+        {
+            return _pageRepository.GetActives();
+
+        }
+
+        [HttpGet]
+        [Route("/emarket/UyeleriGetir/")]
+        public List<Register> UyeleriGetir()
+        {
+            var uyeler = _registerRepository.GetRegisters();
+
+            return uyeler;
+        }
+
+        [Route("/emarket/SayfaSil/{id}")]
+        [HttpPost]
+        public bool SayfaSil(int id)
+        {
+            try
+            {
+                var sayfa = _pageRepository.Find(id);
+                _pageRepository.Remove(sayfa);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
+        }
+        #endregion
+
 
         public async Task<MedyaKutuphanesi> WriteFile(IFormFile file)
         {
@@ -808,6 +913,3 @@ namespace e_market.Controllers
 
     }
 }
-
-
-
