@@ -88,7 +88,6 @@ namespace e_market.Repository
             return Where(x => x.Status == DataStatus.Deleted);
         }
 
-
         public void Update(T item)
         {
             T toBeUpdated = Find(item.ID);

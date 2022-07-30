@@ -26,8 +26,7 @@ namespace e_market.Controllers
 
     public class EmarketController : Controller
     {
-
-        public readonly ConnectionString _cc;
+        private readonly ConnectionString _cc;
         private readonly ILogger<EmarketController> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IUrunRepository _urunRepository;
@@ -35,10 +34,13 @@ namespace e_market.Controllers
         private readonly IRegisterRepository _registerRepository;
         private readonly IGonderiRepository _gonderiRepository;
         private readonly IPageRepository _pageRepository;
+        private readonly IKisiHassasBilgilerRepository _kisiHassasBilgilerRepository;
+        private readonly IKategoriRepository _kategoriRepository;
+        private readonly IKisiFavoriUrunleriRepository _kisiFavoriUrunleriRepository;
 
 
 
-        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger, IWebHostEnvironment webHostEnvironment, IUrunRepository urunRepository, IKisiFavoriKategorileriRepository kisiFavoriKategorileriRepository, IRegisterRepository registerRepository, IGonderiRepository gonderiRepository, IPageRepository pageRepository)
+        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger, IWebHostEnvironment webHostEnvironment, IUrunRepository urunRepository, IKisiFavoriKategorileriRepository kisiFavoriKategorileriRepository, IRegisterRepository registerRepository, IGonderiRepository gonderiRepository, IPageRepository pageRepository, IKisiHassasBilgilerRepository kisiHassasBilgilerRepository, IKategoriRepository kategoriRepository, IKisiFavoriUrunleriRepository kisiFavoriUrunleriRepository)
         {
             _cc = cc;
             _logger = logger;
@@ -48,6 +50,9 @@ namespace e_market.Controllers
             _registerRepository = registerRepository;
             _gonderiRepository = gonderiRepository;
             _pageRepository = pageRepository;
+            _kisiHassasBilgilerRepository = kisiHassasBilgilerRepository;
+            _kategoriRepository = kategoriRepository;
+            _kisiFavoriUrunleriRepository = kisiFavoriUrunleriRepository;
         }
 
         #region View
@@ -298,8 +303,7 @@ namespace e_market.Controllers
                     TelefonNumarasi = Register.TelefonNumarasi,
                     Adres = Register.Adres,
                 };
-                _cc.KisiHassasBilgiler.Add(KisiHassasBilgilerModel);
-                _cc.SaveChanges();
+                _kisiHassasBilgilerRepository.Add(KisiHassasBilgilerModel);
             }
 
 
@@ -333,7 +337,7 @@ namespace e_market.Controllers
         [Route("/emarket/KategoriGetir/")]
         public List<KategoriVM> KategoriGetir()
         {
-            List<Kategori> kategori = _cc.Kategori.ToList();
+            List<Kategori> kategori = _kategoriRepository.GetActives();
 
 
             List<KategoriVM> kategoriVM = new List<KategoriVM>();
@@ -510,8 +514,7 @@ namespace e_market.Controllers
                 UrunID = urun.ID
             };
 
-            _cc.KisiFavoriUrunleri.Add(model);
-            _cc.SaveChanges();
+            _kisiFavoriUrunleriRepository.Add(model);
 
             return model;
         }
@@ -520,10 +523,9 @@ namespace e_market.Controllers
         [HttpPost]
         public KisiFavoriUrunleri FavoriUrunSil(int urunID)
         {
-            var urun = _cc.KisiFavoriUrunleri.Where(x => x.UrunID == urunID).FirstOrDefault();
+            var urun = _kisiFavoriUrunleriRepository.Where(x => x.UrunID == urunID).FirstOrDefault();
 
-            _cc.KisiFavoriUrunleri.Remove(urun);
-            _cc.SaveChanges();
+            _kisiFavoriUrunleriRepository.Remove(urun);
 
             return urun;
         }
@@ -534,7 +536,7 @@ namespace e_market.Controllers
             List<UrunVM> urunList = new List<UrunVM>();
             List<Urun> urunlerim = _urunRepository.GetActives();
 
-            List<int> urunIDList = _cc.KisiFavoriUrunleri.Where(x => x.RegisterID == id).Select(x => x.UrunID).ToList();
+            List<int> urunIDList = _kisiFavoriUrunleriRepository.Where(x => x.RegisterID == id).Select(x => x.UrunID).ToList();
 
             urunList.AddRange(urunIDList.Select(x => new UrunVM {
                 ID = x,
