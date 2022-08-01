@@ -15,6 +15,8 @@ namespace e_market.Models.ViewModels
 
         public int RegisterID { get; set; }
 
-        public Register Register { get; set; }
+        public string Ad { get; set; }
+
+        public string Soyad { get; set; }
     }
 }

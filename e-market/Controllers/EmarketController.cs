@@ -26,7 +26,6 @@ namespace e_market.Controllers
 
     public class EmarketController : Controller
     {
-        private readonly ConnectionString _cc;
         private readonly ILogger<EmarketController> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IUrunRepository _urunRepository;
@@ -37,12 +36,12 @@ namespace e_market.Controllers
         private readonly IKisiHassasBilgilerRepository _kisiHassasBilgilerRepository;
         private readonly IKategoriRepository _kategoriRepository;
         private readonly IKisiFavoriUrunleriRepository _kisiFavoriUrunleriRepository;
+        private readonly IKisiEkledigiUrunlerRepository _kisiEkledigiUrunlerRepository;
 
 
 
-        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger, IWebHostEnvironment webHostEnvironment, IUrunRepository urunRepository, IKisiFavoriKategorileriRepository kisiFavoriKategorileriRepository, IRegisterRepository registerRepository, IGonderiRepository gonderiRepository, IPageRepository pageRepository, IKisiHassasBilgilerRepository kisiHassasBilgilerRepository, IKategoriRepository kategoriRepository, IKisiFavoriUrunleriRepository kisiFavoriUrunleriRepository)
+        public EmarketController(ConnectionString cc, ILogger<EmarketController> logger, IWebHostEnvironment webHostEnvironment, IUrunRepository urunRepository, IKisiFavoriKategorileriRepository kisiFavoriKategorileriRepository, IRegisterRepository registerRepository, IGonderiRepository gonderiRepository, IPageRepository pageRepository, IKisiHassasBilgilerRepository kisiHassasBilgilerRepository, IKategoriRepository kategoriRepository, IKisiFavoriUrunleriRepository kisiFavoriUrunleriRepository, IKisiEkledigiUrunlerRepository kisiEkledigiUrunlerRepository)
         {
-            _cc = cc;
             _logger = logger;
             _webHostEnvironment = webHostEnvironment;
             _urunRepository = urunRepository;
@@ -53,6 +52,7 @@ namespace e_market.Controllers
             _kisiHassasBilgilerRepository = kisiHassasBilgilerRepository;
             _kategoriRepository = kategoriRepository;
             _kisiFavoriUrunleriRepository = kisiFavoriUrunleriRepository;
+            _kisiEkledigiUrunlerRepository = kisiEkledigiUrunlerRepository;
         }
 
         #region View
@@ -183,7 +183,6 @@ namespace e_market.Controllers
 
             var kisiKontrol = _registerRepository.Where(x => x.Email == model.Email && x.Sifre == HashPass.hashPass(model.Sifre)).FirstOrDefault();
             ClaimsIdentity identity = null;
-            bool isAuthenticate = false;
 
             if (kisiKontrol != null)
             {
@@ -191,26 +190,21 @@ namespace e_market.Controllers
                 HttpContext.Session.SetString("Rol", (kisiKontrol.Role.ToString()));
                 HttpContext.Session.SetString("Ad", kisiKontrol.Ad + " " + kisiKontrol.Soyad);
                 HttpContext.Session.SetString("Email", kisiKontrol.Email);
+                var kisiRol = kisiKontrol.Role;
+                switch (kisiRol)
+                {
+                    case Role.Admin:
+                        identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                        identity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(Role), Role.Admin)));
+                        identity.AddClaim(new Claim(ClaimTypes.Name, kisiKontrol.Ad));
+                        break;
+                    case Role.User:
+                        identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                        identity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(Role), Role.User)));
+                        identity.AddClaim(new Claim(ClaimTypes.Name, kisiKontrol.Ad));
+                        break;
+                };
 
-            }
-            var kisiRol = kisiKontrol.Role;
-            switch (kisiRol)
-            {
-                case Role.Admin:
-                    identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-                    identity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(Role), Role.Admin)));
-                    identity.AddClaim(new Claim(ClaimTypes.Name, kisiKontrol.Ad));
-                    isAuthenticate = true;
-                    break;
-                case Role.User:
-                    identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-                    identity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(Role), Role.User)));
-                    identity.AddClaim(new Claim(ClaimTypes.Name, kisiKontrol.Ad));
-                    isAuthenticate = true; break;
-            };
-
-            if (isAuthenticate)
-            {
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties
                 {
@@ -538,7 +532,8 @@ namespace e_market.Controllers
 
             List<int> urunIDList = _kisiFavoriUrunleriRepository.Where(x => x.RegisterID == id).Select(x => x.UrunID).ToList();
 
-            urunList.AddRange(urunIDList.Select(x => new UrunVM {
+            urunList.AddRange(urunIDList.Select(x => new UrunVM
+            {
                 ID = x,
                 UrunAdi = urunlerim.FirstOrDefault(y => y.ID == x).UrunAdi,
                 UrunFiyati = urunlerim.FirstOrDefault(y => y.ID == x).UrunFiyati,
@@ -672,8 +667,7 @@ namespace e_market.Controllers
                     UrunID = yeniUrun.ID
                 };
 
-                _cc.KisiEkledigiUrunler.Add(kisiEkledigiUrunModel);
-                _cc.SaveChanges();
+                _kisiEkledigiUrunlerRepository.Add(kisiEkledigiUrunModel);
 
 
                 return urunVM;
@@ -685,8 +679,8 @@ namespace e_market.Controllers
         [HttpGet]
         public List<UrunVM> KisiEkledigiUrunGetir()
         {
-            var urunIdList = _cc.KisiEkledigiUrunler.Where(x => x.RegisterID == HttpContext.Session.GetInt32("KisiID")).ToList();
-            var urunler = _cc.Urun.ToList();
+            var urunIdList = _kisiEkledigiUrunlerRepository.Where(x => x.RegisterID == HttpContext.Session.GetInt32("KisiID")).ToList();
+            var urunler = _urunRepository.GetActives();
             List<UrunVM> kisiEkledigiUrunler = new List<UrunVM>();
 
             List<int> myIds = urunler.Select(x => x.ID).ToList();
@@ -761,10 +755,9 @@ namespace e_market.Controllers
         {
             try
             {
-                var urunIliski = _cc.KisiEkledigiUrunler.FirstOrDefault(x => x.UrunID == urunID && x.RegisterID == HttpContext.Session.GetInt32("KisiID"));
+                var urunIliski = _kisiEkledigiUrunlerRepository.FirstOrDefault(x => x.UrunID == urunID && x.RegisterID == HttpContext.Session.GetInt32("KisiID"));
 
-                _cc.Remove(urunIliski);
-                _cc.SaveChanges();
+                _kisiEkledigiUrunlerRepository.Remove(urunIliski);
 
                 var urun = _urunRepository.FirstOrDefault(x => x.ID == urunID);
                 _urunRepository.Remove(urun);
@@ -809,7 +802,7 @@ namespace e_market.Controllers
         [HttpGet]
         public List<GonderiVM> GonderileriGetir()
         {
-            var gonderiler = _gonderiRepository.GetAll();
+            var gonderiler = _gonderiRepository.GetActives();
 
             var gonderilerList = new List<GonderiVM>();
 
@@ -821,7 +814,8 @@ namespace e_market.Controllers
                     GonderiPaylasim = item.GonderiPaylasim,
                     GonderiTarihi = item.GonderiTarihi,
                     RegisterID = item.RegisterID,
-                    Register = item.Register,
+                    Ad = item.Register.Ad,
+                    Soyad = item.Register.Soyad,
                 };
                 gonderilerList.Add(gonderilerModel);
             };
@@ -829,6 +823,14 @@ namespace e_market.Controllers
             return gonderilerList;
         }
 
+        [Route("/emarket/GonderiSil/{gonderiID}")]
+        [HttpPost]
+        public bool GonderiSil(int gonderiID)
+        {
+            var gonderi = _gonderiRepository.Find(gonderiID);
+            _gonderiRepository.Remove(gonderi);
+            return true;
+        }
         #endregion
 
         #region Sayfa Yönetimi

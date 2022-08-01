@@ -89,8 +89,9 @@ function KisiBilgileriGetir() {
 function GonderileriTabloBas() {
     var satirlar = "";
     for (var i = 0; i < KisiGonderileri.length; i++) {
+        if (KisiGonderileri[i].status != "Deleted")
         satirlar += "<tr >\
-                       <td >"+ KisiGonderileri[i].gonderiPaylasim + "</td>\
+                       <td>"+ KisiGonderileri[i].gonderiPaylasim + "</td>\
                         <td >"+ CSStringDateToStringddmmyyyyhhmm(KisiGonderileri[i].gonderiTarihi) + "</td>\
                         <td >"+ KisiGonderileri[i].status + "</td>\
                         <td class='text-center'><button type='button' class='btn' onclick='Goruntule(" + KisiGonderileri[i].id + ")'> <img src='/img/eye.svg'/> </button>\
@@ -157,6 +158,31 @@ function KisiBilgileriGuncelle() {
 
             }
 
+
+        },
+        error: function (e) {
+
+            console.log(e);
+        }
+    })
+}
+
+function Sil(gonderiID) {
+    $.ajax({
+        type: "Post",
+        url: "/emarket/GonderiSil/" + gonderiID,
+        dataType: "json",
+        contentType: "application/json",
+        data: null,
+        async: false,
+        success: function (result) {
+            if (result == true) {
+                location.reload();
+            }
+            else {
+                alertim.toast(siteLang.Hata, alertim.types.warning)
+
+            }
 
         },
         error: function (e) {

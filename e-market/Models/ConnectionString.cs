@@ -29,6 +29,7 @@ namespace e_market.Models
         public DbSet<KisiEkledigiUrunler> KisiEkledigiUrunler { get; set; }
         public DbSet<Gonderi> Gonderi { get; set; }
         public DbSet<Page> Page { get; set; }
+        public DbSet<Comment> Comment { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -95,6 +96,11 @@ namespace e_market.Models
                 .HasMany(c => c.Gonderi)
                 .WithOne(e => e.Register)
                 .HasForeignKey(p => p.RegisterID).OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Gonderi>()
+                .HasMany(c => c.Yorum)
+                .WithOne(e => e.Gonderi)
+                .HasForeignKey(p => p.GonderiID).OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Register>(x => x.HasData(new Register
             {

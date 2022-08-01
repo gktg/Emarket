@@ -93,7 +93,7 @@ function GonderileriBas() {
                     <div class="col-md-3">
                         <img width="100" height="100" src="/images/generated_photos_5e6813f56d3b380006d7f6e5.jpg" />
                         <p>Graves Hastalığı</p>
-                        <p>${Gonderiler[x].register.ad} ${Gonderiler[x].register.soyad}</p>
+                        <p>${Gonderiler[x].ad} ${Gonderiler[x].soyad}</p>
                         <p>Mesaj Tarihi: ${CSStringDateToStringddmmyyyyhhmm(Gonderiler[x].gonderiTarihi)}</p>
                     </div>
                     <div class="col-md-9">
@@ -105,6 +105,7 @@ function GonderileriBas() {
                     </div>
                 </div>
             </div>
+            <div class="card-footer" id="YorumTekrar"></div>
         </div>`;
 
         $("#cardTekrar").append(html);
@@ -132,7 +133,15 @@ function YorumYap(id) {
     $("#" + id).css("color", "blue");
     $("#" + id).attr("onclick", "YorumIptal(this.id)");
 
-
+    var lastIndex = id.lastIndexOf("m")
+    var ID = (id.substring(lastIndex + 1))
+    var html = `
+                <div class="row" id="yorum${id}"><div class="col-md-12 text-right">
+                <textarea class="form-control"></textarea>
+                <button class="btn" id="btnYorumKaydet"></i>Yorum Kaydet</button>
+                </div>
+                </div>`;
+    $("#YorumTekrar").append(html);
 }
 
 function YorumIptal(id) {
@@ -140,4 +149,5 @@ function YorumIptal(id) {
     $("#" + id).removeAttr("style");
     $("#" + id).attr("onclick", "YorumYap(this.id)");
 
+    $("#yorum" + id).remove();
 }
